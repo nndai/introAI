@@ -1,0 +1,715 @@
+Title: Building Safe and Robust AI Systems 
+Video duration: 1h13m
+
+So I'm here to talk about building safe and robust AI systems.
+First of all, I wanna thank the organizers both for setting up the conference and for and for inviting me.
+I've run a few of these conferences recently, and I can tell you I am glad I am not in their shoes right now.
+So thank you for doing it so that the rest of us don't have to do it.
+I also gonna pull a little a little gonna, you know, interrupt them a little bit, and I'm actually was probably not gonna talk exactly about this topic that I advertised originally.
+I'm sure they're gonna forgive me that the the people don't really care what what talks we give.
+But I but I actually had this had this sort of a thought actually when I saw the test of time awards for this conference go out.
+And so what I actually wanna talk about today, there's gonna be plenty of safety work there.
+Don't worry.
+I will talk probably most about safety about any topic.
+But I wanna talk about trying to make an impact with academic research.
+I think it's a topic that for some reason is sort of on the decline right now or at least it's something that a lot of people are kinda concerned about.
+And so I wanna at least think about this topic, and I have a few things to say about it.
+So as I said, this is motivated by something that happened a long time ago, which was iClear twenty fifteen.
+And I, a few a week ago or so on Twitter, whenever it was announced, was looking at the the best paper awards or the the test of time awards, sorry, that were announced this year, basically giving awards for papers that happened ten years ago.
+And the Adam paper, of course, I think won.
+You know, we've all we all use Adam these days.
+And the runner-up paper was a neural machine translation paper.
+It basically invented softmax attention as it's currently used, and I thought, oh my god.
+Goodness.
+You know, these these are two who would have thought these two papers happened at the exact same workshop?
+But or the conference.
+But what really surprised me even more was that that a third paper that I knew about that sort of shaped a lot of my career didn't even win.
+This is, Ian, Jonathan, and Christian's harnessing adversarial examples paper.
+This is the one that has that picture of the panda turning into the gibbon that you've all seen a thousand times, and it didn't even win the best paper award.
+Oh, and by the way, also the VGG paper was there.
+A little paper on playing Go with convolutional neural networks that was the basis for later work in AlphaGo, memory networks, multiple visual attention, etcetera.
+The point I wanna make is that there were 31 papers at all of iClear twenty fifteen.
+And that I mean, something was in the air then.
+Right?
+There was this something something different happening then.
+And I don't want to sort of wax poetic about the good old days.
+I really I really don't want to.
+There's tons happening.
+It's been amazing in AI over the past ten years.
+But at the same time, if you look kind of over the course of these past ten years, I can't help but feel that we may have lost something.
+And I don't think if you take 31 kind of random papers from this year, you're gonna have on the order of, I don't know, half of them being kind of seemingly seminal pieces of work.
+And so, again, I don't want to talk about how good things used to be.
+Know ICLEAR was a weird thing too because it kinda came out of the fact that NeurIPS and ICML were already seen as being not, you know, not innovative enough in certain areas of deep learning.
+But I also think it's true that and not controversial also to say that, you know, there might be something we've lost in these past ten years.
+And talking to people in the field, thinking about what's been happening, I think the way I would sum it up is that there was a real notion ten years ago, or that I don't feel to the same degree anymore, that academic work that was going on at these conferences, you know, every paper that was being submitted here and at other conferences too, by the way, we just disagreed about what would be the future of the field, whether it would be deep learning or optimization.
+I was on the optimization side, by the way.
+I was I was out of the loop.
+I was not at iClear twenty fifteen.
+There was this sense that everything we were doing was gonna be transformative of the field, and I think that to a certain extent, we have, as a community, lost a little bit of that.
+And so what I want to talk about really in this talk and I'll get to AI safety and these sorts of things because, of course, this is how I'm thinking about this right now.
+But I wanna talk a little bit about how we might think about kind of regaining a little bit of that spark that was, I think, really special at conferences like iClear ten years ago.
+Now I personally don't think the answer, maybe like it was then, the answer kind of then was the mainstream machine learning community is kind of moving in the wrong direction.
+Let's do something else instead.
+I don't think that's the right answer right now, to be very clear.
+I think that the progress we're making is amazing.
+The fact that industry is such a large player in this field right now is also amazing and should be celebrated and, in fact, built upon, not try to you know, we shouldn't try to contradict it.
+And so I'm I'm sort of not gonna try to talk too broadly about what I think we can do to reignite the spark.
+That's a bit of a it's probably a bit of a too tall of a task.
+But what I wanna do instead is talk about how I've thought about my group's work over these past ten years as we have tried, and I would say, to a large extent, mainly failed to achieve this goal.
+So what I'm gonna do then is talk about what we've worked on.
+This is this is an incomplete picture.
+It's talking about some of the things that we've done over these past ten years.
+And I want to talk about sort of this kind of long period, not because I think these things are that relevant anymore necessarily or that we're trying to highlight everything here, but I do think that having worked on these topics provides me a bit of perspective to think about what was good about them, about what we were doing kind of right at the time, but also honestly critique them and talk about the mistakes we made and talk about why a lot of this work hasn't had the impact of papers like the ones that came across that that we've all seen at ICLR twenty fifteen, ten years ago.
+Alright.
+So that's the that's the basic outline.
+I'm gonna go into a lot of detail on old papers.
+Don't sweat the details here.
+They are meant to be illustrative.
+They are not meant to convey everything about the ideas.
+Maybe you'll be inspired to think about something new, maybe not.
+That's fine.
+But I'm gonna go quite fast through all these things, so forgive me.
+And I will, by the end, then get to get to AI safety, which was gonna be the the majority of the topic originally, but I think I wanna be a little a little bit broader.
+Okay.
+So let's start off talking about optimization and implicit layers.
+Now in 02/2015, I was and this is actually after all the work that was done at iClear, but seeing that work, seeing what was happening, you know, I was essentially a newly converted optimization expert wanting to work in deep learning.
+So what's what do we do at that point?
+Well, of course, the thing we would do is try to embed optimization inside of deep learning to make deep learning better.
+Now don't judge me too much.
+This wasn't as crazy as it sounded at the time.
+Remember, people were still primarily building new architectures at the time.
+That was the majority of work that was happening in 02/2015, I think, or not the majority, at least a large amount of it.
+And it made total sense.
+It seemed like the best way to impact the field was, in fact, to leverage the things that we knew about well in my group, I e optimization and duality and stuff like this, in order to influence and build better architectures.
+So I wanna talk about a few of these.
+The first thing we worked on was a method called input convex neural networks, and the basic and this is work with with Brandon Amos and others.
+And the basic idea here is if you take a normal, just deep neural network with ReLU activations, k, multilayer deep network.
+Well, the ReLU is a convex function.
+Right?
+That means the any slope any line connecting two points lies above the function.
+Convex functions can be optimized very easily, typically.
+That's what's nice about them.
+They have a single global optima or at least a single set of global optima.
+And it's also the case that positive combinations of convex functions are convex, and you can concatenate them as well and compose them.
+And so, in fact, if you just ensure that all the weights of your networks are positive and you have a scalar valued neural network, that neural network will actually be a convex function of its inputs.
+And you can do all sorts of really cool things with this if you have this property.
+For example, you can build energy models that have a global optimum for their optimization function.
+You basically solve these models by finding the minimum of some of the variables as input to the function.
+This is what energy models did.
+They were way more popular at the time than they are now.
+And if you make them convex, you can actually give provable guarantees about that.
+And we had things like this which look horribly bad right now, but which were, you know, kind of nice at the time in terms of image completion and stuff like that.
+You could also do cool things like ensure stability of functions.
+Right?
+So you or or dynamical systems.
+So you could do things like construct a Lyapunov function, which you project your normal dynamics to descend according to that Lyapunov function, and this gives you dynamical systems that are guaranteed to not diverge, to be stable around some fixed point.
+Also very cool.
+But at the same time, input convex networks, while cool, they they were sort of this kind of outlier.
+They were an entire network.
+We couldn't really plug them into existing architectures.
+So the next thing we spent a lot of time on is thinking about how we would integrate optimization into more traditional layers.
+And one of the ways to do this was with something we called optimization in the loop or the OpsNet architecture.
+And the basic and this is also worked by Brandon and also extended by several of my other students, Priya and Poei, amongst them.
+And the idea here is you would actually take an optimization problem.
+So we used to draw things like this a lot.
+That c variable is meant to show a constraint set.
+It's the allowable set of points.
+The little circles there are level sets of our function f, and so you wanna find the lowest value of that function that is within those constraints.
+A lot of problems can be formulated, of course, as optimization problems.
+But the idea here is that we actually wanted to formulate a layer in a network that solves an optimization problem.
+Alright?
+So, essentially, the output of a single layer would be the solution to a convex optimization problem where both the objective of that problem, the thing we're minimizing, and the constraints were defined by the previous layer.
+And it's also the reason that you might wanna do this.
+For one, it generalizes most active most current layers we actually use at the time in deep networks.
+So any linear layer followed by activation, at least things like ReLU and such, those could be expressed as convex optimization layers.
+It also let us embed a lot of specialized intentional logic within the individual layers.
+And a point of pride for me well, I don't know if it's pride or not, but when I I actually gave a talk about this at an early iteration of OpenAI, and Ilya was there.
+And he said that this is going to be as big as ResNet's, this architecture.
+And I mainly mentioned this to make the point that even Ilya made really bad predictions sometimes.
+So what but you can do cool things so that it is kind of interesting sometimes.
+You can do things like learn hard constraints from data.
+You can do things like solve Sudoku problems with with these networks because sometimes even including visual Sudoku problems that combine in this case, we made a fun problem that combined both MNIST classification and solving Sudoku with MNIST digits.
+That was rather fun.
+And you could also optimize for loss functions that involve some optimization problem at the end.
+We use this to do things like optimize power grid allocation to basically based upon stochastic forecasts of scheduling.
+But it's still this was still a very specialized form of layer, and it didn't really seem to plug in well into generic kind of networks, the kind that we were that were becoming more and more popular for language models, for vision models, etcetera.
+And so the next thing we thought about was sort of how to take this idea of the sort of the the kinds of optimization we were doing and plug them into more generic networks.
+And one thing that came out of this was some work on deep equilibrium models.
+Alright?
+And the idea here, it's it's not quite an optimization layer.
+Now it's actually a fixed point layer.
+But the way I describe it and this is work with with Xiaojie and Vladlan.
+And the way to describe it is we think of a normal deep network as being some finite, you know, number of layers deep.
+At least this is a common picture of the time.
+I know they look very different now.
+But we think of this as a normal deep network, and then we can think about extending this to actually have an infinite number of layers.
+What happens if we make this thing deeper and deeper?
+And to do this, you have to do some things.
+You can't have an infinite number of weights.
+You have to tie the weights together, things like this, but it's not that bad.
+You also have to add an injection layer that keeps injecting the inputs.
+Otherwise, the, you know, the output wouldn't actually depend on the input at all.
+And if you look at this, though, this looks like now an iterated dynamical system where you just apply the same function to the state over and over again.
+And so in fact, in most cases, or at least in some cases that you kind of want to encourage, this will converge to some sort of fixed point.
+And so instead of trying to actually compute this system layer by layer, we can just try to solve that fixed point.
+Right?
+And, of course, in reality, we don't use a single linear layer.
+We actually use a small function like a transformer block as our thing that we iterate again and again or we find a fixed point of.
+And the cool thing is you can actually use techniques very similar to the methods we use for differentiable optimization to solve these.
+The forward pass can be solved by essentially root finding, and the backward pass can be solved by implicit differentiation.
+And it works.
+And we found that, again and again, you know, we could try a layer like this, compare it to a normal stacked transformer, and the result was that it used it got better performance on, you know, simple old school language modeling tasks now, like Wikitext one zero three, while using less memory because you didn't actually just have to store all individual layers.
+You could just store the single layer and then backprop implicitly.
+So that seems great.
+Why didn't any of this why aren't we using equilibrium models at this point?
+And the reason is actually the bar I'm not showing you in this plot.
+It's the it's the time it takes to run these things.
+They take about twice as long to run on average as the equivalent as the equivalent deep net as equivalent sort of other depth normal depth deep network.
+And the problem was, fundamentally, with this and with optimization layers, etcetera, is that these implicit layers, optimization layers, deep equilibrium models, they have their place.
+But fundamentally, they are about applying more compute per layer while using fewer parameters.
+And it just so happens that the things that worked best, the things that work best right now do the exact opposite.
+Right?
+So mixer of experts layers are kind of the or mixer of experts models are kind of the gold standard these days for the best performing language models, and they use way more parameters and way less compute.
+You know?
+If the universe was different, if reality was different, maybe we'd live in a world where deep equilibrium networks actually worked better, but but they don't as far as I can tell.
+And same with optimization.
+Now there is a place for it, I think.
+If you have an optimization problem you need to solve and you want to, you know, tailor your network to perform well there, that's great.
+But I just think, ultimately, these were a cool idea that spoke with the sort of the philosophy at the time, which is seeing what we could do with new layers, new architectures, but it didn't really pan out.
+Let's talk about the next thing we worked on for a while, which is certified robustness.
+So this isn't quite a sequential story.
+We started working on this while we were still working on the other methods.
+But one thing that was already very evident in about 02/2017 is that adversarial robustness seemed like a really big problem.
+I think we've all seen this figure before.
+This is in fact the figure from that 02/2015 Eichler paper, which did not win the best paper award or the test of time awards, showing that if you take a, you know, a panda, you can add a little bit of noise adversarially chosen to get another image, and the network predicts it's wrong.
+And this is actually very, very widespread.
+You can basically do this with any image.
+You can make any image classified as any class by adding a tiny amount of imperceptible noise.
+This seems like a really bad thing because, a, it seems like you know, how could you ever trust systems that did this?
+How would you ever deploy these in practice?
+But it also just seems like this is a fundamental problem.
+We know how could an intelligent model actually do this.
+This seems like a mistake.
+However, at the same time, most strategies that were being developed to mitigate this problem, they really could be easily circumvented.
+Nicolas Carlini famously had a paper, I think, a few years later at iClear where all the proposed defenses, they broke before the conference actually started.
+So all the things people proposed to sort of, you know, defend against these except for a few, but all the ones except for certified ones, in fact.
+But all the ones that, you know, were sort of ad hoc, they just they just broke.
+And so it seemed to me like one of the best ways to have to target impact in academic work was to develop methods that were actually certifiably robust or provably robust to perturbations like this.
+And so in our sort of next bit of work, we basically developed two classes of techniques that can be used to guarantee robustness of deep networks.
+The first of these was developed by Eric and myself, and it and actually many others developed similar methods at the time.
+And the idea was it it uses convex relaxations to get guarantees on the output of networks.
+You see, I really couldn't give up convex optimization.
+It's a it's a real problem.
+And I think I think I still actually am overly obsessed with the, you know, the little bit of con convex optimization I still remember.
+The idea here is really simple.
+Again, if you have a deep network, the reason why adversarial examples exist, the reason why they're so hard to prevent is that if you take a convex region, a sort of a well defined region in input space, like, say, the set of all perturbations where you can perturb each pixel by plus or minus point 1% or something like that, If you feed that region through a deep network, because the deep network is a nonlinear, nonconvex function, you get really weird shapes on the outside, and you get shapes you can't easily reason over.
+They're combinatorially complex, and so you can't even find the worst case example.
+And this comes from the fact that the ReLU function, while, you know, being a a relatively simple function, is in fact, you know, a nonlinear function, and so you can't really describe it.
+You can't easily enumerate the set of all points here.
+So what we did is we actually took what's called the convex hull of these points.
+We took we relaxed the ReLU to say rather than being exactly have our activations be exactly defined by this ReLU, we allow them to move around inside a convex region that was, in fact, the convex hull of the ReLU.
+And what this does is this actually sort of forms an upper bound on the loss, the worst case adversarial loss you can achieve with a network, the worst case perturbation you can make, but it's one that is actually much more efficient to optimize over.
+And it worked.
+You know?
+We could get guarantees on MNIST.
+We were still doing MNIST at the time.
+Very sad.
+Saying no perturbation no matter what could ever get more than 3% error.
+So it worked.
+You know, normal networks, you could get a % error.
+No problem.
+And it, you know, kind of worked on CIFAR.
+And ImageNet, you know, we don't talk about ImageNet.
+But, actually and that was kinda mean, there actually were later papers that scaled this to ImageNet.
+But I think in the meantime, we also sort of said, you know, maybe this is maybe not quite the best way to deal with these things.
+Let's think about other approaches instead.
+And so in this in this in this world, Jeremy as well as Ilan were thinking about this and thinking about how can we develop better ways to sort of prevent adversarial examples.
+And, again, I'm gonna call back to a simpler time of ICLARE because the year before Jeremy wrote this paper, so this was the after the submissions for ICLARE twenty nineteen, Jeremy read every single submission to ICLARE twenty nineteen on adversarial examples.
+He actually read every single line.
+There were about a hundred.
+You couldn't do that at the time.
+You can't do that anymore.
+And he read them all.
+He realized that, you know, some were the the ones that seemed to be actually most promising were ones that were using randomization techniques, but they were kind of doing it in the wrong way.
+And he figured out how to simplify this and come up with kind of what I would call the correct and tight analysis for sort of randomized classifiers.
+The idea is really simple.
+What you do is you just take an image like your famous panda, and you just add a bunch of Gaussian noise, and you classify it a bunch of times.
+Then you take the majority vote of those classifications and have that be your classifier or have that be your prediction.
+And what you're doing when you do this is you're kind of smoothing out the function.
+Right?
+You're taking functions because what adversarial examples are in some sense is they're kind of weird spikes of the wrong class that inject themselves into the space of nearby points that have no business being there.
+And if you do apply this randomized smoothing, you actually smooth out the decision boundaries and get classifiers, importantly, that you actually can prove something about.
+So in particular, you can prove that if the smooth classifier classifies the correct image with probability p, then the this classifier is actually robust with an l two ball defined by by p and essentially the the the Gaussian inverse CDF as well as the variance you use for your sampling for your noise sampling.
+And this now, for the first time, actually scaled to ImageNet.
+So we could actually get guarantees in saying, you know, if you add this amount of noise, if if your noise is bounded by this amount, there is no way to fool this randomized smoothing classifier, and that seemed really cool at the time even if the actual bounds we're talking about here were still very, very small.
+And, you know, 02/2019, everything seemed very promising.
+So what's happened the year since?
+Well, in the year since, I am happy, I don't know, sad to say, there have been a whole lot of classifiers that have been deployed in the real world in deep learning, and not a single one of them, as far as I'm aware, uses any sort of robustness.
+So what went wrong?
+Why didn't this actually I mean, deep learning, it's being adopted.
+What happened?
+And the short answer is, well, it didn't actually work.
+And so it's easy easy easy answer.
+But the the what what I really mean by this is that the price you pay to build a robust classifier is the worst trade off imaginable.
+You are basically building a classifier that is robust to a tiny amount of noise, a tiny not noise.
+Actually, a tiny amount of adversarial perturbations.
+And in doing so, you create a classifier that actually works much worse.
+So robust classifiers, they they just don't perform as well as normal classifiers.
+They work much worse, all for robustness to a completely unnatural type of threat model because no adversary is gonna stick within some tiny imperceptible ball that you can define beforehand.
+Now this was always supposed to be a toy problem, I wanna add.
+The people talking about robustness, we we didn't think, by the way, that, you l infinity balls and l two balls were a good way of describing perturbations.
+This was always a toy problem.
+But we had this weird situation where we tried to solve this toy problem thinking it would be the easy first step to building really robust classifiers, and we couldn't even solve it.
+This might come back later.
+I think it will come back later.
+But for now, people basically ignore this because we don't seem to be having a lot of random adversarial perturbations being applied to our deep networks.
+Maybe.
+Maybe we'll we'll have those soon.
+And so we were more than happy just to use good performing classifiers.
+Those are the ones that actually sort of matter in practice.
+So, you know, a long time now of approaches that seemed really promising, I would say, seemed like they were really trying to find those places where academic research could have the biggest impact, and I think, you know, kind of kind of failing.
+Not that these weren't really interesting papers, led to a lot of very, you know, good techniques.
+They do have applications.
+But if you look compare this to attention, neural machine translation, I think it's I just it's not it's not close.
+Okay.
+I wanna move now to more of the current era and talk about what we're thinking about these days because what's happened recently, and I would say this started around it start I I started thinking about this around, you know, 02/2020, is that the scaling era had arrived, and we were starting to enter a time where no longer could academic groups be able to build state of the art models anymore.
+We could still develop new architectures, new methods, and and make a good case for them, hope they were picked up by industry and scaled there, but we really weren't the ones building the models anymore for the most part.
+It's laughable now how little how small and how little compute those models actually needed at the time in 2020.
+We could easily do it now, but we couldn't then, or we didn't we didn't think we could then because we were used to running experiments on our laptops for the most part and seeing results very quickly and stuff like that.
+Not quite.
+I mean, we were using GPUs here, but forgive me the the exaggeration.
+So what this meant is deep networks were now and they were becoming, you know, good and better, and they were working well on a lot of problems.
+And all of a sudden, it seemed like and they're getting more and more complex.
+And it seemed like, for the most part, it was no longer the case that we would be able to really understand them or at least we were resigning finally to the fact that we wouldn't be able to understand them from first principles like a lot of the models we were used to in good old fashioned classical machine learning, like linear models and SVMs and stuff like this.
+And so, again, it seemed like we had an obvious role for academic research at this point in time, and the role was we were going to be the ones that created the new scientific study of existing models.
+Models were things in the world to be appreciated, and we would study them.
+We'd create the new biology or physics or, as I like to say, sometimes more like the pop psychology in practice, of deep networks.
+And this was actually a very profitable area or a very sort of lucrative don't wanna make it monetary.
+This is very good for research, I think.
+I think we've done a very good job, and I actually still think this is going strong, this current method here, so I don't wanna say this one is not working.
+I will talk about some critiques of it in a second, but I wanna highlight some of the things we did with this.
+One of the first of these was work on the edge of stability.
+So this is also work again by Jeremy and others, and the idea here is that traditional optimization theory basically says you should pick your learning rate, the learning rate of your optimizer, based upon the sharpness of your underlying function.
+And if you have a learning rate that's above two over if if if eta if if your sharpness is above two over the step size, then things go bad.
+Right?
+Then you start diverging.
+That's traditional optimization.
+And a lot of proofs, including, by the way, a lot of proofs in deep learning papers, basically just assumed the same thing, assumed a bound on sharpness, and then proved things about the convergence of the method if you if you bound sharpness in a way.
+And so what what Jeremy did was look at whether this really makes any sense or not, and what he did was show plots like this.
+So what's happening here, and I'll take a second, is we're showing iterations of an optimizer, and what we're showing here is the sharpness, which again is the top eigenvalue of the Hessian of this function, as well as the trending loss as it evolves over time.
+And the odd thing about deep networks is that the sharp mean, not it's not it's actually not odd.
+It's it's odd in in a way, but the sharpness does not stay fixed the whole time.
+You know, the sharpness for a quadratic function is always fixed.
+Sharpness of deep network can can change.
+You know, you're optimizer.
+You're going different regions of this network.
+Of course, it can change.
+But this doesn't look very good because, you know, we're keeping a fixed learning rate here, and as we train our network, our sharpness is increasing.
+And in theory, once the sharpness goes above this 200 number, our step size for our optimizer is gonna be too big, and it's gonna diverge.
+Now here's what happens instead, though.
+The sharpness just stops increasing and hovers around that same level for the rest of optimization, and then the loss doesn't blow up.
+It actually still decreases just nonmonotonically.
+It has little spikes in it, but overall still goes down.
+I think Jeremy's finally convinced that now he's he has some work at this conference also with Alex Damian.
+I don't I I they're I forget which day they're presenting it, but I think finally solving this problem or understanding this problem at least a little bit better.
+Maybe not understanding it, but at least characterizing it a bit better.
+But this is very strange.
+This is an empirical phenomenon, kind of like a physical property of deep networks that deserves study as an emergent phenomenon.
+This is not the only one.
+There's a lot of things like this, a lot of things that are really kind of counterintuitive.
+We also did some work looking at by by by Vaishnav, Yading, and Christina, looking at an odd relationship between disagreement of arbitrarily trained classifiers, like differently initialized classifiers, and their error.
+So the idea here is we can take repeat this pro following experiment.
+We train two different classifiers with two different initializations, and then we look at how often they disagree versus just how often they make different predictions on the same data, same schedule of SGD and all that kind of stuff, just different initializations.
+You could randomize other things as well.
+And we computed the disagreement between them as well as their average error.
+So what's the average error of declassifiers?
+What's their disagreement?
+And what we found, very surprisingly, is that this actually lied almost exactly on the line, the x equals y line, meaning that you could approximate the error of a classifier by just looking at how often it disagreed with another classifier trained in the same way, so with a different initialization.
+That's very strange.
+I would think you should have low amounts of disagreement but still different amounts of error.
+Right?
+Still high error depending on how good the classifier is, but they're trained in the exact same way.
+They should be very, very correlated, and you don't see this.
+You actually see the fact that they're despite this, you get a very interesting kind of way of predicting the error here.
+It turns out you can relate this, and I won't go to details here, but you can relate this to the calibration of these sort of deep ensembles.
+So if you think of pairs of classifiers as sort of random sets drawn from some big ensemble of all classifiers that could result from SGD, say.
+If this ensemble, the average prediction of the ensemble is well calibrated, meaning it sort of knows when it's wrong and knows when it's you know, it's right.
+It basically makes a prediction with a certain probability, and it will get it right that amount of the time.
+If you have that property, which we do see in practice, we don't really know why we have that either, but we do see calibration of random of classifiers of random deep networks trained in this manner, then you can prove that actually, in expectation, the error is gonna be equal to the disagreement.
+The error of a classifier is gonna be equal to the disagreement between pairs of classifiers.
+This is really cool, but, again, it doesn't really give us a very useful procedure because we don't know if a classifier is calibrated or if an ensemble is calibrated ahead of time.
+Sometimes it is.
+Sometimes it's not.
+And so in related but actually quite distinct work, we kind of leveraged a similar effect to actually make predictions about the performance of classifiers, especially here on out of distribution data without any labeled data.
+This is a work called agreement on the line by Yadin, Christina, and and Aditi.
+And the idea here builds upon a phenomenon discovered by others.
+This is some work out of Stanford and other places called accuracy in the line.
+And what they showed was if you take a whole bunch of different problems and plot in distribution versus out of distribution accuracy, what you find is that these things lie in a line.
+In other words, out of distribution performance often degrades over in distribution performance.
+I don't wanna make too much of those terms for right now.
+Just say things like out of distribution is, I don't know.
+You just try to resample CIFAR ten ten years later without the same data that Alek Krzyzewski was using at the time, or you do things like add Gaussian noise or add different shear effects to the images and stuff like that.
+That's out of distribution, and the original data, CFAR, is in distribution.
+But, you know, this phenomenon is very persistent.
+Of course, different classifiers, different different deep deep networks or not, by the way, any kind of classifier appears to have phenomena like this.
+And so what what Christina found is that something actually very similar holds not just for accuracy but also for this phenomenon of agreement that we found so useful before.
+It turns out if you plot in distribution agreement on a problem versus out of distribution agreement, you also have a very strong linear correlation between these two terms.
+In other words, classifiers that agree more with each other in distribution tend to agree more out of distribution also.
+But the interesting thing here is that these two lines, the accuracy and the agreement line, often end up being the same thing.
+They have the same slope and the same intercept.
+And this immediately leads us to a way to actually s if if both these two properties hold, this gives us a way to estimate out of distribution performance, performance of some model on some new distribution of data without actually getting any labels from that data.
+Because, again, agreement can be computed without any recourse to the true labels.
+Right?
+You just see if two separate classifiers agree or not, and you can use that agreement to basically estimate the slope and intercept of that line, and then you can predict out of distribution performance accuracy with only the need to actually compute in distribution performance.
+So the idea here is, you know, if you wanted to know how well your self driving car would recognize objects in snow and you've never trained on snow, you don't actually have to get real labels on snow.
+You can just drive around, see how often different pairs of classifiers agree on the snowy objects, and then use that to estimate how well it will perform in some new domain.
+Has anything gone wrong with this idea yet?
+And I would actually say no.
+This idea, this notion that we need to look at empirical effects of deep networks is alive and well, and I think it's actually arguably one of the most vibrant areas of study right now in machine learning.
+We are building slowly but surely a science, I would say, of, you know, going from pop psychology to physics admittedly, but we're building something like a science of deep learning.
+In fact, as I mentioned, Jeremy and Alex Damian this year at at iClear have a paper that analyzes and tries to have a much better understanding of what's really happening when you hit that edge of stability and optimizers.
+Christina and Sachin actually have a paper on looking at other phenomena that occur in deep networks, in this case about sort of reliance on con context contextual data or not, data in the in the in the prompt or not.
+And so I think this area is actually very vibrant, but I I do think that there is something a bit unsatisfying about this because it feels like we went from developing the models and building the techniques that were used, and maybe this is just reality, to sort of analyzing things that are trained by others, by the big labs, and seeing what they were like.
+And so I don't think I think this is a very valuable line of study, to be clear, but I don't think it's the be all, end all of academic research in machine learning either.
+And this brings me finally to the topic I have now twenty minutes left, but the topic that I actually originally was going to talk about, which is safety.
+If I look at where the field is right now, I think safety is likely the biggest problem we have facing us, and it's one where I also think academic research is sorely needed and currently rather underserved.
+So I will not try to convince you if you are a skeptic of the value of AI safety research in the broad sense.
+If you don't think models right now are going to be extremely capable very soon, if you're more skeptical about their progress, or if you just think they're gonna be they're gonna progress, but, you know, everything's gonna be fine.
+Things are gonna be great.
+So if you think that, then I won't try to convince you necessarily.
+I don't I don't believe that.
+I think we have much bigger problems to think about than that.
+But what I hope to maybe convince you is that this is actually the area still that is sort of strategically very important.
+So maybe even if not for the sake of, you know, the world, maybe for the sake of getting research that's gonna have a big impact on the future of AI systems might be your reason for thinking about AI safety.
+But for me, I'll just say, like many people, I think, in this room, this this came about I really started to think of this a lot in 02/2022 when it was becoming very clear that models were getting much better, much faster than I ever anticipated.
+Of course, with the release of ChatGPT, I think if I mean, I guess I wasn't shocked at the time because I had already been using GPT three so much in the playground mode, but it it it still didn't quite sink in until sort of the entire world kind of woke up to just how amazing this technology was seemingly all of a sudden.
+And now sort of, you know, my my previous mind thinking, well, we've shown that none of these models are actually robust.
+That seemed very relevant all of a sudden.
+Seems like a pretty big deal.
+And so it seemed, and I think I would say in this case, it very much still seems like the best way, again, I know I'm repeating myself here, that's the point, for academic research to influence the field to be that iClear 2015 now would be to think about ways of identifying and mitigating the vulnerabilities of AI systems.
+And this is what we started working on.
+So one of our first sort of most well known bits bits of work in this area was about automated jailbreaks, and I'm gonna show you this.
+It's always fun to show these things.
+I'm gonna make a disclaimer.
+This is a this is a chatbot that, you know, I am at least in some sense affiliated with, though this work was all done before I had any affiliation with OpenAI.
+But I will also say that this all work was all done before, you know, a year more than a year ago now, almost two years ago now, and it does not work on current models.
+Right?
+So I'm showing something that works on some of the older underlying models, and current models, especially reasoning models, actually are are are much more robust to this kind of manipulation.
+Alright.
+So here I'm gonna ask ChatGPT to write a tutorial on how to hotwire a car.
+It will say, as you might expect, it will say, you know, I'm sorry.
+I can't do that or something like that.
+I can't help with that.
+But if I ask it to hotwire a car followed by a bunch of garbage garbled text after that, then the model, at least sometimes, was more than happy to tell me how to hotwire a car and write a nice tutorial on on how to hotwire a car.
+So I think we've seen things like this before.
+It's, of course, one of the many things you can do.
+You can also tell stories about how your your grandma used to hotwire cars, and it was really soothing to you to hear stories about hotwiring cars.
+Those things kind of work also.
+But the way this worked and the sort of the interesting thing about this particular approach is it's fully automated, so it used just optimization.
+Again, I can't help thinking about optimization to to actually attain this this goal.
+So the idea here is you sort of start off with some query, like, tell me how to hotwire a car, a bunch of extra tokens after that fact.
+Then you have an open source model where you can actually compute the probabilities of different responses, like the model refusing or telling you how to hotwire a car.
+And then all we start doing is we start flipping around.
+We start, you know, basically swapping around tokens in our extra token string to increase the probability of the model responding affirmatively, And those tokens are selected basically by a gradient based technique using the approximate gradients of a con of a relaxation of the problem, but you still have to try a lot because, fundamentally, it's still a discrete optimization problem.
+Eventually, though, if you add enough of these tokens, then you've changed the probability of the model responding affirmatively to be higher than refusing, and so the model then goes and tells you how to hotwire a car.
+Oddly enough, you don't actually have to tell it in your desired target response what the rest of the answer is.
+You just have the answer start with, sure, here's how to hotwire a car, and then it goes and tells you from its own internal knowledge, it's very happy to tell you how to hotwire a car.
+The amazing thing about this, though, is this works not just on the open source model we're targeting, but it also transfers to other zero shot at transfers to other closed models.
+And this kind of much of what started our work and starts really informs a lot of my thinking still about AI safety.
+Now we've actually made a lot of progress on this particular example, and I'm gonna talk a little bit later about some of that progress.
+But I actually just wanna first emphasize that AI safety is not just robustness.
+I think most people working in AI safety know that, but I think a lot of people in machine learning often equate robustness with AI safety, and this is only one thing.
+Right?
+There's much, much more.
+And I think, in general, there are just so many different angles you can think about when it comes to topics of AI safety, and I wanna highlight a few of these other things we've worked on in related areas.
+One of these relates to unlearning.
+So I think unlearning actually is gonna be ultimately a core topic in AI safety because as models get more and more capable, one of the things we're gonna need to do in some sense is actually, for some models, either remove or never build in certain knowledge to begin with.
+Right?
+So maybe you could actually just delete if you really didn't want the model telling you how how to hotwire a car, you can't just tune it after the fact to say, hey.
+Don't tell people the knowledge you have really inside of you.
+You have to actually remove that knowledge in some fundamental way.
+And so there's been a lot of work proposing different unlearning approaches that basically would extract or remove the base knowledge from a classifier at all.
+And so in but but at the same time, there wasn't a lot of work kind of very scientifically evaluating this.
+They would evaluate it in very ad hoc manners, like, just ask it after the fact.
+Could you hotwire a car?
+Can you do some bio task, etcetera?
+And so what what my students, Pratyush, Jeely, Avi, and and Zach worked on was an actual dataset for Avi is a postdoc, and Zach's another faculty, to be clear.
+But what they worked on was a dataset for better evaluating unlearning methods.
+And the idea was very simple.
+We built a dataset called Tofu, which essentially was all about some fictitious authors.
+So these are pretend people.
+They can't possibly exist in the actual model, so a real model will not have any knowledge of these things.
+But we can fine tune a model to gain knowledge of these 200 authors.
+Then we try to unlearn some small portion of these authors, and what we wanna do is we wanna compare models.
+And I'm not gonna go into too much details.
+The details are, of course, in the paper.
+But when you do this, of course, you will have a change in model utility.
+Right?
+Because you could make the model forget everything just by completely destroying the model.
+That's not a very good unlearning method.
+But you also can kind of just fail to unlearn, and you actually still have a lot of knowledge in there about the about the authors.
+And so what we did was we come up with a bunch of metrics that quantified essentially how well you're forgetting versus how well you're sort of or how much you're influencing the quality of the model.
+And this point down here is if you just fine tune the model on all the authors and don't forget anything, so that's not very good for get quality but very good utility, and up here is that model where you just retrain entirely only on the authors that you want to retain, so and all of them except the ones you're forgetting.
+And what we found was the vast majority of methods basically had a really bad trade off between forget quality and quality of the model.
+And still, some methods have improved on this now, I should clarify, but still, I think we don't have a full understanding of how we actually forget, especially capabilities in models, and it strikes me as one of the big unsolved and outstanding challenges in AI safety.
+Okay.
+I have a few more here that I'm gonna get through quickly.
+One bit of work I'm just worked on recently, which I'm really excited about right now, I'll talk about it very briefly, though, is work on anti distillation sampling.
+So this is work, again, by Yash, Asher, Geely, and others, and this work aims to solve the problem of trying to build a teacher model where it is not valuable to train on its samples.
+There's all sorts of reasons why you might wanna do this.
+Of course, yes, there's competitive reasons why you might want this.
+Maybe you wanna release a really good model, but you don't want people sampling from it and then training their own model based upon that.
+But I think this is also fundamentally a safety question too because I believe there is actual value to having a delay between the best frontier closed source models that we can start using, analyzing, and building an open source variant of that that sort of is essentially released forever that we've never had any more control over.
+If you disagree, okay.
+We can disagree on that, but I do think it is a good thing.
+I love open source models.
+All this work is on open source models.
+I am glad that open source models are a little bit behind the frontier.
+And if you wanna maintain that, it is reasonable to ask whether you can generate samples from a good teacher model that do not help you train as good a student.
+And so we did this by basically altering our sampling objective to trade off between the normal likelihood of the teacher and essentially how much training would hurt the student.
+And this is actually a really hard objective to optimize or to to I shouldn't say optimize, to compute as it is because it involves computing some downstream loss for every single possible next token you might sample and then train on.
+But it turns out you can with some sort of differentiation tricks and, again, I just can't get away from cool math tricks that's motivated so much of my actual work throughout my career, and I can't get away from it.
+So one more here.
+Using this sort of some cool tricks, you can actually can do this very efficiently.
+And it works kind of okay.
+I I don't think this is all practical right now, but it's interesting that this even works at all.
+And the idea here is the blue line shows the trade off between student accuracy and teacher accuracy if you just use temperature sampling.
+Right?
+So if you just start corrupting the samples with more and more noise, you get this curve, meaning that even for very low teacher accuracy, you actually are still improving the student, whereas anti distillation sampling, you know, pushes that Pareto frontier.
+You want it to really be down to the left down here.
+Right?
+And anti distillation sampling pushes that Pareto frontier, you know, a reasonable amount.
+I think it's interesting at all that you can generate samples that still solve the underlying problem.
+This is on GSM eight k.
+So these are sort of basic math problems.
+They still solve the underlying problem, say, 70% of the time while being entirely useless for training on.
+Okay.
+Let me finalize one last thing now.
+I have six minutes left, and I'll have some final remarks, and we'll we'll end.
+The last thing I wanna highlight, though, is kind of the fundamental problem, I would argue, with a lot of models.
+This is work Pratyush, Sachin, Dylan, and others did very recently.
+I think this is just going on archive hopefully an hour ago.
+It was on hold for a while, so it might be too spicy for archive.
+So it has to be now v verified or something like that, but it's if if not, it should be on this website here.
+And the idea is very simple.
+It's very weird that we train models with all sorts of really nasty information on the web and then and train it.
+Just memorize all of this.
+Yes.
+Regurgitate all of this, basically.
+And then at the very end, we say, no.
+Don't don't quite say that kind of stuff in a very small sort of instruction tuning and RLHF pass at the very end of training.
+It's not a new idea.
+I think how you do it kind of matters.
+But what if instead we built in safety from the very start of training?
+What if we did things like filter data extensively for safety when we train.
+Now you don't wanna just do that, though.
+If the model has no idea about what swear words are, it's not gonna be a very good model, right, if if you think that's unsafe.
+It's probably not that unsafe.
+So you also actually want to expose it to some bits of bad information, but you wanna rephrase it and contextualize it.
+Right?
+We do teach kids about bad things.
+We just do it in a way that properly contextualizes it.
+We don't just tell them to go on the Internet and start reading random forums.
+We build in refusal training at earlier stages, and we also put guardrails, tags around harmful content that can then be used at generation time to essentially say, hey.
+If you're going to generate this harmful tag, then backtrack and don't generate that instead.
+And what we find is if we do and and the the the models for this, they should be up now, as well as the the data and everything we use is gonna be available at this website, and what we find is the models themselves are indeed more robust.
+So if you if you train it here, you can't even see the the this blue thing here.
+This means that, basically, harmfulness under under HarmBench is essentially zero after you do an instruction tuning and alignment stage.
+But then as we all know, it's really easy to kind of destroy the alignment of underlying models.
+Even just fine tuning them on a benign task like GSM eight k often undoes whatever alignment they have.
+Right?
+And they start being purely helpful, especially if your fine tuning set is only helpful.
+You're only trying to answer questions.
+Oftentimes, you sort of fine tune out the knowledge of refusals.
+And what we find, though, is that even in that setting where you are fine tuning, the methods like Safe LMR are quite a bit fundamentally much less harmful, and there's room to improve more, though.
+We can also talk about what sort of the things that matter here.
+So oddly enough, actually, training so if you train on all the data, you get this sort of level.
+That's that's this that's this one here.
+Oddly enough, if you train only on the safest data, actually do worse at harmfulness.
+So not knowing about anything bad is actually worse for generating bad content because you don't even understand how to contextualize it.
+And then everything we add here, you know, rephrasing, native refusal, basically building in a more moral education, so having kind of a curriculum to it, and then using this sort of this beam search that looks for the generation of these harmful tags and then backtracks.
+They find them.
+All of this together can reduce our harmfulness score by quite a bit.
+Okay.
+So what could possibly go wrong?
+Well, I mean, that is the question of AI safety.
+Right?
+So it's good that I've been asking myself this the whole time.
+But forgetting about what can go wrong with AI right now.
+What could go wrong with AI safety?
+Well, maybe they'll be solved in other ways.
+Maybe somehow just better, better models I don't think this will happen, by the way.
+Maybe better, better models will actually solve AI safety.
+Maybe we just can't fix it.
+You know, I think some people have that have that impression.
+These things are gonna be really, really hard, and we're just not gonna be able to fix it.
+All sorts of stuff could go wrong, and maybe in five years from now when I'm looking back and talking about this, I will have a better sense of if it did went wrong, what what did go wrong.
+But I still believe that AI safety is probably the current best way, and, you know, overlooking back over these past years kinda seeing what works, what hasn't worked, I I am right now convinced this is the current best way for academic research to influence the field.
+If you look at this topic, number one, it is a case where some of the most impactful work is not I mean, lots of great work is coming from industry also, to be clear, but some of it's also coming from academic work, from people without very many resources just conceptualizing thinking of new problems.
+It's also vastly underrepresented right now in academic work, which seems a lot like, actually, deep learning did way back in the day.
+So I don't really actually care if people work on practical safety, you know, prompt injections, existential risk, policy.
+You could even call it security if you want to for some bizarre reason.
+But I think this topic of AI safety is going to be the thing that we see ten years from now as the spark that is affecting the field that much, or at least I hope it is.
+Alright.
+So some last thoughts here.
+I think I'm out of time, but give me one more minute.
+To the junior people here, don't worry too much if your patterns don't really fit this.
+Much of how this evolves in practice is not as intentional as I lay out here.
+It happens because things are fun.
+You find new ideas.
+You come across new ideas.
+That's all great.
+But do look for areas where you can be the participant in the next iCLAIR twenty fifteen.
+And to the more senior faculty and researchers in the field, be generous with new potential faculty that are working off the beaten path.
+I remember an early faculty meeting, I think, in 2013 where we were talking about potential faculty candidates, and someone was talking about a deep learning candidate and said, don't worry.
+It's okay.
+We should still hire him because they do more than just deep learning.
+I think there is a tendency to sort of think the field is the way it is and and not be open to sort of ways that is being reshaped before our eyes, not think that's as important as the core that we have already developed.
+And so please be generous about that and hire new faculty in these areas that seem less traditional, that seem a bit more out there, far out there, I guess.
+I like to end these talks with a quote saying, machines will be capable within twenty years of doing work any person can do.
+This is a quote from Herb Seibut in 1965, and he was wrong.
+But I really hope I would much rather be Herb Simon in 1965 and be looked back on in the same way of the same kind of optimism right now and the same hope that what we're doing, as weird as it is and as unknown as we, you know, can think about it, as much as we don't know how to do it, can still have this level of impact on the field.
+So thank you both to everyone that collaborated with that I collaborated with as well as the rest of my students, you know, who I didn't happen to pick their papers but easily could have.
+Thank you very much.
+Thank you for that amazing talk.
+If you have questions, we have Mike's stance.
+Hey.
+Thank you for the talk.
+It was very interesting also, the work.
+And my question is regarding the deep declarative models.
+Yep.
+You said that nowadays we're interested in having like a lot of memory in a model and less compute.
+Yeah.
+And I feel like this is changing now.
+We have like test time compute and people are thinking about how can we make models reason more.
+Do you think deep equilibrium models have a space or, like, fit into this new narrative somehow?
+Yep.
+Sure.
+So what I will say is I think that people are looking at deep equilibrium models actually as a way of doing test time compute and things like that, and people have looked at this.
+What I will say is that it seems like, from an architectural standpoint, this still just doesn't really cut it for some reason.
+And doing test time compute as it's being done right now, which is taking a very big architecture that is, in fact, a mixture of experts, that is, in fact, more parameters than compute, and iterating that seems to be a more seems to work better right now.
+I don't know if that will retain that way forever or if something new will come up.
+Again, if you disagree with me, please do what you want to do.
+Right?
+Hopefully, that's actually very apparent in everything I'm saying here.
+But from what we see right now, it just does not things like equilibrium models do not make up the the the gap here.
+Over there in the middle.
+Thank you for the great talk.
+I have a question about the anti distillation work that you did.
+Yep.
+So I my understanding is that you built a systematic way to identify data points that can hurt the student model as much as possible in terms of So I wonder if the same or similar methods can be applied to filter out low quality data in pretraining or instruction tuning phase?
+If so, do you have any follow-up work on that?
+Thank you.
+Yeah.
+So we don't.
+It could.
+I mean, I think we really thought of it in terms of the sampling objective because this is built really for this particular type of kind of update you're doing where you want to sort of look across all tokens.
+There is also work in kind of corrupting existing data to make it worse to train on and stuff like this for anti you know, basically trying to prevent data from being trained on and stuff like that, which is probably more relevant to what to what you're saying.
+But and there's lots of data filtering work, but but, no, we haven't looked at it yet.
+Oh, okay.
+Thank you.
+Is there someone on the left side?
+No.
+No.
+Okay.
+So we'll go back over here.
+Yeah.
+Hi, professor.
+Thank you for the great talk.
+So I'm wondering, do you think the general safety or robustness problem can be solved by just making the model bigger and bigger and better and better.
+Like, one of the reasons people say LLMs hallucinate is because they're just forced to say things they don't really know.
+So do you think, like, if we just make a almighty capable model, these problems automatically goes away?
+So there there's no real evidence that actually just scale decreases adversarial or increases robustness in in the normal sense.
+That's true actually for vision models.
+It's true for LLMs to as to as far as we can tell, etcetera.
+It does not mean that bigger models or more compute, etcetera, can't help.
+One of the most viable techniques right now, and I think most exciting techniques for robustness, involves reasoning models that can deliberate about their own their own, you know, their own generations and say, hey.
+Am I actually violating my content here or not?
+I don't see any real reason to think that this will magically go away with just a lot more data.
+That does not it's not backed up by current evidence.
+However, I am still confused as to why adversarial examples exist, even in images.
+Doesn't make any sense.
+Why haven't we been able to fix it?
+I get it from a standpoint of optimization and, you know, the architecture and all that kind of stuff, but, fundamentally, why can't we build an architecture that doesn't know that that's still a panda?
+It makes no sense.
+And I do wonder if it's a matter if if it could be there are aspects of it being a matter of data, a matter of something about the variety of data we see in our normal lives that make us much more robust to this, etcetera.
+So I don't know.
+I don't think so, but I'm also very open to possibilities because it still makes no sense that models actually trust this nonsense as being a useful signal.
+I see.
+Thanks very much.
+Thank you, professor.
+And I am engaging in online online optimization, online learning.
+So I have just divided into the LLM field.
+So I wonder that I'm also interested in the AI safety and robustness.
+I think that's a very promising direction.
+So I do think that the which way is the best way to, you know, explain the AI robustness and safety?
+So from the optimization or statistically or from the data way?
+So what do you think is the most reasonable way?
+I mean, we've had a lot of so to be I didn't really talk about it.
+We have had a lot of actually luck in terms of improving robustness via techniques like more adversarial training, like filtering, like also manipulating the internals of a model to sort of make it more robust.
+Now all of that can be with strong enough attacks can be circumvented, especially if if you have white box access to the model, especially if you fine tune things like this.
+You know?
+There we don't know of solutions to the general case.
+But I I I would say I I don't draw that distinction.
+I I think that optimization is one approach, but data's all I mean, they're they're the same thing.
+You know?
+An optimization is taking a step by minimizing the loss on a given data.
+You can't on on a given point of you can't separate them out from a conceptual standpoint.
+So if if you develop a different optimization technique, that's essentially making different use of the data.
+And I and I think that, you know, this is going to be the kind of thing that will have interplay.
+It's it's a non answer, I know, but I I just I I I definitely don't think I would not put one of them over the other.
+These are entirely interrelated, and there's no way we can get around that.
+Okay.
+Thank you very much.
+Okay.
+Unfortunately, I think we're only gonna be able to take two more questions.
+So one there and one there.
+And other people, I'm sure Ziko will be available to chat informally afterwards.
+Hello.
+So thank you very much for your talk.
+Very, very nice.
+When you were thinking about why the deep equilibrium models did not work, you had this very deep, quite philosophical insight, which was that it turned out the way that deep learning panned out that we want as much computation as possible per parameter and not the other way around.
+No.
+So we want more parameters and less Oh, yes, Yes.
+More as little computation as possible per parameter.
+So I was wondering why do you think that is in this universe, and do you think do you see that trend reversing at some point in the future?
+I I it has not reversed yet, and I've been bitten too many times by hoping it will reverse for a while now and hoping we could make these more efficient and, you know, get them to be actually competitive with with with normal models.
+I don't know.
+I mean, I think the question before was a great one.
+We are reaching a point where we are trying to impart more compute into models.
+That's being done right now by iterating these very, very parameter heavy compute light models.
+Maybe there are other mechanisms for doing it.
+I think it's very possible.
+I don't know that things like equilibrium models are the right thing because they don't they really can't use more parameters.
+Right?
+A an iterated MOE can still use all its parameters in the inference time in the test time compute, and these other ones really can't.
+So so I'm not quite sure how it'll pan out.
+I don't know why we live in the universe we live in, but, you know, that's it is the universe we live in, and so we have to make do.
+Sorry.
+We're gonna this is the last question, then the rest will have to take offline.
+Oh, hello, Ezekiel.
+I'm Alan, and also working in AI safety area.
+So regarding the safety pre training idea you talked about, I wonder what you think about the reasoning capabilities and its implication to, like, say, if you remove the unsafe knowledge from the LLM, but if it's allowed to reason, then technically, it can still derive the harmful behavior from from scratch.
+Right?
+I wonder what you think, like, the ideal state of a safe intelligence will look like.
+Yeah.
+Absolutely.
+And to be very clear, our method and this is sort of the the plot I had a few a few bars ago.
+The the solution is not to remove all unsafe knowledge from the LLM.
+That's actually net harmful for creating harmful information.
+If you just we have different levels of of safety.
+Zero is the most benign, and five is the worst.
+We do filter out the worst worst data, but if you just train on the safest possible data, your model just works worse and is actually more harmful.
+Not understanding what's unsafe is not itself a safe thing.
+That's not gonna give us safety.
+And so I think that the answer has to be and and as you say, you know, if if if you're really sort of constrained in that regard, then, yes, you can just rediscover what we think of as harmful knowledge by in by sort of inferring it from, you know, a chemistry textbook or whatever else you you you might read.
+And so I I think that, in general, the solution is not one of just ignoring data.
+It's one that has to respect the fact that both there are inferences you can make and conclusions you can draw from the data that would be considered harmful.
+But to give the model the full context of what is harmful, what is not, how we should think about harmful data, what even harmful means.
+Because I I throw that term around a lot, but it's obviously extremely context dependent, and it's very subtle how we think about things that are safe or unsafe and what we think about being good in different contexts or not.
+So overall, I just think that there has to be the the solution is not to filter out data.
+The solution is to be much more intentional throughout the entirety of training in a way that respects the goal of safety in a more foundational way.
+Okay.
+Let's thank Zico again.
+Thanks, everyone.
+Thank you all.

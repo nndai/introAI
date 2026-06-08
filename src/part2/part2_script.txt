@@ -1,0 +1,37 @@
+
+Điểm xuất phát trong hành trình này là chương đầu tiên: Tối ưu hóa và các lớp ẩn.
+
+Quay trở lại thời điểm giữa năm 2015, khi giáo sư Kolter vừa là một chuyên gia về quy hoạch lồi (convex optimization) mới chuyển hướng sang nghiên cứu học sâu. Bối cảnh lúc bấy giờ là mọi người đang tập trung phát triển các kiến trúc mạng nơ-ron mới bằng cách xếp chồng các lớp tuyến tính và phi tuyến. Với nền tảng chuyên sâu về tối ưu hóa, một hướng đi tự nhiên đối với nhóm của ông là: làm thế nào để nhúng trực tiếp các bài toán tối ưu vào cấu trúc mạng nơ-ron để tận dụng các đảm bảo toán học mạnh mẽ của chúng?
+
+Để hiểu tại sao tối ưu hóa lồi lại hấp dẫn đến vậy, hãy so sánh một hàm số lồi và một hàm số không lồi dưới dạng đồ thị. Một hàm số không lồi giống như một đường cong nhấp nhô với nhiều đỉnh và thung lũng khác nhau. Khi chúng ta tối ưu hóa bằng thuật toán gradient descent, ta rất dễ bị mắc kẹt tại một cực tiểu cục bộ (local minimum) và không bao giờ tìm được đáy thấp nhất toàn cục. Ngược lại, một hàm lồi giống như một chiếc bát hoàn hảo. Nó chỉ có một đáy duy nhất, nghĩa là bất kỳ điểm tối ưu cục bộ nào cũng chính là điểm tối ưu toàn cục. Việc tìm kiếm cực tiểu toàn cục trở nên cực kỳ đơn giản và được đảm bảo chắc chắn bằng toán học.
+
+Với ý tưởng đó, công trình đầu tiên nhóm của giáo sư Kolter phát triển là Mạng nơ-ron lồi theo đầu vào, hay gọi tắt là ICNN. Câu hỏi cốt lõi ở đây là: Làm thế nào để thiết kế một mạng nơ-ron sao cho đầu ra của nó, ký hiệu là f(x), là một hàm số lồi đối với vector đầu vào x?
+
+Để trả lời câu hỏi này, chúng ta cần khai thác các thuộc tính toán học của các hàm kích hoạt thông dụng. Hãy lấy ReLU làm ví dụ. Hàm ReLU, định nghĩa là max(0, x), là một hàm số lồi vì đồ thị của nó tạo thành một góc hướng lên trên.
+
+Theo lý thuyết quy hoạch lồi, nếu chúng ta kết hợp tuyến tính các hàm lồi với các hệ số không âm, kết quả thu được vẫn là một hàm lồi. Đồng thời, phép hợp thành của các hàm lồi và không giảm cũng sẽ giữ nguyên tính chất lồi. Từ những nguyên lý nền tảng này, nếu chúng ta xây dựng một mạng nơ-ron và ép cho tất cả các ma trận trọng số kết nối giữa các tầng ẩn đều phải lớn hơn hoặc bằng không (W >= 0), thì toàn bộ mạng nơ-ron đó sẽ hoạt động như một hàm lồi đối với đầu vào x của nó.
+
+Hãy cùng trực quan hóa kiến trúc của một mạng ICNN. Thay vì chỉ có các tầng ẩn xếp chồng tuần tự, mạng ICNN được thiết kế đặc biệt với các kết nối trực tiếp từ đầu vào x đến từng tầng ẩn z_i.
+
+Công thức cập nhật trạng thái của tầng ẩn thứ i cộng 1 được mô tả như sau: z_{i+1} = ReLU( W_i z_i + U_i x + b_i ).
+Trong công thức này, ma trận trọng số W_i kết nối giữa các tầng ẩn bắt buộc phải có các phần tử không âm, tức là W_i >= 0. Trong khi đó, ma trận U_i kết nối trực tiếp từ đầu vào x đến tầng ẩn z_{i+1} có thể nhận giá trị bất kỳ, cả âm lẫn dương.
+
+Sự kết hợp này đảm bảo rằng, mặc dù mạng nơ-ron có thể rất sâu và chứa nhiều lớp phi tuyến phức tạp, hàm đầu ra f(x) vẫn duy trì được tính lồi toán học hoàn hảo đối với đầu vào x. Đây là một đặc tính vô cùng mạnh mẽ vì nó mở ra khả năng giải quyết các bài toán tối ưu hóa ngược dòng một cách cực kỳ hiệu quả.
+
+Ứng dụng nổi bật đầu tiên của kiến trúc này là trong các Mô hình năng lượng (Energy-based Models). Ý tưởng của mô hình năng lượng là định nghĩa một hàm năng lượng f(x, y) để đánh giá mức độ tương thích giữa đầu vào x và đầu ra dự đoán y. Ví dụ, trong bài toán hoàn thiện hình ảnh, x là một bức ảnh bị khuyết một phần, còn y là phần hình ảnh cần được điền vào để khôi phục lại bức ảnh gốc.
+
+Để tìm ra phần ảnh y phù hợp nhất, chúng ta cần tìm y sao cho năng lượng f(x, y) là nhỏ nhất, tức là giải bài toán tối ưu y* = argmin_y f(x, y). Với các mạng nơ-ron thông thường, hàm năng lượng f(x, y) là một hàm cực kỳ phức tạp và có vô số cực trị địa phương, khiến việc tìm kiếm y* toàn cục trở thành một cơn ác mộng và không có gì đảm bảo. Nhưng nếu ta thiết kế f(x, y) là một mạng ICNN lồi đối với y, bài toán tìm y* sẽ trở thành quy hoạch lồi. Chúng ta có thể bắt đầu từ một điểm y ngẫu nhiên và sử dụng gradient descent để trượt thẳng xuống đáy toàn cục một cách nhanh chóng và chính xác.
+
+
+Một ứng dụng cực kỳ thú vị khác của ICNN nằm trong lý thuyết điều khiển tự động và hệ thống động lực học: chứng minh và đảm bảo tính ổn định Lyapunov.
+
+Hãy tưởng tượng một robot hay một máy bay không người lái đang hoạt động. Chúng ta muốn chứng minh bằng toán học rằng hệ thống điều khiển của nó sẽ luôn ổn định, nghĩa là quỹ đạo chuyển động của nó sẽ hội tụ về điểm đích mong muốn mà không bao giờ bị mất kiểm soát hoặc bay lệch hướng vô hạn. Để làm được điều này, các nhà khoa học sử dụng một hàm số đặc biệt gọi là hàm Lyapunov V(x). Hàm Lyapunov đóng vai trò như một chiếc bát năng lượng, trong đó trạng thái của hệ thống phải luôn giảm dần theo thời gian, tức là trượt dần về đáy bát.
+
+Bằng cách mô hình hóa hàm Lyapunov V(x) bằng một mạng ICNN lồi, chúng ta có thể dễ dàng thiết lập một cơ chế chiếu (projection) các vector chuyển động của hệ thống sao cho chúng luôn thỏa mãn điều kiện làm giảm năng lượng Lyapunov. Nhờ đó, quỹ đạo chuyển động của hệ thống được đảm bảo chắc chắn sẽ hội tụ một cách an toàn về điểm cân bằng.
+
+
+Mặc dù sở hữu những tính chất toán học cực kỳ đẹp đẽ và các đảm bảo vững chắc như vậy, mạng ICNN lại vấp phải một rào cản lớn trong thực tế. Việc bắt buộc các ma trận trọng số W_i phải không âm đã làm hạn chế nghiêm trọng khả năng biểu diễn của mạng. Nó giống như việc bạn cố gắng vẽ một bức tranh phức tạp nhưng lại bị cấm sử dụng một nửa số màu sắc vậy.
+
+Hơn nữa, ICNN yêu cầu toàn bộ mạng nơ-ron phải được thiết kế theo cấu trúc lồi, khiến nó rất khó để tích hợp linh hoạt như một mảnh ghép nhỏ vào các kiến trúc hiện đại và phổ biến khác. Điều này đã thúc đẩy nhóm nghiên cứu hướng tới một ý tưởng mới: thay vì biến toàn bộ mạng thành một hàm lồi, tại sao chúng ta không nhúng bài toán tối ưu hóa vào mạng dưới dạng một lớp ẩn độc lập? Đó chính là tiền đề dẫn đến sự ra đời của OptNet — một kiến trúc đột phá mà chúng ta sẽ cùng phân tích ngay sau đây.
+
+

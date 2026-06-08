@@ -1,0 +1,716 @@
+Tiêu đề: Xây dựng Hệ thống AI An toàn và Mạnh mẽ 
+Thời lượng video: 1h13 phút
+Được dịch từ GoogleTranslator
+
+Vì vậy, tôi ở đây để nói về việc xây dựng các hệ thống AI an toàn và mạnh mẽ.
+Trước hết, tôi muốn cảm ơn ban tổ chức đã tổ chức hội nghị cũng như đã mời tôi.
+Gần đây tôi đã điều hành một vài hội nghị kiểu này và tôi có thể nói với bạn rằng tôi rất vui vì hiện tại tôi không ở trong hoàn cảnh của họ.
+Vì vậy, cảm ơn bạn đã làm điều đó để những người còn lại không phải làm điều đó.
+Tôi cũng sẽ kéo dài một chút, bạn biết đấy, làm gián đoạn họ một chút, và thực sự có lẽ tôi sẽ không nói chính xác về chủ đề mà tôi đã quảng cáo ban đầu.
+Tôi chắc chắn họ sẽ tha thứ cho tôi vì mọi người không thực sự quan tâm đến những gì chúng tôi nói.
+Nhưng tôi thực sự đã có suy nghĩ này khi tôi nhìn thấy giải thưởng thử thách thời gian cho hội nghị này được đưa ra.
+Và điều tôi thực sự muốn nói hôm nay là sẽ có rất nhiều công việc đảm bảo an toàn ở đó.
+Đừng lo lắng.
+Có lẽ tôi sẽ nói nhiều nhất về sự an toàn ở bất kỳ chủ đề nào.
+Nhưng tôi muốn nói về việc cố gắng tạo ảnh hưởng bằng nghiên cứu học thuật.
+Tôi nghĩ rằng vì lý do nào đó mà hiện tại chủ đề này đang bị suy giảm hoặc ít nhất đó là điều mà rất nhiều người quan tâm.
+Và vì vậy ít nhất tôi muốn nghĩ về chủ đề này, và tôi có vài điều muốn nói về nó.
+Vì vậy, như tôi đã nói, điều này được thúc đẩy bởi một điều đã xảy ra cách đây rất lâu, đó là iClear 21.
+Và tôi, cách đây khoảng một tuần trên Twitter, bất cứ khi nào nó được công bố, đều đang xem các giải thưởng báo hay nhất hoặc giải thưởng thử thách thời gian, xin lỗi, đã được công bố trong năm nay, về cơ bản là trao giải thưởng cho các bài báo đã xảy ra mười năm trước.
+Và tất nhiên, bài báo của Adam đã thắng.
+Bạn biết đấy, ngày nay tất cả chúng ta đều sử dụng Adam.
+Và bài báo về nhì là bài báo dịch máy thần kinh.
+Về cơ bản, nó đã phát minh ra sự chú ý softmax như nó hiện đang được sử dụng và tôi nghĩ, ôi chúa ơi.
+Chúa ơi.
+Bạn biết đấy, đây là hai người có thể nghĩ rằng hai bài báo này xảy ra tại cùng một hội thảo?
+Nhưng hoặc hội nghị.
+Nhưng điều thực sự làm tôi ngạc nhiên hơn nữa là bài báo thứ ba mà tôi biết về vấn đề đó đã ảnh hưởng rất nhiều đến sự nghiệp của tôi thậm chí còn không giành được chiến thắng.
+Đây là bài viết về việc khai thác các ví dụ đối nghịch của Ian, Jonathan và Christian.
+Đây là bức ảnh có bức ảnh gấu trúc biến thành vượn mà các bạn đã nhìn thấy hàng nghìn lần, và nó thậm chí còn không giành được giải báo hay nhất.
+Ồ, nhân tiện, tờ báo VGG cũng có ở đó.
+Một bài viết nhỏ về cách chơi cờ vây với mạng nơ-ron tích chập, là nền tảng cho các công việc sau này về AlphaGo, mạng bộ nhớ, sự chú ý đa dạng về thị giác, v.v.
+Điểm tôi muốn nhấn mạnh là có tổng cộng 31 bài báo trong iClear 21.
+Và ý tôi là, lúc đó có điều gì đó đang diễn ra.
+Phải?
+Có điều gì đó khác biệt đang xảy ra lúc đó.
+Và tôi không muốn thơ ca về những ngày xa xưa tươi đẹp.
+Tôi thực sự tôi thực sự không muốn.
+Có rất nhiều điều đang xảy ra.
+Thật tuyệt vời về AI trong mười năm qua.
+Nhưng đồng thời, nếu bạn nhìn vào suốt mười năm qua, tôi không thể không cảm thấy rằng chúng ta có thể đã đánh mất điều gì đó.
+Và tôi không nghĩ nếu bạn lấy 31 loại bài báo ngẫu nhiên trong năm nay, bạn sẽ có thứ tự, tôi không biết, một nửa trong số đó là những tác phẩm có vẻ quan trọng.
+Và vì vậy, một lần nữa, tôi không muốn nói về việc mọi thứ đã từng tốt đẹp như thế nào.
+Biết ICLEAR cũng là một điều kỳ lạ bởi vì nó xuất phát từ thực tế là NeurIPS và ICML đã được coi là không đủ sáng tạo trong một số lĩnh vực học sâu nhất định.
+Nhưng tôi cũng nghĩ điều đó đúng và cũng không gây tranh cãi khi nói rằng, bạn biết đấy, có thể có điều gì đó mà chúng ta đã đánh mất trong mười năm qua.
+Và nói chuyện với mọi người trong lĩnh vực này, nghĩ về những gì đang xảy ra, tôi nghĩ cách tôi tóm tắt là đã có một khái niệm thực sự cách đây mười năm, hoặc tôi không còn cảm thấy ở mức độ như vậy nữa, rằng công việc học thuật đang diễn ra tại các hội nghị này, bạn biết đấy, mọi bài báo được đệ trình ở đây và tại các hội nghị khác nữa, nhân tiện, chúng tôi chỉ bất đồng về tương lai của lĩnh vực này, liệu đó sẽ là học sâu hay tối ưu hóa.
+Nhân tiện, tôi đã đứng về phía tối ưu hóa.
+Tôi đã ra khỏi vòng lặp.
+Tôi đã không ở iClear hai mươi lăm.
+Có cảm giác rằng mọi thứ chúng tôi đang làm sẽ mang tính thay đổi lĩnh vực này và tôi nghĩ rằng ở một mức độ nhất định, chúng tôi, với tư cách là một cộng đồng, đã đánh mất một chút điều đó.
+Và điều tôi thực sự muốn nói trong buổi nói chuyện này là tôi sẽ đề cập đến sự an toàn của AI và những thứ tương tự bởi vì tất nhiên đây là cách tôi đang nghĩ về vấn đề này ngay bây giờ.
+Nhưng tôi muốn nói một chút về cách chúng ta có thể nghĩ về việc lấy lại một chút tia sáng mà tôi nghĩ là thực sự đặc biệt tại các hội nghị như iClear mười năm trước.
+Bây giờ cá nhân tôi không nghĩ ra câu trả lời, có lẽ giống như lúc đó, câu trả lời lúc đó là cộng đồng học máy chính thống đang đi sai hướng.
+Thay vào đó hãy làm điều gì đó khác.
+Tôi không nghĩ đó là câu trả lời đúng ngay bây giờ, rất rõ ràng.
+Tôi nghĩ rằng tiến bộ chúng tôi đang đạt được thật đáng kinh ngạc.
+Thực tế là ngành công nghiệp này hiện đang là một công ty lớn như vậy trong lĩnh vực này cũng là một điều đáng kinh ngạc và cần được tôn vinh và trên thực tế, được xây dựng dựa trên đó, bạn biết đấy, chúng ta không nên cố gắng mâu thuẫn với nó.
+Vì vậy, tôi sẽ không cố gắng nói quá rộng rãi về những gì tôi nghĩ chúng ta có thể làm để khơi lại ngọn lửa.
+Đó có lẽ là một nhiệm vụ hơi quá cao.
+Nhưng thay vào đó, điều tôi muốn làm là nói về suy nghĩ của tôi về công việc của nhóm tôi trong mười năm qua khi chúng tôi đã cố gắng, và tôi có thể nói rằng, ở một mức độ lớn, hầu như không đạt được mục tiêu này.
+Vì vậy điều tôi sẽ làm sau đó là nói về những gì chúng tôi đã làm.
+Đây là một bức tranh chưa hoàn chỉnh.
+Nó nói về một số điều chúng tôi đã làm trong mười năm qua.
+Và tôi muốn nói về khoảng thời gian dài này, không phải vì tôi nghĩ những điều này nhất thiết còn phù hợp nữa hay vì chúng tôi đang cố gắng làm nổi bật mọi thứ ở đây, nhưng tôi nghĩ rằng việc nghiên cứu những chủ đề này mang lại cho tôi một chút quan điểm để nghĩ về những điểm tốt của chúng, về những gì chúng tôi đang làm vào thời điểm đó, nhưng cũng thành thật phê bình chúng và nói về những sai lầm chúng tôi đã mắc phải và nói về lý do tại sao rất nhiều công việc này không có tác động đến các bài báo như những bài báo mà chúng ta đã thấy tại ICLR hai mươi lăm, mười năm trước.
+Được rồi.
+Vì vậy, đó là phác thảo cơ bản.
+Tôi sẽ đi vào chi tiết nhiều về các giấy tờ cũ.
+Đừng đổ mồ hôi các chi tiết ở đây.
+Chúng nhằm mục đích minh họa.
+Chúng không nhằm mục đích truyền đạt mọi thứ về ý tưởng.
+Có thể bạn sẽ có cảm hứng để nghĩ về điều gì đó mới mẻ, có thể không.
+Không sao đâu.
+Nhưng tôi sẽ vượt qua tất cả những điều này khá nhanh, vì vậy hãy tha thứ cho tôi.
+Và cuối cùng, tôi sẽ đề cập đến sự an toàn của AI, vốn sẽ là chủ đề chính của chủ đề ban đầu, nhưng tôi nghĩ tôi muốn mở rộng hơn một chút.
+Được rồi.
+Vì vậy, hãy bắt đầu nói về việc tối ưu hóa và các lớp tiềm ẩn.
+Bây giờ, vào tháng 02/2015, tôi đã làm như vậy và đây thực sự là sau tất cả công việc đã được thực hiện tại iClear, nhưng khi thấy công việc đó, xem những gì đang xảy ra, bạn biết đấy, về cơ bản tôi là một chuyên gia tối ưu hóa mới được chuyển đổi muốn làm việc trong lĩnh vực học sâu.
+Vậy chúng ta phải làm gì vào thời điểm đó?
+Tất nhiên, điều chúng tôi sẽ làm là cố gắng đưa tính tối ưu hóa vào trong deep learning để làm cho deep learning tốt hơn.
+Bây giờ đừng phán xét tôi quá nhiều.
+Điều này không điên rồ như người ta tưởng vào thời điểm đó.
+Hãy nhớ rằng, vào thời điểm đó mọi người vẫn chủ yếu xây dựng những kiến ​​trúc mới.
+Tôi nghĩ đó là phần lớn công việc diễn ra trong tháng 02/2015, hoặc không phải phần lớn, ít nhất là một lượng lớn.
+Và nó hoàn toàn có ý nghĩa.
+Trên thực tế, có vẻ như cách tốt nhất để tác động đến lĩnh vực này là tận dụng những điều mà chúng tôi đã biết rõ trong nhóm của mình, đó là tối ưu hóa, tính hai mặt và những thứ tương tự, để gây ảnh hưởng và xây dựng các kiến ​​trúc tốt hơn.
+Vì vậy tôi muốn nói về một vài trong số này.
+Điều đầu tiên chúng tôi nghiên cứu là một phương pháp được gọi là mạng nơ-ron lồi đầu vào, cơ bản và phương pháp này được thực hiện với Brandon Amos và những người khác.
+Và ý tưởng cơ bản ở đây là nếu bạn lấy một mạng lưới thần kinh sâu, bình thường với các kích hoạt ReLU, k, mạng sâu nhiều lớp.
+Vâng, ReLU là một hàm lồi.
+Phải?
+Điều đó có nghĩa là độ dốc bất kỳ của đường thẳng nối hai điểm đều nằm phía trên hàm.
+Thông thường, các hàm lồi có thể được tối ưu hóa rất dễ dàng.
+Đó là điều tốt đẹp ở họ.
+Chúng có một điểm tối ưu toàn cục duy nhất hoặc ít nhất một tập hợp điểm tối ưu toàn cục.
+Và đó cũng là trường hợp các tổ hợp dương của các hàm lồi là lồi và bạn cũng có thể ghép chúng lại và soạn chúng.
+Và vì vậy, trên thực tế, nếu bạn chỉ đảm bảo rằng tất cả các trọng số của mạng đều dương và bạn có mạng nơ-ron có giá trị vô hướng, thì mạng nơ-ron đó thực sự sẽ là hàm lồi của các đầu vào của nó.
+Và bạn có thể làm tất cả những điều thực sự thú vị với cái này nếu bạn có thuộc tính này.
+Ví dụ: bạn có thể xây dựng các mô hình năng lượng có mức tối ưu toàn cục cho hàm tối ưu hóa của chúng.
+Về cơ bản, bạn giải các mô hình này bằng cách tìm giá trị tối thiểu của một số biến làm đầu vào cho hàm.
+Đây là điều mà các mô hình năng lượng đã làm.
+Lúc đó họ nổi tiếng hơn bây giờ rất nhiều.
+Và nếu bạn làm cho chúng lồi, bạn thực sự có thể đưa ra những đảm bảo có thể chứng minh được về điều đó.
+Và chúng tôi đã có những thứ như thế này hiện tại trông cực kỳ tệ, nhưng bạn biết đấy, vào thời điểm đó, chúng khá tốt về mặt hoàn thiện hình ảnh và những thứ tương tự.
+Bạn cũng có thể làm những điều thú vị như đảm bảo sự ổn định của các chức năng.
+Phải?
+Vì vậy, bạn hoặc hệ thống năng động.
+Vì vậy, bạn có thể làm những việc như xây dựng hàm Lyapunov, mà bạn chiếu động lực học thông thường của mình giảm dần theo hàm Lyapunov đó, và điều này mang lại cho bạn hệ thống động lực được đảm bảo không phân kỳ, ổn định xung quanh một số điểm cố định.
+Cũng rất tuyệt.
+Nhưng đồng thời, các mạng lồi đầu vào, tuy thú vị nhưng chúng lại thuộc loại ngoại lệ.
+Họ là cả một mạng lưới.
+Chúng tôi thực sự không thể kết nối chúng vào các kiến ​​trúc hiện có.
+Vì vậy, điều tiếp theo mà chúng tôi dành nhiều thời gian là suy nghĩ về cách tích hợp tính năng tối ưu hóa vào các lớp truyền thống hơn.
+Và một trong những cách để thực hiện điều này là sử dụng thứ mà chúng tôi gọi là tối ưu hóa trong vòng lặp hoặc kiến ​​trúc OpsNet.
+Và điều cơ bản và điều này cũng được Brandon thực hiện và cũng được mở rộng bởi một số học sinh khác của tôi, trong số đó có Priya và Poei.
+Và ý tưởng ở đây là bạn sẽ thực sự gặp phải vấn đề tối ưu hóa.
+Vì vậy chúng tôi thường vẽ những thứ như thế này rất nhiều.
+Biến c đó có nghĩa là hiển thị một tập hợp ràng buộc.
+Đó là tập hợp điểm cho phép.
+Các vòng tròn nhỏ ở đó là các tập mức của hàm f của chúng ta, và vì vậy bạn muốn tìm giá trị thấp nhất của hàm đó nằm trong các ràng buộc đó.
+Tất nhiên, rất nhiều vấn đề có thể được phát biểu dưới dạng vấn đề tối ưu hóa.
+Nhưng ý tưởng ở đây là chúng tôi thực sự muốn hình thành một lớp trong mạng để giải quyết vấn đề tối ưu hóa.
+Được rồi?
+Vì vậy, về cơ bản, đầu ra của một lớp sẽ là giải pháp cho vấn đề tối ưu hóa lồi trong đó cả mục tiêu của vấn đề đó, thứ chúng ta đang giảm thiểu và các ràng buộc đều được xác định bởi lớp trước đó.
+Và đó cũng là lý do bạn có thể muốn làm điều này.
+Đầu tiên, nó khái quát hầu hết các lớp hoạt động hiện tại nhất mà chúng tôi thực sự sử dụng vào thời điểm đó trong các mạng sâu.
+Vì vậy, bất kỳ lớp tuyến tính nào theo sau là kích hoạt, ít nhất là những thứ như ReLU và những thứ tương tự, những lớp đó có thể được biểu thị dưới dạng các lớp tối ưu hóa lồi.
+Nó cũng cho phép chúng tôi nhúng nhiều logic có chủ ý chuyên biệt vào trong các lớp riêng lẻ.
+Và một điểm đáng tự hào đối với tôi, tôi không biết đó có phải là niềm tự hào hay không, nhưng khi tôi thực sự nói về điều này trong buổi giới thiệu đầu tiên của OpenAI, và Ilya đã ở đó.
+Và anh ấy nói rằng nó sẽ lớn như ResNet, kiến ​​trúc này.
+Và tôi chủ yếu đề cập đến điều này để nhấn mạnh rằng ngay cả Ilya đôi khi cũng đưa ra những dự đoán thực sự tồi tệ.
+Vậy thì sao nhưng bạn có thể làm những điều thú vị để đôi khi nó trở nên thú vị.
+Bạn có thể làm những việc như tìm hiểu các ràng buộc khó từ dữ liệu.
+Bạn có thể thực hiện những việc như giải các bài toán Sudoku bằng các mạng này vì đôi khi thậm chí bao gồm cả các bài toán Sudoku trực quan kết hợp trong trường hợp này, chúng tôi đã tạo ra một bài toán thú vị kết hợp cả phân loại MNIST và giải Sudoku bằng các chữ số MNIST.
+Chuyện đó khá thú vị.
+Và bạn cũng có thể tối ưu hóa các hàm mất mát liên quan đến một số vấn đề tối ưu hóa ở cuối.
+Chúng tôi sử dụng điều này để thực hiện những việc như tối ưu hóa việc phân bổ lưới điện về cơ bản dựa trên các dự báo ngẫu nhiên về lịch trình.
+Nhưng đây vẫn là một dạng lớp rất chuyên biệt và dường như nó không thực sự phù hợp với loại mạng chung, loại mạng mà chúng ta đang ngày càng trở nên phổ biến đối với các mô hình ngôn ngữ, các mô hình thị giác, v.v.
+Và vì vậy, điều tiếp theo chúng tôi nghĩ đến là làm cách nào để lấy ý tưởng này về loại hình tối ưu hóa mà chúng tôi đang thực hiện và đưa chúng vào các mạng chung hơn.
+Và một kết quả thu được từ việc này là một số nghiên cứu về các mô hình cân bằng sâu.
+Được rồi?
+Và ý tưởng ở đây không hẳn là một lớp tối ưu hóa.
+Bây giờ nó thực sự là một lớp điểm cố định.
+Nhưng cách tôi mô tả nó và đây là cách làm việc của Xiaojie và Vladlan.
+Và cách để mô tả nó là chúng ta nghĩ về một mạng lưới sâu bình thường như là một mạng hữu hạn, bạn biết đấy, có số lượng lớp sâu.
+Ít nhất đây là hình ảnh phổ biến thời bấy giờ.
+Tôi biết bây giờ họ trông rất khác.
+Nhưng chúng ta coi đây như một mạng sâu thông thường, và sau đó chúng ta có thể nghĩ đến việc mở rộng mạng này để thực sự có vô số lớp.
+Điều gì sẽ xảy ra nếu chúng ta làm cho điều này ngày càng sâu sắc hơn?
+Và để làm được điều này, bạn phải làm một số việc.
+Bạn không thể có vô số trọng lượng.
+Bạn phải buộc các quả tạ lại với nhau, những thứ như thế này, nhưng nó không tệ đến thế.
+Bạn cũng phải thêm một lớp tiêm để tiếp tục đưa các đầu vào vào.
+Nếu không, bạn biết đấy, đầu ra sẽ không thực sự phụ thuộc vào đầu vào.
+Tuy nhiên, nếu bạn nhìn vào đây, nó trông giống như một hệ thống động lực lặp đi lặp lại trong đó bạn chỉ cần áp dụng cùng một chức năng cho trạng thái nhiều lần.
+Và trên thực tế, trong hầu hết các trường hợp, hoặc ít nhất trong một số trường hợp mà bạn muốn khuyến khích, điều này sẽ hội tụ về một điểm cố định nào đó.
+Và vì vậy thay vì cố gắng thực sự tính toán hệ thống này theo từng lớp, chúng ta có thể thử giải điểm cố định đó.
+Phải?
+Và tất nhiên, trên thực tế, chúng tôi không sử dụng một lớp tuyến tính duy nhất.
+Chúng tôi thực sự sử dụng một chức năng nhỏ như khối biến áp như một thứ mà chúng tôi lặp đi lặp lại hoặc chúng tôi tìm thấy một điểm cố định.
+Và điều thú vị là bạn thực sự có thể sử dụng các kỹ thuật rất giống với các phương pháp chúng tôi sử dụng để tối ưu hóa vi phân để giải quyết những vấn đề này.
+Quá trình chuyển tiếp có thể được giải bằng cách tìm nghiệm cơ bản và quá trình lùi có thể được giải quyết bằng vi phân ngầm.
+Và nó hoạt động.
+Và chúng tôi thấy rằng, hết lần này đến lần khác, bạn biết đấy, chúng tôi có thể thử một lớp như thế này, so sánh nó với một máy biến áp xếp chồng thông thường, và kết quả là nó sử dụng nó có hiệu suất tốt hơn, bạn biết đấy, các tác vụ mô hình hóa ngôn ngữ kiểu cũ đơn giản hiện nay, như Wikitext một không ba, trong khi sử dụng ít bộ nhớ hơn vì bạn thực sự không phải lưu trữ tất cả các lớp riêng lẻ.
+Bạn chỉ có thể lưu trữ một lớp và sau đó backprop hoàn toàn.
+Vì vậy, điều đó có vẻ tuyệt vời.
+Tại sao không có bất kỳ điều nào trong số này tại sao chúng ta không sử dụng các mô hình cân bằng vào thời điểm này?
+Và lý do thực sự là thanh mà tôi không cho bạn xem trong phần này.
+Đó là thời gian cần thiết để chạy những thứ này.
+Chúng mất khoảng gấp đôi thời gian để chạy trung bình tương đương với mạng sâu tương đương với loại mạng sâu có độ sâu thông thường tương đương khác.
+Và vấn đề về cơ bản là với điều này và với các lớp tối ưu hóa, v.v., đó là các lớp tiềm ẩn, các lớp tối ưu hóa, các mô hình cân bằng sâu này, chúng có vị trí của chúng.
+Nhưng về cơ bản, chúng hướng đến việc áp dụng nhiều tính toán hơn cho mỗi lớp trong khi sử dụng ít tham số hơn.
+Và thật tình cờ là những thứ hiệu quả nhất, những thứ hiệu quả nhất hiện nay lại hoàn toàn ngược lại.
+Phải?
+Vì vậy, trình trộn các lớp chuyên gia là loại hoặc trình trộn các mô hình chuyên gia là loại tiêu chuẩn vàng ngày nay dành cho các mô hình ngôn ngữ hoạt động tốt nhất và chúng sử dụng nhiều tham số hơn và ít tính toán hơn.
+Bạn biết?
+Nếu vũ trụ khác, nếu thực tế khác, có lẽ chúng ta sẽ sống trong một thế giới nơi các mạng lưới cân bằng sâu thực sự hoạt động tốt hơn, nhưng theo tôi thấy thì chúng không hoạt động tốt hơn.
+Và tương tự với việc tối ưu hóa.
+Bây giờ có một nơi cho nó, tôi nghĩ vậy.
+Nếu bạn gặp một vấn đề tối ưu hóa cần giải quyết và bạn muốn điều chỉnh mạng của mình để hoạt động tốt ở đó, điều đó thật tuyệt.
+Nhưng tôi chỉ nghĩ rằng, cuối cùng, đây là một ý tưởng tuyệt vời phù hợp với triết lý vào thời điểm đó, đó là xem chúng ta có thể làm gì với các lớp mới, kiến ​​trúc mới, nhưng nó không thực sự thành công.
+Hãy nói về điều tiếp theo mà chúng tôi đã làm trong một thời gian, đó là sự mạnh mẽ đã được chứng nhận.
+Vì vậy đây không phải là một câu chuyện có tính tuần tự.
+Chúng tôi bắt đầu nghiên cứu vấn đề này trong khi vẫn đang nghiên cứu các phương pháp khác.
+Nhưng có một điều đã được thể hiện rất rõ ràng vào khoảng tháng 02/2017 là sức mạnh của đối thủ dường như là một vấn đề thực sự lớn.
+Tôi nghĩ tất cả chúng ta đều đã từng nhìn thấy con số này trước đây.
+Trên thực tế, đây là con số từ bài báo Eichler tháng 02/2015, bài báo không giành được giải bài báo hay nhất hoặc giải bài kiểm tra thời gian, cho thấy rằng nếu bạn lấy một con gấu trúc, bạn biết đấy, bạn có thể thêm một chút tiếng ồn được lựa chọn đối nghịch để có được một hình ảnh khác và mạng dự đoán điều đó là sai.
+Và điều này thực sự rất, rất phổ biến.
+Về cơ bản bạn có thể làm điều này với bất kỳ hình ảnh nào.
+Bạn có thể làm cho bất kỳ hình ảnh nào được phân loại thành bất kỳ lớp nào bằng cách thêm một lượng nhiễu nhỏ không thể nhận thấy.
+Đây có vẻ là một điều thực sự tồi tệ bởi vì, có vẻ như bạn biết đấy, làm sao bạn có thể tin tưởng vào những hệ thống đã làm điều này?
+Bạn sẽ triển khai những điều này trong thực tế như thế nào?
+Nhưng có vẻ như đây là một vấn đề cơ bản.
+Chúng tôi biết làm thế nào một mô hình thông minh có thể thực sự làm được điều này.
+Điều này có vẻ như là một sai lầm.
+Tuy nhiên, đồng thời, hầu hết các chiến lược đang được phát triển để giảm thiểu vấn đề này, chúng thực sự có thể dễ dàng bị phá vỡ.
+Tôi nghĩ Nicolas Carlini đã có một bài báo nổi tiếng vài năm sau tại iClear, nơi tất cả các biện pháp phòng thủ được đề xuất đã bị phá vỡ trước khi hội nghị thực sự bắt đầu.
+Vì vậy, tất cả những thứ mà mọi người đề xuất, bạn biết đấy, bảo vệ chống lại những thứ này ngoại trừ một số ít, nhưng trên thực tế là tất cả những thứ ngoại trừ những thứ được chứng nhận.
+Nhưng tất cả những thứ đó, bạn biết đấy, đều là những thứ đặc biệt, chúng chỉ bị hỏng thôi.
+Và vì vậy, đối với tôi, có vẻ như một trong những cách tốt nhất để đạt được tác động mục tiêu trong công việc học tập là phát triển các phương pháp thực sự mạnh mẽ được chứng nhận hoặc có thể được chứng minh là mạnh mẽ trước những nhiễu loạn như thế này.
+Và vì vậy, trong phần công việc tiếp theo, về cơ bản, chúng tôi đã phát triển hai loại kỹ thuật có thể được sử dụng để đảm bảo độ bền của mạng sâu.
+Phương pháp đầu tiên trong số này được phát triển bởi Eric và tôi, và thực tế là nhiều phương pháp khác đã phát triển các phương pháp tương tự vào thời điểm đó.
+Và ý tưởng là nó sử dụng độ giãn lồi để đảm bảo đầu ra của mạng.
+Bạn thấy đấy, tôi thực sự không thể từ bỏ việc tối ưu hóa lồi.
+Đó là một vấn đề thực sự.
+Và tôi nghĩ tôi thực sự vẫn bị ám ảnh quá mức với, bạn biết đấy, một chút tối ưu hóa lồi conve mà tôi vẫn nhớ.
+Ý tưởng ở đây thực sự đơn giản.
+Một lần nữa, nếu bạn có một mạng sâu, lý do tại sao các ví dụ đối nghịch tồn tại, lý do tại sao chúng khó ngăn chặn là vì nếu bạn lấy một vùng lồi, một loại vùng được xác định rõ ràng trong không gian đầu vào, chẳng hạn như tập hợp tất cả các nhiễu loạn trong đó bạn có thể gây nhiễu mỗi pixel bằng điểm cộng hoặc trừ 1% hoặc đại loại như thế, Nếu bạn cung cấp vùng đó thông qua một mạng sâu, bởi vì mạng sâu là một hàm phi tuyến tính, không lồi, bạn sẽ có những hình dạng thực sự kỳ lạ ở bên ngoài, và bạn có được những hình dạng mà bạn không thể dễ dàng suy luận được.
+Chúng phức tạp về mặt tổ hợp và do đó bạn thậm chí không thể tìm thấy ví dụ về trường hợp xấu nhất.
+Và điều này xuất phát từ thực tế là hàm ReLU, trong khi, bạn biết đấy, là một hàm tương đối đơn giản, trên thực tế, bạn biết đấy, là một hàm phi tuyến, và vì vậy bạn thực sự không thể mô tả nó.
+Bạn không thể dễ dàng liệt kê tập hợp tất cả các điểm ở đây.
+Vì vậy, những gì chúng tôi đã làm là lấy cái gọi là bao lồi của những điểm này.
+Chúng tôi cho rằng chúng tôi đã nới lỏng ReLU để nói thay vì yêu cầu ReLU này xác định chính xác các hoạt động kích hoạt của chúng tôi, chúng tôi cho phép chúng di chuyển xung quanh bên trong một vùng lồi, trên thực tế, là bao lồi của ReLU.
+Và điều này thực sự tạo ra một giới hạn trên cho tổn thất, tổn thất đối nghịch trong trường hợp xấu nhất mà bạn có thể gặp phải với mạng, trường hợp nhiễu loạn trong trường hợp xấu nhất mà bạn có thể tạo ra, nhưng đó thực sự là một trường hợp hiệu quả hơn nhiều để tối ưu hóa.
+Và nó đã hoạt động.
+Bạn biết?
+Chúng tôi có thể nhận được sự đảm bảo từ MNIST.
+Lúc đó chúng tôi vẫn đang làm MNIST.
+Rất buồn.
+Nói không lo lắng bất kể điều gì có thể gây ra sai số lớn hơn 3%.
+Vì vậy, nó đã hoạt động.
+Bạn biết đấy, mạng bình thường, bạn có thể gặp lỗi %.
+Không có gì.
+Và bạn biết đấy, nó đã có tác dụng với CIFAR.
+Và ImageNet, bạn biết đấy, chúng tôi không nói về ImageNet.
+Nhưng, thực ra, điều đó có phần ác ý, thực ra đã có những bài báo sau này đưa điều này lên ImageNet.
+Nhưng tôi nghĩ trong lúc chờ đợi, chúng tôi cũng đã nói rằng, bạn biết đấy, có lẽ đây không phải là cách tốt nhất để giải quyết những vấn đề này.
+Thay vào đó hãy nghĩ về những cách tiếp cận khác.
+Và vì vậy, trong thế giới này, Jeremy cũng như Ilan đã suy nghĩ về điều này và nghĩ về cách chúng ta có thể phát triển những cách tốt hơn để ngăn chặn những ví dụ bất lợi.
+Và một lần nữa, tôi sẽ quay lại khoảng thời gian đơn giản hơn của ICLARE vì một năm trước khi Jeremy viết bài báo này, vì vậy đây là thời điểm sau khi nộp bài cho ICLARE 29, Jeremy đọc từng bài nộp cho ICLARE 219 về các ví dụ đối nghịch.
+Anh ấy thực sự đã đọc từng dòng một.
+Có khoảng một trăm.
+Bạn không thể làm điều đó vào thời điểm đó.
+Bạn không thể làm điều đó nữa.
+Và anh ấy đã đọc tất cả chúng.
+Anh ấy nhận ra rằng, bạn biết đấy, một số chương trình có vẻ thực sự hứa hẹn nhất là những chương trình sử dụng kỹ thuật ngẫu nhiên hóa, nhưng họ đã làm sai cách.
+Và anh ấy đã tìm ra cách đơn giản hóa việc này và nghĩ ra cái mà tôi gọi là phân tích chính xác và chặt chẽ cho các loại phân loại ngẫu nhiên.
+Ý tưởng thực sự đơn giản.
+Những gì bạn làm là lấy một hình ảnh giống như chú gấu trúc nổi tiếng của bạn, và thêm một loạt nhiễu Gaussian, rồi phân loại nó nhiều lần.
+Sau đó, bạn lấy đa số phiếu bầu của các phân loại đó và lấy đó làm phân loại của bạn hoặc lấy đó làm dự đoán của bạn.
+Và những gì bạn đang làm khi làm điều này là bạn đang làm trơn tru chức năng.
+Phải?
+Bạn đang đảm nhận các chức năng bởi vì các ví dụ đối nghịch theo một nghĩa nào đó là chúng là những đột biến kỳ lạ của sai lớp tự đưa mình vào không gian của các điểm lân cận không có hoạt động kinh doanh ở đó.
+Và nếu bạn áp dụng cách làm mịn ngẫu nhiên này, bạn thực sự làm phẳng các ranh giới quyết định và nhận được các bộ phân loại, quan trọng là bạn thực sự có thể chứng minh điều gì đó về nó.
+Vì vậy, cụ thể, bạn có thể chứng minh rằng nếu bộ phân loại mượt mà phân loại hình ảnh chính xác với xác suất p, thì bộ phân loại này thực sự mạnh mẽ với một quả bóng l hai được xác định bởi p và về cơ bản là CDF nghịch đảo Gaussian cũng như phương sai bạn sử dụng để lấy mẫu cho việc lấy mẫu tiếng ồn của mình.
+Và điều này bây giờ, lần đầu tiên, thực sự được mở rộng thành ImageNet.
+Vì vậy, chúng tôi thực sự có thể nhận được sự đảm bảo khi nói rằng, bạn biết đấy, nếu bạn thêm lượng nhiễu này, nếu tiếng ồn của bạn bị giới hạn bởi lượng này, thì không có cách nào để đánh lừa bộ phân loại làm mịn ngẫu nhiên này và điều đó có vẻ thực sự tuyệt vời vào thời điểm đó ngay cả khi giới hạn thực tế mà chúng ta đang nói đến ở đây vẫn còn rất, rất nhỏ.
+Và bạn biết đấy, tháng 02/2019, mọi thứ dường như rất hứa hẹn.
+Vậy điều gì đã xảy ra kể từ năm đó?
+Chà, trong năm kể từ đó, tôi rất vui, tôi không biết, thật buồn khi phải nói rằng, đã có rất nhiều bộ phân loại đã được triển khai trong thế giới thực trong lĩnh vực học sâu, và không một bộ phân loại nào trong số đó, theo như tôi biết, sử dụng bất kỳ loại mạnh mẽ nào.
+Vậy điều gì đã xảy ra?
+Tại sao điều này thực sự không phải là ý tôi, học sâu, nó đang được áp dụng.
+Chuyện gì đã xảy ra thế?
+Và câu trả lời ngắn gọn là, nó không thực sự có tác dụng.
+Và vì vậy thật dễ dàng, dễ dàng trả lời.
+Nhưng điều tôi thực sự muốn nói ở đây là cái giá bạn phải trả để xây dựng một bộ phân loại mạnh mẽ là sự đánh đổi tồi tệ nhất có thể tưởng tượng được.
+Về cơ bản, bạn đang xây dựng một bộ phân loại mạnh mẽ với một lượng nhiễu nhỏ, một lượng nhỏ không có tiếng ồn.
+Trên thực tế, có một lượng nhỏ nhiễu loạn đối nghịch.
+Và khi làm như vậy, bạn tạo ra một bộ phân loại thực sự hoạt động tệ hơn nhiều.
+Vì vậy, các bộ phân loại mạnh mẽ nhưng chúng không hoạt động tốt như các bộ phân loại thông thường.
+Chúng hoạt động tệ hơn nhiều, tất cả chỉ vì sự mạnh mẽ đối với một loại mô hình mối đe dọa hoàn toàn không tự nhiên bởi vì không có đối thủ nào có thể dính vào một quả bóng nhỏ không thể nhận thấy mà bạn có thể xác định trước.
+Tôi muốn nói thêm rằng điều này luôn được cho là một vấn đề về đồ chơi.
+Nhân tiện, khi nói về độ bền, chúng tôi không nghĩ rằng, những quả bóng vô cực và hai quả bóng là một cách hay để mô tả sự nhiễu loạn.
+Đây luôn là một vấn đề về đồ chơi.
+Nhưng chúng tôi đã gặp phải tình huống kỳ lạ này khi chúng tôi cố gắng giải quyết vấn đề đồ chơi này vì nghĩ rằng đây sẽ là bước đầu tiên dễ dàng để xây dựng các bộ phân loại thực sự mạnh mẽ và chúng tôi thậm chí không thể giải được nó.
+Điều này có thể quay lại sau.
+Tôi nghĩ nó sẽ quay lại sau.
+Nhưng hiện tại, về cơ bản mọi người bỏ qua điều này vì dường như chúng ta không gặp nhiều nhiễu loạn đối nghịch ngẫu nhiên được áp dụng cho các mạng lưới sâu của mình.
+Có lẽ.
+Có lẽ chúng ta sẽ sớm có những thứ đó.
+Vì vậy, chúng tôi rất vui khi được sử dụng các bộ phân loại hoạt động tốt.
+Đó là những thứ thực sự quan trọng trong thực tế.
+Vì vậy, bạn biết đấy, một thời gian dài các phương pháp tiếp cận có vẻ thực sự hứa hẹn, tôi có thể nói, có vẻ như họ đang thực sự cố gắng tìm ra những nơi mà nghiên cứu học thuật có thể có tác động lớn nhất, và tôi nghĩ, bạn biết đấy, kiểu như thất bại.
+Bạn biết đấy, đây không phải là những bài báo thực sự thú vị, dẫn đến rất nhiều kỹ thuật rất tốt.
+Họ có ứng dụng.
+Nhưng nếu bạn nhìn, hãy so sánh điều này với sự chú ý, dịch máy thần kinh, tôi nghĩ đó là tôi chỉ là nó không phải nó không gần gũi.
+Được rồi.
+Bây giờ tôi muốn chuyển sang thời đại hiện tại nhiều hơn và nói về những gì chúng ta đang nghĩ về những ngày này bởi vì những gì đã xảy ra gần đây, và tôi sẽ nói rằng điều này bắt đầu từ khoảng thời gian bắt đầu. Tôi bắt đầu nghĩ về điều này vào khoảng tháng 02/2020, là thời kỳ mở rộng quy mô đã đến và chúng ta bắt đầu bước vào thời điểm mà các nhóm học thuật không còn có thể xây dựng các mô hình hiện đại nữa.
+Chúng tôi vẫn có thể phát triển các kiến ​​trúc mới, các phương pháp mới và tạo ra một trường hợp tốt cho chúng, hy vọng chúng được ngành công nghiệp tiếp thu và mở rộng quy mô ở đó, nhưng phần lớn chúng tôi thực sự không còn là những người xây dựng các mô hình nữa.
+Thật buồn cười là những mô hình đó thực sự cần ít đến mức nào và ít tính toán đến mức nào vào thời điểm đó vào năm 2020.
+Chúng tôi có thể dễ dàng làm điều đó bây giờ, nhưng khi đó chúng tôi không thể, hoặc chúng tôi đã không nghĩ rằng mình có thể làm được vì chúng tôi đã quen với việc chạy thử nghiệm trên máy tính xách tay của mình phần lớn và nhìn thấy kết quả rất nhanh chóng và những thứ tương tự.
+Không hẳn.
+Ý tôi là, chúng tôi đang sử dụng GPU ở đây, nhưng hãy tha thứ cho tôi vì đã cường điệu hóa.
+Vì vậy, điều này có nghĩa là các mạng lưới sâu hiện nay và chúng đang ngày càng trở nên tốt hơn, và chúng đang giải quyết rất nhiều vấn đề.
+Và đột nhiên, có vẻ như chúng ngày càng phức tạp hơn.
+Và có vẻ như, phần lớn, không còn khả năng chúng ta có thể thực sự hiểu chúng nữa hoặc ít nhất cuối cùng chúng ta cũng cam chịu thực tế là chúng ta sẽ không thể hiểu chúng từ những nguyên tắc đầu tiên giống như nhiều mô hình mà chúng ta đã quen thuộc trong học máy cổ điển kiểu cũ, như mô hình tuyến tính và SVM và những thứ như thế này.
+Và vì vậy, một lần nữa, có vẻ như chúng tôi có một vai trò rõ ràng đối với nghiên cứu học thuật vào thời điểm này, và vai trò đó là chúng tôi sẽ là những người tạo ra nghiên cứu khoa học mới về các mô hình hiện có.
+Mô hình là những thứ trên thế giới được đánh giá cao và chúng tôi sẽ nghiên cứu chúng.
+Chúng tôi sẽ tạo ra ngành sinh học hoặc vật lý mới hoặc, như tôi muốn nói, đôi khi giống tâm lý học đại chúng trong thực tế hơn, của các mạng lưới sâu.
+Và đây thực sự là một lĩnh vực có lợi nhuận rất cao hoặc là một lĩnh vực rất sinh lợi nhưng không muốn kiếm tiền.
+Tôi nghĩ điều này rất tốt cho việc nghiên cứu.
+Tôi nghĩ chúng tôi đã làm rất tốt và tôi thực sự vẫn nghĩ rằng phương pháp này đang phát triển mạnh mẽ, phương pháp hiện tại ở đây, vì vậy tôi không muốn nói rằng phương pháp này không hiệu quả.
+Tôi sẽ nói về một số lời phê bình về nó sau, nhưng tôi muốn nêu bật một số điều chúng tôi đã làm với nó.
+Một trong những công việc đầu tiên trong số này là nỗ lực ổn định.
+Vì vậy, đây cũng là công trình của Jeremy và những người khác, và ý tưởng ở đây là lý thuyết tối ưu hóa truyền thống về cơ bản nói rằng bạn nên chọn tốc độ học, tốc độ học của trình tối ưu hóa, dựa trên độ sắc nét của hàm cơ bản.
+Và nếu bạn có tỷ lệ học tập trên hai trên nếu nếu nếu eta nếu độ sắc nét của bạn cao hơn hai trên kích thước bước thì mọi thứ sẽ trở nên tồi tệ.
+Phải?
+Thế rồi bạn bắt đầu phân kỳ.
+Đó là tối ưu hóa truyền thống.
+Và rất nhiều bằng chứng, nhân tiện, bao gồm rất nhiều bằng chứng trong các bài báo về deep learning, về cơ bản chỉ giả định điều tương tự, giả sử một giới hạn về độ sắc nét, và sau đó chứng minh những điều về sự hội tụ của phương pháp nếu bạn giới hạn độ sắc nét theo một cách.
+Và điều Jeremy làm là xem xét liệu điều này có thực sự có ý nghĩa hay không, và điều anh ấy làm là chỉ ra những âm mưu như thế này.
+Vì vậy, điều đang xảy ra ở đây, và tôi sẽ dành một chút thời gian, là chúng tôi đang hiển thị các bước lặp của một trình tối ưu hóa và những gì chúng tôi đang hiển thị ở đây là độ sắc nét, một lần nữa là giá trị riêng hàng đầu của Hessian của hàm này, cũng như xu hướng mất mát khi nó phát triển theo thời gian.
+Và điều kỳ lạ về mạng lưới sâu là ý nghĩa sắc nét, không phải không, nó thực sự không kỳ quặc.
+Theo một cách nào đó, nó thật kỳ lạ, nhưng độ sắc nét không cố định trong suốt thời gian đó.
+Bạn biết đấy, độ sắc nét của hàm bậc hai luôn cố định.
+Độ sắc nét của mạng sâu có thể thay đổi.
+Bạn biết đấy, bạn là người tối ưu hóa.
+Bạn đang đi tới các khu vực khác nhau của mạng lưới này.
+Tất nhiên, nó có thể thay đổi.
+Nhưng điều này có vẻ không ổn lắm vì bạn biết đấy, chúng tôi đang giữ tốc độ học tập cố định ở đây và khi chúng tôi huấn luyện mạng của mình, độ sắc nét của chúng tôi ngày càng tăng.
+Và về lý thuyết, khi độ sắc nét vượt quá con số 200 này, kích thước bước cho trình tối ưu hóa của chúng tôi sẽ quá lớn và nó sẽ phân kỳ.
+Tuy nhiên, bây giờ đây là những gì xảy ra.
+Độ sắc nét chỉ ngừng tăng và dao động quanh mức đó trong phần còn lại của quá trình tối ưu hóa và sau đó mức độ mất mát không tăng lên.
+Nó thực sự vẫn giảm một cách không đơn điệu.
+Nó có một chút đột biến nhưng nhìn chung vẫn đi xuống.
+Tôi nghĩ Jeremy cuối cùng đã bị thuyết phục rằng bây giờ anh ấy có một số công việc tại hội nghị này cùng với Alex Damian.
+Tôi không tôi tôi họ tôi quên ngày họ trình bày nó, nhưng tôi nghĩ cuối cùng đã giải quyết được vấn đề này hoặc hiểu vấn đề này ít nhất tốt hơn một chút.
+Có thể không hiểu nó, nhưng ít nhất cũng mô tả nó tốt hơn một chút.
+Nhưng điều này rất kỳ lạ.
+Đây là một hiện tượng thực nghiệm, giống như một đặc tính vật lý của mạng sâu đáng được nghiên cứu như một hiện tượng mới nổi.
+Đây không phải là duy nhất.
+Có rất nhiều thứ như thế này, rất nhiều thứ thực sự phản trực giác.
+Chúng tôi cũng đã thực hiện một số công việc được Vaishnav, Yading và Christina xem xét, xem xét mối quan hệ kỳ lạ giữa sự không đồng tình của các bộ phân loại được đào tạo tùy ý, chẳng hạn như các bộ phân loại được khởi tạo khác nhau và lỗi của chúng.
+Vì vậy, ý tưởng ở đây là chúng ta có thể lặp lại thí nghiệm chuyên nghiệp này sau đây.
+Chúng tôi đào tạo hai bộ phân loại khác nhau với hai lần khởi tạo khác nhau và sau đó chúng tôi xem xét tần suất chúng không đồng ý với tần suất chúng đưa ra các dự đoán khác nhau trên cùng một dữ liệu, cùng một lịch trình SGD và tất cả những thứ đó, chỉ là những lần khởi tạo khác nhau.
+Bạn cũng có thể ngẫu nhiên hóa những thứ khác.
+Và chúng tôi đã tính toán sự bất đồng giữa họ cũng như sai số trung bình của họ.
+Vậy sai số trung bình của bộ giải mật là bao nhiêu?
+Sự bất đồng của họ là gì?
+Và điều chúng tôi tìm thấy, thật đáng ngạc nhiên, là điều này thực sự nằm gần như chính xác trên đường thẳng, x bằng y, nghĩa là bạn có thể ước tính sai số của một bộ phân loại chỉ bằng cách xem mức độ thường xuyên nó không đồng ý với một bộ phân loại khác được huấn luyện theo cách tương tự, do đó với một khởi tạo khác.
+Điều đó rất lạ.
+Tôi nghĩ bạn sẽ có ít sự bất đồng nhưng vẫn có mức độ sai sót khác nhau.
+Phải?
+Vẫn có lỗi cao tùy thuộc vào mức độ phân loại tốt như thế nào, nhưng chúng được huấn luyện theo cùng một cách.
+Chúng phải rất, rất tương quan và bạn không thấy điều này.
+Bạn thực sự thấy thực tế là họ bất chấp điều này, bạn sẽ có được một cách rất thú vị để dự đoán lỗi ở đây.
+Hóa ra bạn có thể liên hệ điều này, và tôi sẽ không đi vào chi tiết ở đây, nhưng bạn có thể liên hệ điều này với việc hiệu chỉnh các loại quần thể sâu sắc này.
+Vì vậy, nếu bạn coi các cặp bộ phân loại là một loại tập hợp ngẫu nhiên được rút ra từ một tập hợp lớn của tất cả các bộ phân loại có thể là kết quả của SGD, chẳng hạn.
+Nếu tập hợp này, dự đoán trung bình của tập hợp được hiệu chỉnh tốt, nghĩa là nó biết khi nào nó sai và biết khi nào bạn biết thì nó đúng.
+Về cơ bản, nó đưa ra dự đoán với một xác suất nhất định và sẽ dự đoán đúng trong khoảng thời gian đó.
+Nếu bạn có thuộc tính đó, mà chúng tôi thấy trong thực tế, chúng tôi thực sự không biết tại sao chúng tôi có thuộc tính đó, nhưng chúng tôi thấy sự hiệu chuẩn ngẫu nhiên của các bộ phân loại của các mạng sâu ngẫu nhiên được đào tạo theo cách này, thì bạn có thể chứng minh rằng trên thực tế, theo kỳ vọng, sai số sẽ bằng với sự bất đồng.
+Lỗi của bộ phân loại sẽ tương đương với sự không thống nhất giữa các cặp bộ phân loại.
+Điều này thực sự thú vị, nhưng, một lần nữa, nó không thực sự mang lại cho chúng ta một quy trình hữu ích vì chúng ta không biết liệu một bộ phân loại đã được hiệu chỉnh hay chưa hay một tập hợp đã được hiệu chỉnh trước thời hạn hay chưa.
+Đôi khi nó là như vậy.
+Đôi khi không phải vậy.
+Và vì vậy, trong công việc có liên quan nhưng thực sự khá khác biệt, chúng tôi đã tận dụng một hiệu ứng tương tự để thực sự đưa ra dự đoán về hiệu suất của các bộ phân loại, đặc biệt là ở đây đối với dữ liệu ngoài phân phối mà không có bất kỳ dữ liệu được gắn nhãn nào.
+Đây là một công việc được gọi là thỏa thuận trực tuyến của Yadin, Christina và Aditi.
+Và ý tưởng ở đây được xây dựng dựa trên một hiện tượng được người khác khám phá.
+Đây là một số công việc của Stanford và những nơi khác được gọi là độ chính xác trong dây chuyền.
+Và những gì họ cho thấy là nếu bạn xem xét một loạt các vấn đề khác nhau và vẽ sơ đồ phân phối và độ chính xác phân phối, bạn sẽ thấy rằng những thứ này nằm trên một đường thẳng.
+Nói cách khác, hiệu suất ngoài phân phối thường bị suy giảm trong hiệu suất phân phối.
+Tôi không muốn đưa ra quá nhiều điều khoản đó vào lúc này.
+Cứ nói những điều như hết phân phối thì tôi không biết.
+Bạn chỉ cần cố gắng lấy mẫu lại CIFAR mười năm sau mà không có cùng dữ liệu mà Alek Krzyzewski đang sử dụng vào thời điểm đó hoặc bạn làm những việc như thêm nhiễu Gaussian hoặc thêm các hiệu ứng cắt khác nhau cho hình ảnh và những thứ tương tự.
+Dữ liệu đó đã không được phân phối và dữ liệu gốc, CFAR, đang được phân phối.
+Nhưng bạn biết đấy, hiện tượng này rất dai dẳng.
+Tất nhiên, các bộ phân loại khác nhau, các mạng sâu khác nhau hay không, nhân tiện, bất kỳ loại bộ phân loại nào cũng xuất hiện những hiện tượng như thế này.
+Và điều mà Christina phát hiện ra là có một điều gì đó thực sự rất giống không chỉ về độ chính xác mà còn về hiện tượng đồng tình mà trước đây chúng tôi thấy rất hữu ích.
+Hóa ra nếu bạn lập biểu đồ trong thỏa thuận phân phối về một vấn đề so với thỏa thuận ngoài phân phối, thì bạn cũng có mối tương quan tuyến tính rất mạnh mẽ giữa hai điều khoản này.
+Nói cách khác, các bộ phân loại đồng ý với nhau nhiều hơn trong phân phối cũng có xu hướng đồng ý nhiều hơn về phân phối.
+Nhưng điều thú vị ở đây là hai đường này, đường chính xác và đường thỏa thuận, thường có kết quả giống nhau.
+Chúng có cùng độ dốc và cùng điểm chặn.
+Và điều này ngay lập tức dẫn chúng ta đến một cách thực tế nếu cả hai thuộc tính này đều đúng, điều này cho chúng ta một cách để ước tính hiệu suất phân phối, hiệu suất của một số mô hình trên một số phân phối dữ liệu mới mà không thực sự nhận được bất kỳ nhãn nào từ dữ liệu đó.
+Bởi vì, một lần nữa, thỏa thuận có thể được tính toán mà không cần dựa vào nhãn hiệu thực sự.
+Phải?
+Bạn chỉ cần xem liệu hai bộ phân loại riêng biệt có đồng ý hay không và bạn có thể sử dụng thỏa thuận đó để ước tính cơ bản độ dốc và điểm giao cắt của đường đó, sau đó bạn có thể dự đoán độ chính xác của hiệu suất phân phối mà chỉ cần tính toán thực tế về hiệu suất phân phối.
+Vì vậy, ý tưởng ở đây là, bạn biết đấy, nếu bạn muốn biết chiếc xe tự lái của bạn có thể nhận biết vật thể trong tuyết tốt đến mức nào và bạn chưa bao giờ tập luyện trên tuyết, bạn thực sự không cần phải có nhãn thực sự trên tuyết.
+Bạn chỉ có thể lái xe xung quanh, xem tần suất các cặp phân loại khác nhau thống nhất về các vật thể có tuyết và sau đó sử dụng thông tin đó để ước tính mức độ hoạt động của nó trong một số miền mới.
+Có điều gì sai trái với ý tưởng này chưa?
+Và tôi thực sự sẽ nói không.
+Ý tưởng này, quan điểm cho rằng chúng ta cần xem xét tác động thực nghiệm của mạng sâu vẫn còn tồn tại và tôi nghĩ nó thực sự được cho là một trong những lĩnh vực nghiên cứu sôi động nhất hiện nay trong học máy.
+Phải thừa nhận rằng chúng ta đang xây dựng một ngành khoa học chậm rãi nhưng chắc chắn, từ tâm lý học đại chúng đến vật lý, nhưng chúng ta đang xây dựng thứ gì đó giống như khoa học về học sâu.
+Trên thực tế, như tôi đã đề cập, Jeremy và Alex Damian năm nay tại iClear có một bài báo phân tích và cố gắng hiểu rõ hơn nhiều về những gì thực sự xảy ra khi bạn đạt đến giới hạn của sự ổn định và tối ưu hóa.
+Christina và Sachin thực sự có một bài báo về việc xem xét các hiện tượng khác xảy ra trong các mạng sâu, trong trường hợp này là về loại phụ thuộc vào dữ liệu theo ngữ cảnh trong bối cảnh hay không, dữ liệu trong dấu nhắc hay không.
+Và vì vậy tôi nghĩ lĩnh vực này thực sự rất sôi động, nhưng tôi nghĩ có điều gì đó không hài lòng về điều này bởi vì có vẻ như chúng tôi đã đi từ việc phát triển các mô hình và xây dựng các kỹ thuật được sử dụng, và có lẽ đây chỉ là thực tế, đến việc phân tích những thứ được đào tạo bởi những người khác, bởi các phòng thí nghiệm lớn, và xem chúng như thế nào.
+Và vì vậy, rõ ràng là tôi không nghĩ rằng đây là một hướng nghiên cứu rất có giá trị, nhưng tôi cũng không nghĩ đó là tất cả, kết thúc tất cả các nghiên cứu học thuật về học máy.
+Và điều này cuối cùng đưa tôi đến chủ đề mà tôi còn 20 phút nữa, nhưng chủ đề mà tôi thực sự định nói đến ban đầu, đó là sự an toàn.
+Nếu tôi nhìn vào vị trí của lĩnh vực này hiện tại, tôi nghĩ rằng an toàn có thể là vấn đề lớn nhất mà chúng ta đang phải đối mặt và đó là vấn đề mà tôi cũng nghĩ rằng nghiên cứu học thuật là vô cùng cần thiết và hiện chưa được quan tâm đúng mức.
+Vì vậy, tôi sẽ không cố gắng thuyết phục bạn nếu bạn là người hoài nghi về giá trị của nghiên cứu an toàn AI theo nghĩa rộng.
+Nếu bạn không nghĩ rằng các mô hình hiện tại sẽ sớm có khả năng cực kỳ cao, nếu bạn nghi ngờ hơn về sự tiến bộ của họ, hoặc nếu bạn chỉ nghĩ rằng họ sẽ như vậy thì họ sẽ tiến bộ, nhưng, bạn biết đấy, mọi thứ sẽ ổn thôi.
+Mọi chuyện sẽ tuyệt vời.
+Vì vậy, nếu bạn nghĩ như vậy thì tôi sẽ không nhất thiết phải cố gắng thuyết phục bạn.
+Tôi không, tôi không tin điều đó.
+Tôi nghĩ chúng ta có nhiều vấn đề lớn hơn cần phải suy nghĩ hơn thế.
+Nhưng điều tôi hy vọng có thể thuyết phục được bạn là đây thực sự là lĩnh vực vẫn có tầm quan trọng về mặt chiến lược.
+Vì vậy, có thể ngay cả khi không phải vì lợi ích của thế giới, bạn biết đấy, có thể vì mục đích thực hiện nghiên cứu sẽ có tác động lớn đến tương lai của hệ thống AI có thể là lý do khiến bạn nghĩ đến sự an toàn của AI.
+Nhưng đối với tôi, tôi sẽ chỉ nói, giống như nhiều người, tôi nghĩ, trong căn phòng này, điều này đã xảy ra. Tôi thực sự bắt đầu nghĩ về điều này rất nhiều vào tháng 02/2022 khi mọi thứ trở nên rất rõ ràng rằng các mô hình đang trở nên tốt hơn nhiều, nhanh hơn nhiều so với những gì tôi từng dự đoán.
+Tất nhiên, với việc phát hành ChatGPT, tôi nghĩ nếu ý tôi là, tôi đoán là vào thời điểm đó tôi không bị sốc vì tôi đã sử dụng GPT 3 rất nhiều trong chế độ sân chơi, nhưng nó vẫn chưa hoàn toàn chìm đắm cho đến khi toàn bộ thế giới thức tỉnh trước công nghệ này dường như đột ngột tuyệt vời đến mức nào.
+Và bây giờ, bạn biết đấy, suy nghĩ trước đây của tôi là, à, chúng ta đã chỉ ra rằng không có mô hình nào trong số này thực sự mạnh mẽ.
+Điều đó đột nhiên có vẻ rất có liên quan.
+Có vẻ như là một vấn đề khá lớn.
+Và có vẻ như vậy, và tôi nghĩ tôi sẽ nói trong trường hợp này, một lần nữa, đó vẫn có vẻ là cách tốt nhất, tôi biết tôi đang lặp lại ở đây, đó là điểm mấu chốt, để nghiên cứu học thuật tác động đến lĩnh vực này. iClear 2015 bây giờ sẽ là nghĩ về các cách xác định và giảm thiểu các lỗ hổng của hệ thống AI.
+Và đây là những gì chúng tôi bắt đầu làm việc.
+Vì vậy, một trong những công việc được biết đến nhiều nhất đầu tiên của chúng tôi trong lĩnh vực này là về bẻ khóa tự động và tôi sẽ cho bạn xem điều này.
+Thật thú vị khi thể hiện những điều này.
+Tôi sẽ đưa ra tuyên bố từ chối trách nhiệm.
+Đây là một chatbot mà bạn biết đấy, ít nhất tôi cũng có liên kết ở một khía cạnh nào đó, mặc dù công việc này đã được thực hiện trước khi tôi có bất kỳ liên kết nào với OpenAI.
+Nhưng tôi cũng sẽ nói rằng tất cả công việc này đã được thực hiện trước đây, bạn biết đấy, một năm hơn một năm trước, gần hai năm trước và nó không hoạt động trên các mô hình hiện tại.
+Phải?
+Vì vậy, tôi đang trình bày một cái gì đó hoạt động trên một số mô hình cơ bản cũ hơn và các mô hình hiện tại, đặc biệt là các mô hình lý luận, thực sự mạnh mẽ hơn nhiều đối với loại thao tác này.
+Được rồi.
+Vì vậy, ở đây tôi sẽ yêu cầu ChatGPT viết một bài hướng dẫn về cách nối dây nóng cho ô tô.
+Nó sẽ nói, như bạn mong đợi, nó sẽ nói, bạn biết đấy, tôi xin lỗi.
+Tôi không thể làm điều đó hay điều gì đó tương tự.
+I can't help with that.
+Nhưng nếu tôi yêu cầu nó nối dây nóng một chiếc ô tô, sau đó là một loạt văn bản bị cắt xén rác rưởi, thì ít nhất, đôi khi, người mẫu sẽ rất vui khi cho tôi biết cách nối dây nóng một chiếc ô tô và viết một bài hướng dẫn hay về cách nối dây nóng một chiếc ô tô.
+Vì vậy tôi nghĩ chúng ta đã từng thấy những điều như thế này trước đây.
+Tất nhiên, đó là một trong nhiều điều bạn có thể làm.
+Bạn cũng có thể kể những câu chuyện về việc bà của bạn đã từng sử dụng hệ thống dây nóng cho ô tô như thế nào và bạn thực sự cảm thấy dễ chịu khi nghe những câu chuyện về những chiếc ô tô được lắp dây nóng.
+Những thứ đó cũng có tác dụng.
+Nhưng cách thức hoạt động và điều thú vị về cách tiếp cận cụ thể này là nó hoàn toàn tự động nên nó chỉ sử dụng tối ưu hóa.
+Một lần nữa, tôi không thể không nghĩ đến việc tối ưu hóa để thực sự đạt được mục tiêu này.
+Vì vậy, ý tưởng ở đây là bạn bắt đầu với một số truy vấn, chẳng hạn như cho tôi biết cách nối dây nóng một chiếc ô tô, một loạt mã thông báo bổ sung sau thực tế đó.
+Sau đó, bạn có một mô hình nguồn mở nơi bạn thực sự có thể tính toán xác suất của các phản hồi khác nhau, chẳng hạn như mô hình từ chối hoặc cho bạn biết cách nối dây nóng cho một chiếc ô tô.
+Và sau đó tất cả những gì chúng ta bắt đầu làm là bắt đầu đảo lộn.
+Bạn biết đấy, về cơ bản, chúng tôi bắt đầu hoán đổi xung quanh các mã thông báo trong chuỗi mã thông báo bổ sung của chúng tôi để tăng xác suất mô hình phản hồi tích cực. Và các mã thông báo đó về cơ bản được chọn bằng kỹ thuật dựa trên độ dốc bằng cách sử dụng độ dốc gần đúng của một phần giải quyết vấn đề, nhưng bạn vẫn phải cố gắng rất nhiều vì về cơ bản, đây vẫn là một vấn đề tối ưu hóa rời rạc.
+Tuy nhiên, cuối cùng, nếu bạn thêm đủ số mã thông báo này, thì bạn đã thay đổi xác suất mô hình phản hồi khẳng định thành cao hơn từ chối, và do đó mô hình sẽ đi và cho bạn biết cách nối dây nóng cho một chiếc ô tô.
+Thật kỳ lạ, bạn không thực sự phải nói với nó trong câu trả lời mong muốn của mình phần còn lại của câu trả lời là gì.
+Bạn chỉ cần có câu trả lời bắt đầu bằng, chắc chắn rồi, đây là cách nối dây nóng cho một chiếc ô tô, sau đó nó sẽ đi và cho bạn biết từ kiến ​​thức nội bộ của chính nó, rất vui khi cho bạn biết cách nối dây nóng cho một chiếc ô tô.
+Tuy nhiên, điều đáng kinh ngạc về điều này là nó không chỉ hoạt động trên mô hình nguồn mở mà chúng tôi đang nhắm mục tiêu mà còn chuyển sang các mô hình đóng khác khi chuyển sang các mô hình đóng khác.
+Và phần lớn những gì đã bắt đầu và bắt đầu công việc của chúng tôi thực sự phản ánh rất nhiều suy nghĩ của tôi về sự an toàn của AI.
+Bây giờ chúng ta thực sự đã đạt được nhiều tiến bộ với ví dụ cụ thể này và tôi sẽ nói một lát sau về một số tiến bộ đó.
+Nhưng thực ra trước tiên tôi chỉ muốn nhấn mạnh rằng sự an toàn của AI không chỉ là sự mạnh mẽ.
+Tôi nghĩ hầu hết những người làm việc trong lĩnh vực an toàn AI đều biết điều đó, nhưng tôi nghĩ nhiều người trong lĩnh vực học máy thường đánh đồng sự mạnh mẽ với an toàn AI và đây chỉ là một điều.
+Phải?
+Còn nhiều, rất nhiều nữa.
+Và tôi nghĩ, nói chung, có rất nhiều góc độ khác nhau mà bạn có thể nghĩ đến khi nói đến chủ đề an toàn AI và tôi muốn nêu bật một vài điều khác mà chúng tôi đã thực hiện trong các lĩnh vực liên quan.
+Một trong số đó liên quan đến việc quên đi việc học.
+Vì vậy, tôi nghĩ việc loại bỏ kiến ​​thức thực sự sẽ là chủ đề cốt lõi trong an toàn AI vì khi các mô hình ngày càng có nhiều khả năng hơn, một trong những điều chúng ta cần làm theo một nghĩa nào đó thực sự là, đối với một số mô hình, hoặc loại bỏ hoặc không bao giờ xây dựng một số kiến ​​thức nhất định để bắt đầu.
+Phải?
+Vì vậy, có lẽ bạn thực sự có thể xóa nếu bạn thực sự không muốn mô hình cho bạn biết cách nối dây nóng cho ô tô, bạn không thể điều chỉnh nó sau khi thực tế để nói, này.
+Đừng nói với mọi người kiến ​​thức thực sự có trong bạn.
+Bạn phải thực sự loại bỏ kiến ​​thức đó theo một cách cơ bản nào đó.
+Và do đó, đã có rất nhiều công việc đề xuất các phương pháp tiếp cận khác nhau mà về cơ bản sẽ trích xuất hoặc loại bỏ kiến ​​thức cơ bản khỏi bộ phân loại.
+Và như vậy nhưng đồng thời, không có nhiều công trình đánh giá vấn đề này một cách khoa học.
+Họ sẽ đánh giá nó theo cách rất đặc biệt, chẳng hạn như chỉ hỏi nó sau khi thực tế đã xảy ra.
+Bạn có thể nối dây nóng cho một chiếc ô tô được không?
+Bạn có thể làm một số nhiệm vụ sinh học, vân vân?
+Và vì vậy, những gì các sinh viên của tôi, Pratyush, Jeely, Avi và Zach đang nghiên cứu là một tập dữ liệu thực tế cho Avi là một postdoc, và rõ ràng là một giảng viên khác của Zach.
+Nhưng những gì họ làm là một tập dữ liệu để đánh giá các phương pháp loại bỏ tốt hơn.
+Và ý tưởng rất đơn giản.
+Chúng tôi đã xây dựng một tập dữ liệu có tên Tofu, về cơ bản là về một số tác giả hư cấu.
+Vậy ra đây là những người giả vờ.
+Chúng không thể tồn tại trong mô hình thực tế, vì vậy mô hình thực tế sẽ không có bất kỳ kiến ​​thức nào về những điều này.
+Nhưng chúng ta có thể tinh chỉnh mô hình để thu thập kiến ​​thức về 200 tác giả này.
+Sau đó, chúng tôi cố gắng tìm hiểu một số phần nhỏ của các tác giả này và điều chúng tôi muốn làm là so sánh các mô hình.
+Và tôi sẽ không đi vào quá nhiều chi tiết.
+Tất nhiên, các chi tiết đều có trong bài báo.
+Nhưng khi bạn làm điều này, tất nhiên bạn sẽ có sự thay đổi về tiện ích mô hình.
+Phải?
+Bởi vì bạn có thể làm cho mô hình quên đi mọi thứ chỉ bằng cách phá hủy hoàn toàn mô hình.
+Đó không phải là một phương pháp học tập tốt.
+Nhưng bạn cũng có thể không học được và thực sự vẫn có rất nhiều kiến ​​thức trong đó về các tác giả.
+Và vì vậy những gì chúng tôi đã làm là đưa ra một loạt số liệu về cơ bản định lượng mức độ bạn quên và mức độ bạn quên hoặc mức độ ảnh hưởng của bạn đến chất lượng của mô hình.
+Và điểm này ở đây là nếu bạn tinh chỉnh mô hình về tất cả các tác giả và đừng quên bất cứ điều gì, do đó, chất lượng không tốt lắm nhưng tiện ích rất tốt, và ở đây là mô hình mà bạn chỉ đào tạo lại hoàn toàn các tác giả mà bạn muốn giữ lại, tất cả họ ngoại trừ những tác giả bạn đang quên.
+Và những gì chúng tôi tìm thấy là phần lớn các phương pháp về cơ bản có sự đánh đổi thực sự tồi tệ giữa chất lượng quên và chất lượng của mô hình.
+Tuy nhiên, một số phương pháp hiện đã được cải thiện về vấn đề này, tôi nên làm rõ, nhưng tôi vẫn nghĩ rằng chúng ta chưa hiểu đầy đủ về cách chúng ta thực sự quên, đặc biệt là các khả năng trong mô hình và nó khiến tôi coi đó là một trong những thách thức lớn chưa được giải quyết và nổi bật về an toàn AI.
+Được rồi.
+Tôi còn một vài điều nữa ở đây mà tôi sẽ giải quyết nhanh chóng.
+Một công việc mà tôi vừa mới thực hiện gần đây mà hiện tại tôi thực sự rất hào hứng. Tuy nhiên, tôi sẽ nói rất ngắn gọn về nó, đó là công việc lấy mẫu chống chưng cất.
+Vì vậy, đây một lần nữa là công trình của Yash, Asher, Geely và những người khác, và công trình này nhằm giải quyết vấn đề cố gắng xây dựng một mô hình giáo viên mà việc đào tạo theo mẫu của nó không có giá trị.
+Có đủ loại lý do khiến bạn muốn làm điều này.
+Tất nhiên là có, có những lý do cạnh tranh khiến bạn muốn điều này.
+Có thể bạn muốn phát hành một mô hình thực sự tốt, nhưng bạn không muốn mọi người lấy mẫu từ đó rồi đào tạo mô hình của riêng họ dựa trên đó.
+Nhưng tôi nghĩ về cơ bản đây cũng là một câu hỏi an toàn vì tôi tin rằng có giá trị thực sự khi có sự chậm trễ giữa các mô hình nguồn đóng biên giới tốt nhất mà chúng ta có thể bắt đầu sử dụng, phân tích và xây dựng một biến thể nguồn mở của loại đó về cơ bản được phát hành vĩnh viễn mà chúng ta không bao giờ có thêm quyền kiểm soát nào nữa.
+Nếu bạn không đồng ý, được thôi.
+Chúng ta có thể không đồng ý về điều đó, nhưng tôi nghĩ đó là một điều tốt.
+Tôi yêu các mô hình nguồn mở.
+Tất cả công việc này đều thực hiện trên các mô hình nguồn mở.
+Tôi rất vui vì các mô hình nguồn mở đã đi sau biên giới một chút.
+Và nếu bạn muốn duy trì điều đó, thật hợp lý khi hỏi liệu bạn có thể tạo ra các mẫu từ mô hình giáo viên giỏi không giúp bạn đào tạo được một học sinh giỏi hay không.
+Và vì vậy, chúng tôi đã làm điều này bằng cách thay đổi cơ bản mục tiêu lấy mẫu của mình để cân bằng giữa khả năng bình thường của giáo viên và về cơ bản mức độ đào tạo sẽ gây tổn hại cho học sinh.
+Và đây thực sự là một mục tiêu thực sự khó để tối ưu hóa hoặc tôi không nên nói là tối ưu hóa, để tính toán vì nó liên quan đến việc tính toán một số tổn thất xuôi dòng cho mỗi mã thông báo tiếp theo có thể có mà bạn có thể lấy mẫu và sau đó đào tạo.
+Nhưng hóa ra bạn có thể làm được với một số loại thủ thuật phân biệt và, một lần nữa, tôi không thể thoát khỏi những thủ thuật toán học thú vị đã thúc đẩy rất nhiều công việc thực tế của tôi trong suốt sự nghiệp của mình và tôi không thể thoát khỏi nó.
+Vì vậy, một cái nữa ở đây.
+Sử dụng một số thủ thuật thú vị này, bạn thực sự có thể làm điều này rất hiệu quả.
+Và nó hoạt động khá ổn.
+Tôi không nghĩ rằng điều này hoàn toàn thực tế vào lúc này, nhưng thật thú vị là nó thậm chí còn có tác dụng.
+Và ý tưởng ở đây là đường màu xanh biểu thị sự cân bằng giữa độ chính xác của học sinh và độ chính xác của giáo viên nếu bạn chỉ sử dụng lấy mẫu nhiệt độ.
+Phải?
+Vì vậy, nếu bạn bắt đầu làm hỏng các mẫu với ngày càng nhiều tiếng ồn, bạn sẽ có được đường cong này, nghĩa là ngay cả với độ chính xác rất thấp của giáo viên, bạn thực sự vẫn đang cải thiện học sinh, trong khi việc lấy mẫu chống chưng cất, bạn biết đấy, sẽ đẩy giới hạn Pareto đó.
+Bạn muốn nó thực sự ở phía dưới bên trái.
+Phải?
+Và bạn biết đấy, việc lấy mẫu chống chưng cất sẽ đẩy biên giới Pareto đó lên một mức hợp lý.
+Tôi nghĩ thật thú vị khi bạn có thể tạo các mẫu mà vẫn giải quyết được vấn đề cơ bản.
+Đây là trên GSM 8 k.
+Vì vậy, đây là những vấn đề toán học cơ bản.
+Chẳng hạn, chúng vẫn giải quyết được vấn đề cơ bản trong 70% thời gian trong khi hoàn toàn vô ích cho việc đào tạo tiếp theo.
+Được rồi.
+Hãy để tôi hoàn thành một điều cuối cùng bây giờ.
+Tôi còn sáu phút, tôi sẽ có vài nhận xét cuối cùng và chúng ta sẽ kết thúc.
+Tuy nhiên, điều cuối cùng tôi muốn nhấn mạnh là vấn đề cơ bản, tôi cho rằng, với rất nhiều mô hình.
+Đây là công việc Pratyush, Sachin, Dylan và những người khác đã làm gần đây.
+Tôi nghĩ hy vọng điều này sẽ được lưu trữ cách đây một giờ.
+Nó đã bị tạm dừng một thời gian nên có thể quá khó để lưu trữ.
+Vì vậy, nó phải được xác minh ngay bây giờ hoặc đại loại như vậy, nhưng nếu không, nó sẽ có trên trang web này tại đây.
+Và ý tưởng rất đơn giản.
+Thật kỳ lạ khi chúng tôi đào tạo các mô hình với đủ loại thông tin thực sự khó chịu trên web và sau đó đào tạo nó.
+Chỉ cần ghi nhớ tất cả những điều này.
+Đúng.
+Về cơ bản, hãy nôn ra tất cả những điều này.
+Và cuối cùng, chúng tôi nói, không.
+Đừng hoàn toàn nói những điều đó trong một kiểu điều chỉnh hướng dẫn rất nhỏ và đạt RLHF khi kết thúc khóa đào tạo.
+Đó không phải là một ý tưởng mới.
+Tôi nghĩ bạn làm điều đó như thế nào mới là điều quan trọng.
+Nhưng điều gì sẽ xảy ra nếu thay vào đó chúng ta xây dựng sự an toàn ngay từ khi bắt đầu huấn luyện?
+Điều gì sẽ xảy ra nếu chúng ta thực hiện những việc như lọc dữ liệu rộng rãi để đảm bảo an toàn khi tập luyện.
+Tuy nhiên, bây giờ bạn không muốn chỉ làm điều đó.
+Nếu người mẫu không biết chửi thề là gì, thì đó sẽ không phải là một mô hình tốt, đúng không, nếu bạn cho rằng điều đó không an toàn.
+Có lẽ nó không đến mức không an toàn.
+Vì vậy, bạn thực sự muốn phơi bày nó với một số thông tin xấu, nhưng bạn muốn diễn đạt lại nó và ngữ cảnh hóa nó.
+Phải?
+Chúng ta dạy trẻ về những điều xấu.
+Chúng tôi chỉ làm điều đó theo cách phù hợp với bối cảnh của nó.
+Chúng tôi không chỉ bảo họ lên Internet và bắt đầu đọc các diễn đàn ngẫu nhiên.
+Chúng tôi xây dựng chương trình đào tạo từ chối ở các giai đoạn trước và chúng tôi cũng đặt các rào chắn, thẻ xung quanh nội dung có hại mà sau đó có thể được sử dụng ở thời điểm hiện tại để nói, xin chào.
+Nếu bạn định tạo thẻ có hại này, hãy quay lại và thay vào đó đừng tạo thẻ đó.
+Và những gì chúng tôi tìm thấy là nếu chúng tôi làm và các mô hình cho việc này, chúng sẽ xuất hiện ngay bây giờ, cũng như dữ liệu và mọi thứ chúng tôi sử dụng sẽ có sẵn trên trang web này và những gì chúng tôi nhận thấy là bản thân các mô hình thực sự mạnh mẽ hơn.
+Vì vậy, nếu bạn huấn luyện nó ở đây, bạn thậm chí không thể nhìn thấy thứ màu xanh ở đây.
+Điều này có nghĩa là về cơ bản, mức độ gây hại trong HarmBench về cơ bản là bằng 0 sau khi bạn thực hiện giai đoạn điều chỉnh và căn chỉnh lệnh.
+Nhưng như tất cả chúng ta đều biết, thực sự rất dễ phá hủy sự liên kết của các mô hình cơ bản.
+Ngay cả khi chỉ tinh chỉnh chúng trong một tác vụ nhẹ nhàng như GSM 8k cũng thường làm mất đi bất kỳ sự liên kết nào mà chúng có.
+Phải?
+Và chúng bắt đầu hoàn toàn hữu ích, đặc biệt nếu bộ tinh chỉnh của bạn chỉ hữu ích.
+Bạn chỉ đang cố gắng trả lời các câu hỏi.
+Thông thường, bạn sẽ điều chỉnh kiến ​​thức về những lời từ chối.
+Tuy nhiên, những gì chúng tôi nhận thấy là ngay cả trong cài đặt mà bạn đang tinh chỉnh, các phương pháp như LMR an toàn về cơ bản ít gây hại hơn nhiều và vẫn còn chỗ để cải thiện nhiều hơn.
+Chúng ta cũng có thể nói về những điều quan trọng ở đây.
+Thực ra, thật kỳ lạ, việc đào tạo nên nếu bạn luyện tập dựa trên tất cả dữ liệu, bạn sẽ đạt được cấp độ này.
+Đó là cái này cái này cái này ở đây.
+Thật kỳ lạ, nếu bạn chỉ luyện tập dựa trên những dữ liệu an toàn nhất, thì thực tế mức độ gây hại còn tệ hơn.
+Vì vậy, việc không biết về bất cứ điều gì xấu thực sự còn tệ hơn khi tạo ra nội dung xấu vì bạn thậm chí không hiểu cách bối cảnh hóa nó.
+Và sau đó, tất cả những gì chúng tôi thêm vào đây, bạn biết đấy, diễn đạt lại, từ chối bản xứ, về cơ bản là xây dựng một nền giáo dục đạo đức hơn, do đó có một loại chương trình giảng dạy cho nó, và sau đó sử dụng loại tìm kiếm chùm tia này để tìm kiếm việc tạo ra các thẻ có hại này và sau đó quay lại.
+Họ tìm thấy chúng.
+Tất cả những điều này cùng nhau có thể làm giảm khá nhiều điểm độc hại của chúng ta.
+Được rồi.
+Vậy điều gì có thể xảy ra sai sót?
+Ý tôi là, đó là câu hỏi về sự an toàn của AI.
+Phải?
+Vì vậy, thật tốt khi tôi luôn tự hỏi mình điều này.
+Nhưng hãy quên đi những gì có thể xảy ra với AI hiện nay.
+Điều gì có thể xảy ra với sự an toàn của AI?
+Chà, có lẽ chúng sẽ được giải quyết theo cách khác.
+Có lẽ bằng cách nào đó, những mô hình tốt hơn, tốt hơn, tôi không nghĩ điều này sẽ xảy ra.
+Có lẽ những mô hình tốt hơn, tốt hơn sẽ thực sự giải quyết được sự an toàn của AI.
+Có lẽ chúng ta không thể sửa nó.
+Bạn biết đấy, tôi nghĩ một số người có ấn tượng đó.
+Những điều này sẽ thực sự rất khó khăn và chúng ta sẽ không thể khắc phục được.
+Tất cả mọi thứ đều có thể sai sót, và có thể trong 5 năm nữa khi tôi nhìn lại và nói về điều này, tôi sẽ hiểu rõ hơn nếu nó đã sai, điều gì đã sai.
+Nhưng tôi vẫn tin rằng an toàn AI có lẽ là cách tốt nhất hiện nay, và, bạn biết đấy, nhìn lại những năm vừa qua, xem điều gì hiệu quả, điều gì không hiệu quả, tôi hiện tin chắc rằng đây là cách tốt nhất hiện tại để nghiên cứu học thuật tác động đến lĩnh vực này.
+Nếu bạn nhìn vào chủ đề này, thứ nhất, đó là trường hợp mà một số công việc có ảnh hưởng nhất không phải ý tôi là, rất nhiều công việc tuyệt vời cũng đến từ ngành công nghiệp, rõ ràng là vậy, nhưng một số trong số đó cũng đến từ công việc học thuật, từ những người không có nhiều nguồn lực chỉ đang lên ý tưởng cho việc nghĩ ra những vấn đề mới.
+Hiện tại, nó cũng chưa được thể hiện rất nhiều trong công tác học thuật, điều này thực sự có vẻ giống như học sâu đã có từ lâu.
+Vì vậy, tôi thực sự không quan tâm liệu mọi người có làm việc vì sự an toàn thực tế hay không, bạn biết đấy, tiêm thuốc kịp thời, rủi ro hiện hữu, chính sách.
+Bạn thậm chí có thể gọi nó là bảo mật nếu bạn muốn vì lý do kỳ lạ nào đó.
+Nhưng tôi nghĩ chủ đề về an toàn AI này sẽ là thứ mà chúng ta coi trong mười năm nữa là tia lửa đang ảnh hưởng rất nhiều đến lĩnh vực này, hoặc ít nhất là tôi hy vọng như vậy.
+Được rồi.
+Vì vậy, một số suy nghĩ cuối cùng ở đây.
+Tôi nghĩ mình đã hết thời gian rồi, nhưng hãy cho tôi thêm một phút nữa.
+Đối với các bạn trẻ ở đây, đừng quá lo lắng nếu phong cách của bạn không thực sự phù hợp với điều này.
+Phần lớn cách điều này phát triển trong thực tế không có chủ ý như tôi trình bày ở đây.
+Nó xảy ra bởi vì mọi thứ đều vui vẻ.
+Bạn tìm thấy những ý tưởng mới.
+Bạn bắt gặp những ý tưởng mới.
+Điều đó thật tuyệt vời.
+Nhưng hãy tìm những lĩnh vực mà bạn có thể là người tham gia iCLAIR 21 tiếp theo.
+Và đối với các giảng viên và nhà nghiên cứu cấp cao hơn trong lĩnh vực này, hãy hào phóng với các giảng viên tiềm năng mới đang làm việc theo hướng khác.
+Tôi nhớ có một cuộc họp đầu tiên với giảng viên vào năm 2013, nơi chúng tôi nói chuyện về những ứng viên tiềm năng, và ai đó đang nói về một ứng viên học sâu và nói, đừng lo lắng.
+Không sao đâu.
+Chúng ta vẫn nên thuê anh ấy vì họ làm được nhiều việc hơn là chỉ học sâu.
+Tôi nghĩ có xu hướng nghĩ rằng lĩnh vực này vẫn như cũ và không cởi mở với những cách đang được định hình lại trước mắt chúng ta, không nghĩ rằng điều đó quan trọng bằng cốt lõi mà chúng ta đã phát triển.
+Và vì vậy hãy hào phóng về điều đó và thuê giảng viên mới trong những lĩnh vực có vẻ ít truyền thống hơn, có vẻ hơi xa vời hơn, xa vời hơn, tôi đoán vậy.
+Tôi muốn kết thúc bài nói chuyện này bằng một câu trích dẫn rằng, trong vòng hai mươi năm nữa, máy móc sẽ có khả năng thực hiện công việc mà bất kỳ ai cũng có thể làm được.
+Đây là câu nói của Herb Seibut năm 1965 và ông ấy đã sai.
+Nhưng tôi thực sự hy vọng tôi thà trở thành Herb Simon của năm 1965 và được nhìn lại theo cách tương tự với cùng một thái độ lạc quan ngay bây giờ và cùng hy vọng rằng những gì chúng tôi đang làm, dù kỳ lạ và xa lạ như chúng tôi, bạn biết đấy, có thể nghĩ về nó, dù chúng tôi không biết cách thực hiện nó, vẫn có thể có mức độ tác động như thế này trên thực địa.
+Vì vậy, xin cảm ơn tất cả những người đã cộng tác với tôi cũng như những học sinh còn lại của tôi, bạn biết đấy, những người mà tôi đã không tình cờ chọn được bài của họ nhưng có thể dễ dàng có được.
+Cảm ơn rất nhiều.
+Cảm ơn bạn vì cuộc nói chuyện tuyệt vời đó.
+Nếu bạn có thắc mắc, chúng tôi có lập trường của Mike.
+Chào.
+Cảm ơn bạn đã nói chuyện.
+Công việc đó cũng rất thú vị.
+Và câu hỏi của tôi liên quan đến các mô hình khai báo sâu sắc.
+Chuẩn rồi.
+Bạn nói rằng ngày nay chúng ta quan tâm đến việc có nhiều bộ nhớ trong một mô hình và ít tính toán hơn.
+Vâng.
+Và tôi cảm thấy như điều này đang thay đổi bây giờ.
+Chúng tôi thích tính toán thời gian thử nghiệm và mọi người đang nghĩ về cách chúng tôi có thể làm cho các mô hình trở nên hợp lý hơn.
+Bạn có nghĩ rằng các mô hình cân bằng sâu có không gian hoặc bằng cách nào đó phù hợp với câu chuyện mới này không?
+Chuẩn rồi.
+Chắc chắn.
+Vì vậy, điều tôi sẽ nói là tôi nghĩ rằng mọi người đang xem xét các mô hình cân bằng sâu thực sự như một cách tính toán thời gian thử nghiệm và những thứ tương tự, và mọi người đã xem xét điều này.
+Điều tôi sẽ nói là có vẻ như, từ quan điểm kiến ​​trúc, điều này vẫn chưa thực sự phù hợp vì lý do nào đó.
+Và việc tính toán thời gian thử nghiệm như nó đang được thực hiện ngay bây giờ, đang sử dụng một kiến ​​trúc rất lớn, trên thực tế, là sự kết hợp của các chuyên gia, tức là, trên thực tế, nhiều tham số hơn tính toán và việc lặp lại dường như hoạt động tốt hơn ngay bây giờ.
+Tôi không biết liệu điều đó sẽ giữ nguyên như vậy mãi mãi hay sẽ có điều gì mới xuất hiện.
+Một lần nữa, nếu bạn không đồng ý với tôi, hãy làm những gì bạn muốn làm.
+Phải?
+Hy vọng rằng điều đó thực sự rất rõ ràng trong mọi điều tôi đang nói ở đây.
+Nhưng từ những gì chúng ta thấy hiện tại, không phải những thứ như mô hình cân bằng không tạo nên khoảng cách ở đây.
+Ở đằng kia ở giữa.
+Cảm ơn bạn vì cuộc nói chuyện tuyệt vời.
+Tôi có một câu hỏi về công việc chống chưng cất mà bạn đã làm.
+Chuẩn rồi.
+Vì vậy, tôi hiểu rằng bạn đã xây dựng một cách có hệ thống để xác định các điểm dữ liệu có thể gây tổn hại cho mô hình học sinh nhiều nhất có thể về mặt. Vì vậy, tôi tự hỏi liệu các phương pháp tương tự hoặc tương tự có thể được áp dụng để lọc ra dữ liệu chất lượng thấp trong giai đoạn điều chỉnh hướng dẫn hoặc đào tạo trước không?
+Nếu vậy, bạn có công việc tiếp theo nào về việc đó không?
+Cảm ơn.
+Vâng.
+Vì vậy, chúng tôi không.
+Nó có thể.
+Ý tôi là, tôi nghĩ chúng tôi thực sự đã nghĩ đến nó về mặt mục tiêu lấy mẫu vì mục tiêu này thực sự được xây dựng cho loại cập nhật cụ thể mà bạn đang thực hiện khi bạn muốn xem xét tất cả các mã thông báo.
+Bạn biết đấy, cũng có một số hành vi làm hỏng dữ liệu hiện có khiến việc đào tạo trở nên tồi tệ hơn và những thứ tương tự như thế này đối với những người chống đối, về cơ bản là cố gắng ngăn chặn dữ liệu được đào tạo và những thứ tương tự, có lẽ phù hợp hơn với những gì bạn đang nói.
+Tuy nhiên, có rất nhiều công việc lọc dữ liệu, nhưng không, chúng tôi vẫn chưa xem xét nó.
+Ồ, được rồi.
+Cảm ơn.
+Có ai ở bên trái không?
+KHÔNG.
+KHÔNG.
+Được rồi.
+Vậy chúng ta sẽ quay lại đây.
+Vâng.
+Chào giáo sư.
+Cảm ơn bạn vì cuộc nói chuyện tuyệt vời.
+Vì vậy, tôi đang tự hỏi, bạn có nghĩ rằng vấn đề an toàn hay độ bền chung có thể được giải quyết chỉ bằng cách làm cho mô hình ngày càng lớn hơn và ngày càng tốt hơn.
+Giống như, một trong những lý do khiến mọi người nói LLM bị ảo giác là vì họ bị buộc phải nói những điều họ không thực sự biết.
+Vậy bạn có nghĩ rằng nếu chúng ta tạo ra một mô hình có khả năng toàn năng thì những vấn đề này sẽ tự động biến mất?
+Vì vậy, không có bằng chứng xác thực nào cho thấy thực sự chỉ quy mô mới làm giảm sự đối nghịch hoặc tăng cường sức mạnh theo nghĩa thông thường.
+Điều đó thực sự đúng với các mô hình tầm nhìn.
+Theo như những gì chúng tôi có thể nói, điều đó đúng đối với LLM, v.v.
+Điều đó không có nghĩa là các mô hình lớn hơn hoặc tính toán nhiều hơn, v.v., không thể giúp được.
+Một trong những kỹ thuật khả thi nhất hiện nay và tôi nghĩ là những kỹ thuật thú vị nhất để đạt được sự mạnh mẽ, liên quan đến các mô hình lý luận có thể cân nhắc về thế hệ của chính họ, bạn biết đấy, của chính họ và nói, này.
+Tôi có thực sự vi phạm nội dung của mình ở đây hay không?
+Tôi không thấy bất kỳ lý do thực sự nào để nghĩ rằng điều này sẽ biến mất một cách kỳ diệu chỉ với nhiều dữ liệu hơn.
+Điều đó không phải là nó không được hỗ trợ bởi bằng chứng hiện tại.
+Tuy nhiên, tôi vẫn bối rối không hiểu tại sao lại tồn tại những ví dụ đối nghịch, ngay cả trong hình ảnh.
+Không có ý nghĩa gì cả.
+Tại sao chúng ta chưa thể khắc phục nó?
+Tôi hiểu nó từ quan điểm tối ưu hóa và, bạn biết đấy, kiến ​​trúc và tất cả những thứ đó, nhưng, về cơ bản, tại sao chúng ta không thể xây dựng một kiến ​​trúc mà không biết rằng đó vẫn là gấu trúc?
+Nó không có ý nghĩa gì cả.
+Và tôi thực sự tự hỏi liệu có vấn đề gì không nếu có thể có những khía cạnh liên quan đến dữ liệu, vấn đề gì đó về sự đa dạng của dữ liệu mà chúng ta thấy trong cuộc sống bình thường khiến chúng ta mạnh mẽ hơn nhiều với điều này, vân vân.
+Vì thế tôi không biết.
+Tôi không nghĩ vậy, nhưng tôi cũng rất cởi mở với các khả năng vì vẫn không có lý do gì khi các mô hình thực sự tin tưởng điều vô nghĩa này là một tín hiệu hữu ích.
+Tôi hiểu rồi.
+Cảm ơn rất nhiều.
+Cảm ơn giáo sư.
+Và tôi đang tham gia vào việc tối ưu hóa trực tuyến, học tập trực tuyến.
+Như vậy mình mới chia sang lĩnh vực LLM.
+Vì vậy, tôi tự hỏi rằng tôi cũng quan tâm đến sự an toàn và mạnh mẽ của AI.
+Tôi nghĩ đó là một hướng đi rất hứa hẹn.
+Vì vậy, tôi nghĩ rằng cách tốt nhất để giải thích sự mạnh mẽ và an toàn của AI là gì?
+Vậy từ việc tối ưu hóa hay thống kê hay từ đường dữ liệu?
+Vậy theo bạn cách nào là hợp lý nhất?
+Ý tôi là, chúng tôi đã có rất nhiều chuyện nên tôi chưa thực sự nói về nó.
+Chúng tôi thực sự đã gặp rất nhiều may mắn trong việc cải thiện độ bền thông qua các kỹ thuật như huấn luyện đối nghịch hơn, như lọc, cũng như thao tác bên trong của một mô hình để làm cho nó trở nên mạnh mẽ hơn.
+Giờ đây, tất cả những điều đó có thể xảy ra bằng các cuộc tấn công đủ mạnh có thể bị phá vỡ, đặc biệt nếu bạn có quyền truy cập hộp trắng vào mô hình, đặc biệt nếu bạn tinh chỉnh những thứ như thế này.
+Bạn biết?
+Ở đó chúng tôi không biết giải pháp cho trường hợp chung.
+Nhưng tôi tôi sẽ nói rằng tôi không rút ra được sự khác biệt đó.
+Tôi nghĩ rằng tối ưu hóa là một cách tiếp cận, nhưng ý tôi là dữ liệu, chúng giống nhau.
+Bạn biết?
+Tối ưu hóa là thực hiện một bước bằng cách giảm thiểu sự mất mát trên một dữ liệu nhất định.
+Bạn không thể dựa vào một quan điểm nhất định, bạn không thể tách chúng ra khỏi quan điểm khái niệm.
+Vì vậy, nếu bạn phát triển một kỹ thuật tối ưu hóa khác, điều đó về cơ bản là sử dụng dữ liệu theo cách khác.
+Và tôi và tôi nghĩ rằng, bạn biết đấy, đây sẽ là thứ sẽ có tác động qua lại.
+Đó không phải là một câu trả lời, tôi biết, nhưng tôi chỉ là tôi tôi chắc chắn không nghĩ mình sẽ không đặt cái này lên cái kia.
+Những điều này hoàn toàn có liên quan với nhau và không có cách nào chúng ta có thể giải quyết được điều đó.
+Được rồi.
+Cảm ơn rất nhiều.
+Được rồi.
+Thật không may, tôi nghĩ chúng ta chỉ có thể trả lời thêm hai câu hỏi nữa.
+Vì vậy, một ở đó và một ở đó.
+Và những người khác, tôi chắc chắn Ziko sẽ sẵn sàng trò chuyện thân mật sau đó.
+Xin chào.
+Vì vậy, cảm ơn bạn rất nhiều vì cuộc nói chuyện của bạn.
+Rất, rất đẹp.
+Khi bạn đang suy nghĩ về lý do tại sao các mô hình cân bằng sâu không hoạt động, bạn đã có một cái nhìn sâu sắc và mang tính triết học rất sâu sắc, đó là cách mà học sâu chỉ ra rằng chúng ta muốn tính toán nhiều nhất có thể cho mỗi tham số chứ không phải ngược lại.
+KHÔNG.
+Vì vậy, chúng tôi muốn nhiều tham số hơn và ít tham số hơn Ồ, vâng, Có.
+Càng ít tính toán càng tốt cho mỗi tham số.
+Vì vậy, tôi đang tự hỏi tại sao bạn nghĩ điều đó lại xảy ra trong vũ trụ này, và bạn có nghĩ rằng bạn có thấy xu hướng đó sẽ đảo ngược vào một thời điểm nào đó trong tương lai không?
+Tôi, nó vẫn chưa đảo ngược và tôi đã rất nhiều lần hy vọng nó sẽ đảo ngược trong một thời gian và hy vọng chúng ta có thể làm cho những thứ này hiệu quả hơn và, bạn biết đấy, khiến chúng thực sự có khả năng cạnh tranh với các mẫu bình thường.
+Tôi không biết.
+Ý tôi là, tôi nghĩ câu hỏi trước đây là một câu hỏi hay.
+Chúng tôi đang đạt đến điểm mà chúng tôi đang cố gắng truyền tải nhiều tính toán hơn vào các mô hình.
+Điều đó hiện đang được thực hiện bằng cách lặp lại các mô hình ánh sáng điện toán có rất nhiều tham số này.
+Có lẽ có những cơ chế khác để làm điều đó.
+Tôi nghĩ nó rất có thể.
+Tôi không biết rằng những thứ như mô hình cân bằng là đúng bởi vì chúng thực sự không thể sử dụng nhiều tham số hơn.
+Phải?
+Một MOE lặp lại vẫn có thể sử dụng tất cả các tham số của nó trong thời gian suy luận trong quá trình tính toán thời gian thử nghiệm, còn những tham số khác này thực sự không thể.
+Vì vậy, tôi không chắc chắn nó sẽ diễn ra như thế nào.
+Tôi không biết tại sao chúng ta lại sống trong vũ trụ mà chúng ta đang sống, nhưng bạn biết đấy, đó chính là vũ trụ mà chúng ta đang sống và vì vậy chúng ta phải cố gắng.
+Lấy làm tiếc.
+Chúng ta sẽ đây là câu hỏi cuối cùng, sau đó phần còn lại sẽ phải offline.
+Ồ, xin chào, Ezekiel.
+Tôi là Alan và cũng đang làm việc trong lĩnh vực an toàn AI.
+Vì vậy, về ý tưởng đào tạo trước về an toàn mà bạn đã nói đến, tôi tự hỏi bạn nghĩ gì về khả năng suy luận và ý nghĩa của nó, chẳng hạn như nếu bạn loại bỏ kiến ​​thức không an toàn khỏi LLM, nhưng nếu nó được phép suy luận, thì về mặt kỹ thuật, nó vẫn có thể rút ra hành vi có hại từ đầu.
+Phải?
+Tôi tự hỏi bạn nghĩ thế nào, trạng thái lý tưởng của một trí thông minh an toàn sẽ như thế nào.
+Vâng.
+Tuyệt đối.
+Và nói rõ hơn, phương pháp của chúng tôi và đây là loại cốt truyện mà tôi đã có cách đây vài thanh.
+Giải pháp không phải là loại bỏ tất cả kiến ​​thức không an toàn khỏi LLM.
+Điều đó thực sự có hại cho việc tạo ra thông tin có hại.
+Nếu bạn chỉ muốn, chúng tôi có mức độ an toàn khác nhau.
+Số 0 là lành tính nhất và số 5 là tệ nhất.
+Chúng tôi lọc ra dữ liệu tồi tệ nhất, nhưng nếu bạn chỉ đào tạo dựa trên dữ liệu an toàn nhất có thể, mô hình của bạn sẽ hoạt động kém hơn và thực sự có hại hơn.
+Không hiểu điều gì là không an toàn thì bản thân nó không phải là điều an toàn.
+Điều đó sẽ không mang lại cho chúng ta sự an toàn.
+Và vì vậy tôi nghĩ rằng câu trả lời phải như vậy và như bạn nói, bạn biết đấy, nếu nếu bạn thực sự bị hạn chế trong vấn đề đó, thì, vâng, bạn có thể khám phá lại những gì chúng ta cho là kiến ​​thức có hại bằng cách suy luận nó từ, bạn biết đấy, sách giáo khoa hóa học hoặc bất cứ thứ gì khác mà bạn có thể đọc.
+Và vì vậy tôi nghĩ rằng, nói chung, giải pháp không phải là bỏ qua dữ liệu.
+Đó là một điều phải tôn trọng thực tế là bạn có thể đưa ra những suy luận và kết luận bạn có thể rút ra từ dữ liệu được coi là có hại.
+Nhưng để cung cấp cho mô hình bối cảnh đầy đủ về điều gì có hại, điều gì không, chúng ta nên nghĩ như thế nào về dữ liệu có hại, thậm chí điều gì có hại nghĩa là gì.
+Bởi vì tôi sử dụng thuật ngữ đó rất nhiều, nhưng rõ ràng là nó cực kỳ phụ thuộc vào ngữ cảnh và rất tinh tế về cách chúng ta nghĩ về những thứ an toàn hay không an toàn cũng như việc chúng ta nghĩ gì về việc tốt trong các bối cảnh khác nhau hay không.
+Vì vậy, về tổng thể, tôi chỉ nghĩ rằng phải có giải pháp là không lọc dữ liệu.
+Giải pháp là phải có chủ ý hơn nhiều trong toàn bộ quá trình đào tạo theo cách tôn trọng mục tiêu an toàn một cách cơ bản hơn.
+Được rồi.
+Hãy cảm ơn Zico một lần nữa.
+Cảm ơn mọi người.
+Cảm ơn tất cả các bạn.

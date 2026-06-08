@@ -1,0 +1,3669 @@
+Title: Building Safe and Robust AI Systems 
+Video duration: 1h13m
+
+00:00:04,080 --> 00:00:06,880
+So I'm here to talk about building
+
+00:00:06,880 --> 00:00:09,840
+safe and robust AI systems.
+
+00:00:09,920 --> 00:00:15,040
+First of all, I wanna thank the organizers both for setting up the conference and for and for inviting me.
+
+00:00:15,355 --> 00:00:20,475
+I've run a few of these conferences recently, and I can tell you I am glad I am not in
+
+00:00:20,475 --> 00:00:25,515
+their shoes right now. So thank you for doing it so that the rest of us don't have to do
+
+00:00:25,515 --> 00:00:25,995
+it.
+
+00:00:26,955 --> 00:00:32,400
+I also gonna pull a little a little gonna, you know, interrupt them a little bit, and I'm actually
+
+00:00:33,360 --> 00:00:35,920
+was probably not gonna talk exactly
+
+00:00:36,160 --> 00:00:39,040
+about this topic that I advertised originally.
+
+00:00:40,480 --> 00:00:44,240
+I'm sure they're gonna forgive me that the the people don't really care what what talks we give.
+
+00:00:45,235 --> 00:00:49,235
+But I but I actually had this had this sort of a thought actually when I saw
+
+00:00:49,635 --> 00:00:54,835
+the test of time awards for this conference go out. And so what I actually wanna talk about today,
+
+00:00:54,835 --> 00:00:59,970
+there's gonna be plenty of safety work there. Don't worry. I will talk probably most about safety about any topic. But
+
+00:00:59,970 --> 00:01:00,930
+I wanna talk
+
+00:01:01,890 --> 00:01:07,010
+about trying to make an impact with academic research. I think it's a topic that for
+
+00:01:07,010 --> 00:01:12,050
+some reason is sort of on the decline right now or at least it's something that a lot of people are kinda concerned about. And so
+
+00:01:12,050 --> 00:01:17,215
+I wanna at least think about this topic, and I have a few things to say about it.
+
+00:01:17,935 --> 00:01:22,815
+So as I said, this is motivated by something that happened a long time ago,
+
+00:01:23,455 --> 00:01:25,535
+which was iClear twenty fifteen.
+
+00:01:26,800 --> 00:01:27,440
+And
+
+00:01:27,680 --> 00:01:32,880
+I, a few a week ago or so on Twitter, whenever it was announced, was looking at the the best paper awards
+
+00:01:33,120 --> 00:01:36,880
+or the the test of time awards, sorry, that were announced this year,
+
+00:01:38,240 --> 00:01:40,960
+basically giving awards for papers that happened ten years ago.
+
+00:01:41,935 --> 00:01:42,495
+And
+
+00:01:43,055 --> 00:01:48,015
+the Adam paper, of course, I think won. You know, we've all we all use Adam these days.
+
+00:01:48,255 --> 00:01:53,295
+And the runner-up paper was a neural machine translation paper. It basically invented softmax attention as it's currently
+
+00:01:53,295 --> 00:01:58,470
+used, and I thought, oh my god. Goodness. You know, these these are two who would have thought these two
+
+00:01:58,470 --> 00:02:00,790
+papers happened at the exact same workshop?
+
+00:02:01,510 --> 00:02:06,550
+But or the conference. But what really surprised me even more was that that a third paper that I knew about that
+
+00:02:06,550 --> 00:02:08,870
+sort of shaped a lot of my career
+
+00:02:09,670 --> 00:02:11,670
+didn't even win. This is, Ian,
+
+00:02:12,155 --> 00:02:13,835
+Jonathan, and Christian's
+
+00:02:13,835 --> 00:02:18,955
+harnessing adversarial examples paper. This is the one that has that picture of the panda turning
+
+00:02:18,955 --> 00:02:24,235
+into the gibbon that you've all seen a thousand times, and it didn't even win the best paper award.
+
+00:02:24,315 --> 00:02:26,715
+Oh, and by the way, also the VGG paper was there.
+
+00:02:27,670 --> 00:02:29,990
+A little paper on playing Go
+
+00:02:30,310 --> 00:02:31,030
+with
+
+00:02:31,430 --> 00:02:35,750
+convolutional neural networks that was the basis for later work in AlphaGo,
+
+00:02:36,870 --> 00:02:37,990
+memory networks,
+
+00:02:37,990 --> 00:02:39,110
+multiple visual
+
+00:02:39,510 --> 00:02:40,390
+attention, etcetera.
+
+00:02:42,795 --> 00:02:45,755
+The point I wanna make is that there were 31 papers
+
+00:02:46,315 --> 00:02:48,395
+at all of iClear
+
+00:02:48,795 --> 00:02:49,995
+twenty fifteen.
+
+00:02:51,675 --> 00:02:57,035
+And that I mean, something was in the air then. Right? There was this something something different happening
+
+00:02:57,035 --> 00:02:57,275
+then.
+
+00:02:58,230 --> 00:02:58,870
+And
+
+00:02:59,030 --> 00:03:04,390
+I don't want to sort of wax poetic about the good old days. I really I really don't want to. There's tons happening. It's been amazing
+
+00:03:04,390 --> 00:03:06,390
+in AI over the past ten years.
+
+00:03:06,710 --> 00:03:07,910
+But at the same time,
+
+00:03:08,550 --> 00:03:12,550
+if you look kind of over the course of these past ten years,
+
+00:03:13,255 --> 00:03:16,935
+I can't help but feel that we may have lost something.
+
+00:03:19,015 --> 00:03:20,135
+And I don't think
+
+00:03:20,535 --> 00:03:25,680
+if you take 31 kind of random papers from this year, you're gonna have on the order
+
+00:03:25,680 --> 00:03:29,680
+of, I don't know, half of them being kind of seemingly seminal pieces of work.
+
+00:03:30,800 --> 00:03:31,680
+And so,
+
+00:03:32,400 --> 00:03:33,040
+again,
+
+00:03:33,360 --> 00:03:34,720
+I don't want to
+
+00:03:36,320 --> 00:03:41,365
+talk about how good things used to be. Know ICLEAR was a weird thing too because it kinda came out of the fact
+
+00:03:41,365 --> 00:03:41,845
+that
+
+00:03:42,245 --> 00:03:47,365
+NeurIPS and ICML were already seen as being not, you know, not innovative enough in certain areas of deep
+
+00:03:47,365 --> 00:03:47,925
+learning.
+
+00:03:48,325 --> 00:03:50,325
+But I also think it's true
+
+00:03:50,645 --> 00:03:51,365
+that
+
+00:03:52,100 --> 00:03:53,460
+and not controversial
+
+00:03:53,460 --> 00:03:58,180
+also to say that, you know, there might be something we've lost in these past ten years.
+
+00:03:58,740 --> 00:04:02,500
+And talking to people in the field, thinking about what's been happening,
+
+00:04:03,300 --> 00:04:05,780
+I think the way I would sum it up
+
+00:04:06,385 --> 00:04:09,105
+is that there was a real notion
+
+00:04:09,345 --> 00:04:13,745
+ten years ago, or that I don't feel to the same degree anymore,
+
+00:04:14,225 --> 00:04:15,185
+that academic
+
+00:04:15,185 --> 00:04:19,665
+work that was going on at these conferences, you know, every paper that was being submitted here
+
+00:04:20,360 --> 00:04:25,480
+and at other conferences too, by the way, we just disagreed about what would be the future of the field, whether it would
+
+00:04:25,480 --> 00:04:30,760
+be deep learning or optimization. I was on the optimization side, by the way. I was I was out of the loop.
+
+00:04:30,760 --> 00:04:32,440
+I was not at iClear twenty fifteen.
+
+00:04:35,205 --> 00:04:40,085
+There was this sense that everything we were doing was gonna be transformative of the field,
+
+00:04:40,885 --> 00:04:43,685
+and I think that to a certain extent, we have,
+
+00:04:44,245 --> 00:04:46,405
+as a community, lost a little bit of that.
+
+00:04:47,220 --> 00:04:52,260
+And so what I want to talk about really in this talk and I'll get to AI safety and these sorts of things because, of course, this
+
+00:04:52,260 --> 00:04:57,540
+is how I'm thinking about this right now. But I wanna talk a little bit about how we might think about kind
+
+00:04:57,540 --> 00:04:58,580
+of regaining
+
+00:04:58,660 --> 00:05:00,340
+a little bit of that spark
+
+00:05:00,905 --> 00:05:03,145
+that was, I think, really special
+
+00:05:03,625 --> 00:05:05,945
+at conferences like iClear
+
+00:05:05,945 --> 00:05:07,145
+ten years ago.
+
+00:05:08,345 --> 00:05:13,385
+Now I personally don't think the answer, maybe like it was then, the answer kind of then was
+
+00:05:13,660 --> 00:05:14,940
+the mainstream
+
+00:05:14,940 --> 00:05:17,900
+machine learning community is kind of moving in the wrong direction.
+
+00:05:18,300 --> 00:05:23,340
+Let's do something else instead. I don't think that's the right answer right now, to be very clear.
+
+00:05:23,340 --> 00:05:26,220
+I think that the progress we're making is amazing.
+
+00:05:26,845 --> 00:05:31,965
+The fact that industry is such a large player in this field right now is also amazing and
+
+00:05:31,965 --> 00:05:36,525
+should be celebrated and, in fact, built upon, not try to you know, we shouldn't try to contradict it.
+
+00:05:37,405 --> 00:05:42,710
+And so I'm I'm sort of not gonna try to talk too broadly about what I think we can do
+
+00:05:42,710 --> 00:05:46,710
+to reignite the spark. That's a bit of a it's probably a bit of a too tall of a task.
+
+00:05:47,670 --> 00:05:49,430
+But what I wanna do instead
+
+00:05:49,750 --> 00:05:54,790
+is talk about how I've thought about my group's work over these past
+
+00:05:54,790 --> 00:05:55,670
+ten years
+
+00:05:56,285 --> 00:05:57,965
+as we have tried,
+
+00:05:58,605 --> 00:06:01,965
+and I would say, to a large extent, mainly failed
+
+00:06:02,605 --> 00:06:04,285
+to achieve this goal.
+
+00:06:06,125 --> 00:06:06,685
+So
+
+00:06:07,405 --> 00:06:12,610
+what I'm gonna do then is talk about what we've worked on. This is this is an incomplete picture.
+
+00:06:12,930 --> 00:06:17,730
+It's talking about some of the things that we've done over these past ten years.
+
+00:06:18,850 --> 00:06:24,165
+And I want to talk about sort of this kind of long period, not because I think these things are that relevant anymore
+
+00:06:24,165 --> 00:06:26,965
+necessarily or that we're trying to highlight everything here,
+
+00:06:27,445 --> 00:06:28,725
+but I do think
+
+00:06:29,365 --> 00:06:30,005
+that
+
+00:06:30,325 --> 00:06:32,645
+having worked on these topics
+
+00:06:32,965 --> 00:06:34,885
+provides me a bit of perspective
+
+00:06:35,125 --> 00:06:35,525
+to
+
+00:06:36,530 --> 00:06:41,810
+think about what was good about them, about what we were doing kind of right at the time, but also honestly critique them
+
+00:06:41,970 --> 00:06:47,250
+and talk about the mistakes we made and talk about why a lot of this work hasn't
+
+00:06:47,250 --> 00:06:48,370
+had the impact
+
+00:06:48,610 --> 00:06:49,650
+of papers
+
+00:06:49,795 --> 00:06:54,595
+like the ones that came across that that we've all seen at ICLR twenty fifteen,
+
+00:06:54,675 --> 00:06:55,715
+ten years ago.
+
+00:06:56,755 --> 00:06:58,995
+Alright. So that's the that's the basic outline.
+
+00:06:59,315 --> 00:07:02,355
+I'm gonna go into a lot of detail on old papers.
+
+00:07:03,360 --> 00:07:05,120
+Don't sweat the details here.
+
+00:07:05,280 --> 00:07:07,040
+They are meant to be illustrative.
+
+00:07:07,760 --> 00:07:11,760
+They are not meant to convey everything about the ideas.
+
+00:07:12,080 --> 00:07:15,520
+Maybe you'll be inspired to think about something new, maybe not. That's fine.
+
+00:07:16,315 --> 00:07:21,515
+But I'm gonna go quite fast through all these things, so forgive me. And I will, by the end,
+
+00:07:21,515 --> 00:07:26,235
+then get to get to AI safety, which was gonna be the the majority of the topic originally,
+
+00:07:26,475 --> 00:07:28,875
+but I think I wanna be a little a little bit broader.
+
+00:07:30,700 --> 00:07:31,420
+Okay.
+
+00:07:31,500 --> 00:07:33,180
+So let's start off talking about
+
+00:07:33,820 --> 00:07:34,860
+optimization
+
+00:07:34,940 --> 00:07:36,540
+and implicit layers.
+
+00:07:37,660 --> 00:07:38,380
+Now
+
+00:07:38,540 --> 00:07:40,060
+in 02/2015,
+
+00:07:41,100 --> 00:07:46,105
+I was and this is actually after all the work that was done at iClear, but seeing that work, seeing
+
+00:07:46,105 --> 00:07:47,065
+what was happening,
+
+00:07:47,465 --> 00:07:50,105
+you know, I was essentially a newly converted
+
+00:07:50,185 --> 00:07:51,065
+optimization
+
+00:07:51,065 --> 00:07:51,865
+expert
+
+00:07:52,185 --> 00:07:54,105
+wanting to work in deep learning.
+
+00:07:55,180 --> 00:07:55,980
+So what's
+
+00:07:56,540 --> 00:07:58,140
+what do we do at that point?
+
+00:07:58,620 --> 00:08:03,500
+Well, of course, the thing we would do is try to embed optimization
+
+00:08:03,500 --> 00:08:06,060
+inside of deep learning to make deep learning better.
+
+00:08:06,775 --> 00:08:11,975
+Now don't judge me too much. This wasn't as crazy as it sounded at the time. Remember, people were
+
+00:08:11,975 --> 00:08:13,255
+still primarily
+
+00:08:13,255 --> 00:08:18,775
+building new architectures at the time. That was the majority of work that was happening in 02/2015,
+
+00:08:18,775 --> 00:08:21,255
+I think, or not the majority, at least a large amount of it.
+
+00:08:22,800 --> 00:08:26,720
+And it made total sense. It seemed like the best way
+
+00:08:26,960 --> 00:08:27,600
+to
+
+00:08:27,920 --> 00:08:29,440
+impact the field
+
+00:08:29,760 --> 00:08:35,135
+was, in fact, to leverage the things that we knew about well in my group, I e optimization
+
+00:08:35,135 --> 00:08:37,295
+and duality and stuff like this,
+
+00:08:37,615 --> 00:08:41,215
+in order to influence and build better architectures.
+
+00:08:42,415 --> 00:08:44,415
+So I wanna talk about a few of these.
+
+00:08:45,055 --> 00:08:50,440
+The first thing we worked on was a method called input convex neural networks, and the basic and this is work with with Brandon
+
+00:08:50,440 --> 00:08:55,720
+Amos and others. And the basic idea here is if you take a normal, just deep neural network with ReLU
+
+00:08:55,720 --> 00:08:56,680
+activations,
+
+00:08:56,920 --> 00:08:58,280
+k, multilayer
+
+00:08:58,280 --> 00:09:01,240
+deep network. Well, the ReLU is a convex function.
+
+00:09:01,715 --> 00:09:06,755
+Right? That means the any slope any line connecting two points lies above the function.
+
+00:09:07,395 --> 00:09:12,515
+Convex functions can be optimized very easily, typically. That's what's nice about them. They have a single global
+
+00:09:12,515 --> 00:09:15,155
+optima or at least a single set of global optima.
+
+00:09:16,230 --> 00:09:17,990
+And it's also the case that
+
+00:09:18,230 --> 00:09:19,830
+positive combinations
+
+00:09:19,830 --> 00:09:24,950
+of convex functions are convex, and you can concatenate them as well and compose them.
+
+00:09:24,950 --> 00:09:29,990
+And so, in fact, if you just ensure that all the weights of your networks are positive
+
+00:09:30,665 --> 00:09:32,665
+and you have a scalar valued
+
+00:09:32,825 --> 00:09:37,065
+neural network, that neural network will actually be a convex function of its inputs.
+
+00:09:37,945 --> 00:09:42,985
+And you can do all sorts of really cool things with this if you have this property. For example, you can
+
+00:09:42,985 --> 00:09:48,300
+build energy models that have a global optimum for their optimization function.
+
+00:09:48,300 --> 00:09:53,580
+You basically solve these models by finding the minimum of some of the variables as input to the function.
+
+00:09:53,580 --> 00:09:57,180
+This is what energy models did. They were way more popular at the time than they are now.
+
+00:09:58,655 --> 00:10:03,695
+And if you make them convex, you can actually give provable guarantees about that. And we had things like this which look
+
+00:10:03,695 --> 00:10:08,735
+horribly bad right now, but which were, you know, kind of nice at the time in terms of image completion and stuff like
+
+00:10:08,735 --> 00:10:09,135
+that.
+
+00:10:09,855 --> 00:10:13,055
+You could also do cool things like ensure stability of functions.
+
+00:10:13,490 --> 00:10:18,610
+Right? So you or or dynamical systems. So you could do things like construct a Lyapunov
+
+00:10:18,610 --> 00:10:19,250
+function,
+
+00:10:19,650 --> 00:10:25,250
+which you project your normal dynamics to descend according to that Lyapunov
+
+00:10:25,250 --> 00:10:30,875
+function, and this gives you dynamical systems that are guaranteed to not diverge,
+
+00:10:30,875 --> 00:10:33,275
+to be stable around some fixed point.
+
+00:10:33,835 --> 00:10:35,035
+Also very cool.
+
+00:10:36,235 --> 00:10:41,430
+But at the same time, input convex networks, while cool, they they were sort of this kind of outlier.
+
+00:10:41,430 --> 00:10:45,270
+They were an entire network. We couldn't really plug them into existing architectures.
+
+00:10:45,430 --> 00:10:51,350
+So the next thing we spent a lot of time on is thinking about how we would integrate optimization
+
+00:10:51,750 --> 00:10:53,510
+into more traditional layers.
+
+00:10:54,375 --> 00:10:59,415
+And one of the ways to do this was with something we called optimization in the loop or the OpsNet architecture.
+
+00:10:59,655 --> 00:11:04,935
+And the basic and this is also worked by Brandon and also extended by several of my other students, Priya and Poei, amongst
+
+00:11:04,935 --> 00:11:05,175
+them.
+
+00:11:06,390 --> 00:11:11,750
+And the idea here is you would actually take an optimization problem. So we used to draw things like this a lot.
+
+00:11:11,910 --> 00:11:17,350
+That c variable is meant to show a constraint set. It's the allowable set of points. The little
+
+00:11:17,590 --> 00:11:22,895
+circles there are level sets of our function f, and so you wanna find the lowest value
+
+00:11:22,895 --> 00:11:26,495
+of that function that is within those constraints.
+
+00:11:28,895 --> 00:11:32,495
+A lot of problems can be formulated, of course, as optimization problems.
+
+00:11:32,655 --> 00:11:37,660
+But the idea here is that we actually wanted to formulate a layer in a network that solves
+
+00:11:37,660 --> 00:11:39,180
+an optimization problem.
+
+00:11:39,820 --> 00:11:42,860
+Alright? So, essentially, the output of a single layer
+
+00:11:43,100 --> 00:11:47,020
+would be the solution to a convex optimization
+
+00:11:47,020 --> 00:11:49,260
+problem where both the objective
+
+00:11:49,475 --> 00:11:52,835
+of that problem, the thing we're minimizing, and the constraints
+
+00:11:52,835 --> 00:11:54,995
+were defined by the previous layer.
+
+00:11:55,715 --> 00:12:00,995
+And it's also the reason that you might wanna do this. For one, it generalizes most active most current layers
+
+00:12:00,995 --> 00:12:05,480
+we actually use at the time in deep networks. So any linear layer followed by
+
+00:12:07,240 --> 00:12:08,120
+activation,
+
+00:12:08,120 --> 00:12:11,400
+at least things like ReLU and such, those could be expressed
+
+00:12:11,400 --> 00:12:17,080
+as convex optimization layers. It also let us embed a lot of specialized intentional
+
+00:12:17,080 --> 00:12:19,905
+logic within the individual layers.
+
+00:12:21,585 --> 00:12:26,865
+And a point of pride for me well, I don't know if it's pride or not, but when I I actually gave
+
+00:12:26,865 --> 00:12:29,985
+a talk about this at an early iteration of OpenAI,
+
+00:12:30,530 --> 00:12:36,050
+and Ilya was there. And he said that this is going to be as big as ResNet's, this architecture.
+
+00:12:36,210 --> 00:12:39,810
+And I mainly mentioned this to make the point that even Ilya
+
+00:12:39,810 --> 00:12:41,810
+made really bad predictions sometimes.
+
+00:12:44,135 --> 00:12:47,735
+So what but you can do cool things so that it is kind of interesting sometimes.
+
+00:12:47,815 --> 00:12:53,575
+You can do things like learn hard constraints from data. You can do things like solve Sudoku problems
+
+00:12:54,215 --> 00:12:59,255
+with with these networks because sometimes even including visual Sudoku problems that combine in this case,
+
+00:12:59,550 --> 00:13:04,910
+we made a fun problem that combined both MNIST classification and solving Sudoku with MNIST digits.
+
+00:13:04,910 --> 00:13:05,950
+That was rather fun.
+
+00:13:06,510 --> 00:13:11,550
+And you could also optimize for loss functions that involve some optimization problem at
+
+00:13:11,550 --> 00:13:14,510
+the end. We use this to do things like optimize
+
+00:13:13,875 --> 00:13:15,715
+power grid allocation
+
+00:13:16,275 --> 00:13:17,235
+to basically
+
+00:13:18,355 --> 00:13:21,235
+based upon stochastic forecasts of scheduling.
+
+00:13:23,715 --> 00:13:28,760
+But it's still this was still a very specialized form of layer, and it didn't
+
+00:13:28,760 --> 00:13:31,880
+really seem to plug in well into generic
+
+00:13:31,960 --> 00:13:37,320
+kind of networks, the kind that we were that were becoming more and more popular for language models, for vision models,
+
+00:13:37,320 --> 00:13:37,880
+etcetera.
+
+00:13:38,600 --> 00:13:43,795
+And so the next thing we thought about was sort of how to take this idea of the sort of the the
+
+00:13:43,795 --> 00:13:46,115
+kinds of optimization we were doing
+
+00:13:46,675 --> 00:13:49,475
+and plug them into more generic networks.
+
+00:13:49,795 --> 00:13:54,355
+And one thing that came out of this was some work on deep equilibrium models.
+
+00:13:55,075 --> 00:14:00,090
+Alright? And the idea here, it's it's not quite an optimization layer. Now it's actually a fixed point layer. But the
+
+00:14:00,090 --> 00:14:04,330
+way I describe it and this is work with with Xiaojie and Vladlan.
+
+00:14:05,130 --> 00:14:10,090
+And the way to describe it is we think of a normal deep network as being some finite, you know, number of layers deep.
+
+00:14:10,245 --> 00:14:13,605
+At least this is a common picture of the time. I know they look very different now.
+
+00:14:14,245 --> 00:14:16,725
+But we think of this as a normal deep network,
+
+00:14:17,125 --> 00:14:22,245
+and then we can think about extending this to actually have an infinite number
+
+00:14:22,245 --> 00:14:24,325
+of layers. What happens if we make this thing deeper and deeper?
+
+00:14:25,420 --> 00:14:30,620
+And to do this, you have to do some things. You can't have an infinite number of weights. You have to tie the weights together, things like this,
+
+00:14:30,620 --> 00:14:35,820
+but it's not that bad. You also have to add an injection layer that keeps injecting the inputs. Otherwise, the,
+
+00:14:35,820 --> 00:14:38,140
+you know, the output wouldn't actually depend on the input at all.
+
+00:14:38,935 --> 00:14:44,055
+And if you look at this, though, this looks like now an iterated dynamical system where you just apply the same
+
+00:14:44,055 --> 00:14:49,095
+function to the state over and over again. And so in fact, in most cases, or at least in
+
+00:14:49,095 --> 00:14:51,335
+some cases that you kind of want to encourage,
+
+00:14:53,260 --> 00:14:55,900
+this will converge to some sort of fixed point.
+
+00:14:56,380 --> 00:14:58,060
+And so instead of
+
+00:14:58,300 --> 00:15:03,420
+trying to actually compute this system layer by layer, we can just try to solve that fixed point.
+
+00:15:04,665 --> 00:15:05,385
+Right?
+
+00:15:05,545 --> 00:15:06,185
+And,
+
+00:15:07,385 --> 00:15:11,705
+of course, in reality, we don't use a single linear layer. We actually use a
+
+00:15:12,185 --> 00:15:17,225
+small function like a transformer block as our thing that we iterate again and again or we find
+
+00:15:17,225 --> 00:15:22,300
+a fixed point of. And the cool thing is you can actually use techniques very similar to the methods we use
+
+00:15:22,300 --> 00:15:25,100
+for differentiable optimization to solve these.
+
+00:15:25,340 --> 00:15:30,620
+The forward pass can be solved by essentially root finding, and the backward pass can be solved by implicit
+
+00:15:30,620 --> 00:15:31,260
+differentiation.
+
+00:15:32,165 --> 00:15:37,365
+And it works. And we found that, again and again, you know, we could try a layer
+
+00:15:37,365 --> 00:15:38,165
+like this,
+
+00:15:38,565 --> 00:15:41,445
+compare it to a normal stacked transformer,
+
+00:15:41,845 --> 00:15:47,230
+and the result was that it used it got better performance on, you know, simple old school language
+
+00:15:47,230 --> 00:15:52,190
+modeling tasks now, like Wikitext one zero three, while using less memory
+
+00:15:52,990 --> 00:15:58,510
+because you didn't actually just have to store all individual layers. You could just store the single layer and then backprop
+
+00:15:58,510 --> 00:15:59,150
+implicitly.
+
+00:16:00,875 --> 00:16:02,235
+So that seems great.
+
+00:16:04,475 --> 00:16:07,995
+Why didn't any of this why aren't we using equilibrium
+
+00:16:07,995 --> 00:16:09,115
+models at this point?
+
+00:16:09,435 --> 00:16:14,620
+And the reason is actually the bar I'm not showing you in this plot. It's the it's the time it takes
+
+00:16:14,620 --> 00:16:15,660
+to run these things.
+
+00:16:16,060 --> 00:16:20,140
+They take about twice as long to run on average as the equivalent
+
+00:16:20,540 --> 00:16:25,820
+as the equivalent deep net as equivalent sort of other depth normal depth deep network.
+
+00:16:26,675 --> 00:16:29,475
+And the problem was, fundamentally,
+
+00:16:29,795 --> 00:16:32,115
+with this and with optimization layers, etcetera,
+
+00:16:32,755 --> 00:16:36,595
+is that these implicit layers, optimization layers,
+
+00:16:37,395 --> 00:16:40,835
+deep equilibrium models, they have their place. But fundamentally,
+
+00:16:40,915 --> 00:16:41,635
+they are about
+
+00:16:42,290 --> 00:16:45,170
+applying more compute per layer
+
+00:16:45,250 --> 00:16:47,330
+while using fewer parameters.
+
+00:16:48,370 --> 00:16:50,130
+And it just so happens
+
+00:16:50,610 --> 00:16:54,770
+that the things that worked best, the things that work best right now
+
+00:16:55,250 --> 00:16:56,770
+do the exact opposite.
+
+00:16:58,315 --> 00:17:03,675
+Right? So mixer of experts layers are kind of the or mixer of experts models are kind of the gold standard these days
+
+00:17:03,675 --> 00:17:06,075
+for the best performing language models,
+
+00:17:06,395 --> 00:17:09,995
+and they use way more parameters and way less compute.
+
+00:17:11,340 --> 00:17:16,620
+You know? If the universe was different, if reality was different, maybe we'd live in a world where
+
+00:17:16,620 --> 00:17:21,900
+deep equilibrium networks actually worked better, but but they don't as far as I can tell.
+
+00:17:22,460 --> 00:17:27,585
+And same with optimization. Now there is a place for it, I think. If you have an optimization problem you need to solve and you want
+
+00:17:27,585 --> 00:17:33,105
+to, you know, tailor your network to perform well there, that's great. But I just think, ultimately,
+
+00:17:33,425 --> 00:17:35,025
+these were a cool idea
+
+00:17:35,265 --> 00:17:40,385
+that spoke with the sort of the philosophy at the time, which is seeing what we could do with new
+
+00:17:40,385 --> 00:17:40,785
+layers,
+
+00:17:41,200 --> 00:17:42,480
+new architectures,
+
+00:17:42,720 --> 00:17:44,400
+but it didn't really pan out.
+
+00:17:46,880 --> 00:17:51,440
+Let's talk about the next thing we worked on for a while, which is certified robustness.
+
+00:17:53,215 --> 00:17:54,895
+So this isn't quite a
+
+00:17:55,295 --> 00:17:59,055
+sequential story. We started working on this while we were still working on the other methods.
+
+00:17:59,615 --> 00:18:04,895
+But one thing that was already very evident in about 02/2017
+
+00:18:05,470 --> 00:18:08,910
+is that adversarial robustness seemed like a really big problem.
+
+00:18:09,550 --> 00:18:14,110
+I think we've all seen this figure before. This is in fact the figure from that 02/2015
+
+00:18:14,110 --> 00:18:17,550
+Eichler paper, which did not win the best paper award or the test of time awards,
+
+00:18:18,645 --> 00:18:22,565
+showing that if you take a, you know, a panda, you can add a little bit of noise adversarially
+
+00:18:22,565 --> 00:18:27,685
+chosen to get another image, and the network predicts it's wrong. And this is actually very, very widespread. You can basically do
+
+00:18:27,685 --> 00:18:32,830
+this with any image. You can make any image classified as any class by adding a tiny amount of
+
+00:18:32,830 --> 00:18:33,630
+imperceptible
+
+00:18:33,630 --> 00:18:34,270
+noise.
+
+00:18:34,990 --> 00:18:36,990
+This seems like a really bad thing
+
+00:18:37,390 --> 00:18:42,590
+because, a, it seems like you know, how could you ever trust systems that did this? How would you ever deploy these
+
+00:18:42,590 --> 00:18:43,070
+in practice?
+
+00:18:43,875 --> 00:18:49,075
+But it also just seems like this is a fundamental problem. We know how could an intelligent model actually
+
+00:18:49,075 --> 00:18:51,235
+do this. This seems like a mistake.
+
+00:18:52,835 --> 00:18:53,555
+However,
+
+00:18:53,955 --> 00:18:58,195
+at the same time, most strategies that were being developed to mitigate this problem,
+
+00:18:58,800 --> 00:19:01,440
+they really could be easily circumvented.
+
+00:19:01,920 --> 00:19:07,120
+Nicolas Carlini famously had a paper, I think, a few years later at iClear where all the proposed
+
+00:19:07,120 --> 00:19:08,000
+defenses,
+
+00:19:08,240 --> 00:19:13,475
+they broke before the conference actually started. So all the things people proposed to sort of,
+
+00:19:13,555 --> 00:19:18,675
+you know, defend against these except for a few, but all the ones except for certified ones, in fact. But
+
+00:19:18,675 --> 00:19:21,155
+all the ones that, you know, were sort of ad hoc,
+
+00:19:22,275 --> 00:19:23,715
+they just they just
+
+00:19:23,760 --> 00:19:24,400
+broke.
+
+00:19:24,880 --> 00:19:25,680
+And so
+
+00:19:26,160 --> 00:19:27,440
+it seemed to me
+
+00:19:27,840 --> 00:19:31,280
+like one of the best ways to have to target
+
+00:19:31,280 --> 00:19:32,160
+impact
+
+00:19:32,240 --> 00:19:34,720
+in academic work was to
+
+00:19:35,040 --> 00:19:38,105
+develop methods that were actually certifiably
+
+00:19:38,105 --> 00:19:40,105
+robust or provably robust
+
+00:19:40,105 --> 00:19:41,865
+to perturbations like this.
+
+00:19:43,065 --> 00:19:48,105
+And so in our sort of next bit of work, we basically developed two
+
+00:19:48,105 --> 00:19:49,385
+classes of techniques
+
+00:19:49,900 --> 00:19:52,780
+that can be used to guarantee robustness
+
+00:19:53,020 --> 00:19:54,380
+of deep networks.
+
+00:19:55,020 --> 00:19:57,260
+The first of these was developed by Eric
+
+00:19:58,140 --> 00:19:59,100
+and myself,
+
+00:19:59,340 --> 00:20:04,515
+and it and actually many others developed similar methods at the time. And the idea was it
+
+00:20:04,515 --> 00:20:07,075
+it uses convex relaxations
+
+00:20:07,395 --> 00:20:08,035
+to
+
+00:20:08,275 --> 00:20:09,475
+get guarantees
+
+00:20:09,475 --> 00:20:14,515
+on the output of networks. You see, I really couldn't give up convex optimization. It's a it's
+
+00:20:14,515 --> 00:20:15,235
+a real problem.
+
+00:20:15,810 --> 00:20:20,850
+And I think I think I still actually am overly obsessed with the, you know, the little bit
+
+00:20:20,850 --> 00:20:23,010
+of con convex optimization I still remember.
+
+00:20:24,210 --> 00:20:29,650
+The idea here is really simple. Again, if you have a deep network, the reason why adversarial examples
+
+00:20:29,385 --> 00:20:32,105
+exist, the reason why they're so hard to prevent
+
+00:20:32,345 --> 00:20:37,785
+is that if you take a convex region, a sort of a well defined region in input space,
+
+00:20:37,785 --> 00:20:43,225
+like, say, the set of all perturbations where you can perturb each pixel by plus or minus point 1%
+
+00:20:43,225 --> 00:20:44,025
+or something like that,
+
+00:20:45,570 --> 00:20:47,490
+If you feed that region
+
+00:20:47,490 --> 00:20:51,570
+through a deep network, because the deep network is a nonlinear,
+
+00:20:51,570 --> 00:20:52,850
+nonconvex function,
+
+00:20:53,250 --> 00:20:58,375
+you get really weird shapes on the outside, and you get shapes you can't easily reason over. They're
+
+00:20:58,375 --> 00:20:59,975
+combinatorially complex,
+
+00:21:00,135 --> 00:21:02,935
+and so you can't even find the worst case example.
+
+00:21:04,055 --> 00:21:09,175
+And this comes from the fact that the ReLU function, while, you know, being a a relatively simple function, is in
+
+00:21:09,175 --> 00:21:12,695
+fact, you know, a nonlinear function, and so you can't really describe it.
+
+00:21:13,750 --> 00:21:16,390
+You can't easily enumerate the set of all points here.
+
+00:21:17,670 --> 00:21:22,870
+So what we did is we actually took what's called the convex hull of these points. We took we relaxed the
+
+00:21:22,870 --> 00:21:28,070
+ReLU to say rather than being exactly have our activations be exactly defined by this ReLU,
+
+00:21:28,355 --> 00:21:33,875
+we allow them to move around inside a convex region that was, in fact, the convex hull of the ReLU.
+
+00:21:34,195 --> 00:21:37,715
+And what this does is this actually sort of forms an upper bound
+
+00:21:38,275 --> 00:21:41,555
+on the loss, the worst case adversarial
+
+00:21:41,555 --> 00:21:46,620
+loss you can achieve with a network, the worst case perturbation you can make,
+
+00:21:46,700 --> 00:21:50,380
+but it's one that is actually much more efficient to optimize over.
+
+00:21:53,100 --> 00:21:56,860
+And it worked. You know? We could get guarantees on MNIST.
+
+00:21:57,245 --> 00:21:59,965
+We were still doing MNIST at the time. Very sad.
+
+00:22:02,605 --> 00:22:05,405
+Saying no perturbation no matter what
+
+00:22:05,725 --> 00:22:11,005
+could ever get more than 3% error. So it worked. You know, normal networks, you could get a % error.
+
+00:22:11,005 --> 00:22:14,320
+No problem. And it, you know, kind of worked on CIFAR.
+
+00:22:14,480 --> 00:22:17,120
+And ImageNet, you know, we don't talk about ImageNet.
+
+00:22:19,600 --> 00:22:20,480
+But, actually
+
+00:22:21,040 --> 00:22:24,400
+and that was kinda mean, there actually were later papers that scaled this to ImageNet.
+
+00:22:24,925 --> 00:22:29,965
+But I think in the meantime, we also sort of said, you know, maybe this is maybe not quite the best way to deal with
+
+00:22:29,965 --> 00:22:32,605
+these things. Let's think about other approaches instead.
+
+00:22:33,325 --> 00:22:35,245
+And so in this in this
+
+00:22:35,885 --> 00:22:37,405
+in this world, Jeremy
+
+00:22:38,070 --> 00:22:43,190
+as well as Ilan were thinking about this and thinking about how can we develop better ways to sort of
+
+00:22:44,550 --> 00:22:45,190
+prevent
+
+00:22:45,430 --> 00:22:46,790
+adversarial examples.
+
+00:22:47,430 --> 00:22:50,470
+And, again, I'm gonna call back to a simpler time of ICLARE
+
+00:22:50,865 --> 00:22:52,785
+because the year before
+
+00:22:52,865 --> 00:22:58,625
+Jeremy wrote this paper, so this was the after the submissions for ICLARE twenty nineteen,
+
+00:22:59,665 --> 00:23:00,545
+Jeremy
+
+00:23:00,545 --> 00:23:04,465
+read every single submission to ICLARE twenty nineteen
+
+00:23:05,090 --> 00:23:06,850
+on adversarial examples.
+
+00:23:07,330 --> 00:23:12,450
+He actually read every single line. There were about a hundred. You couldn't do that at the time. You can't do that anymore.
+
+00:23:14,690 --> 00:23:19,570
+And he read them all. He realized that, you know, some were the the ones that seemed to be actually most promising
+
+00:23:19,935 --> 00:23:21,855
+were ones that were using randomization
+
+00:23:21,855 --> 00:23:22,655
+techniques,
+
+00:23:23,615 --> 00:23:25,775
+but they were kind of doing it in the wrong way.
+
+00:23:26,175 --> 00:23:30,335
+And he figured out how to simplify this and come up with kind of what I would call the correct
+
+00:23:30,335 --> 00:23:31,935
+and tight analysis
+
+00:23:31,935 --> 00:23:33,855
+for sort of randomized classifiers.
+
+00:23:34,750 --> 00:23:40,190
+The idea is really simple. What you do is you just take an image like your famous panda, and you just add a bunch of Gaussian noise,
+
+00:23:40,190 --> 00:23:42,030
+and you classify it a bunch of times.
+
+00:23:42,510 --> 00:23:47,710
+Then you take the majority vote of those classifications and have that be your classifier
+
+00:23:48,105 --> 00:23:49,785
+or have that be your prediction.
+
+00:23:50,425 --> 00:23:55,465
+And what you're doing when you do this is you're kind of smoothing out the function. Right? You're taking functions because what adversarial examples are
+
+00:23:55,465 --> 00:24:00,105
+in some sense is they're kind of weird spikes of the wrong class that inject themselves
+
+00:24:00,530 --> 00:24:04,450
+into the space of nearby points that have no business being there.
+
+00:24:05,570 --> 00:24:11,010
+And if you do apply this randomized smoothing, you actually smooth out the decision boundaries and get
+
+00:24:11,090 --> 00:24:12,530
+classifiers, importantly,
+
+00:24:12,850 --> 00:24:17,885
+that you actually can prove something about. So in particular, you can prove that
+
+00:24:17,885 --> 00:24:19,965
+if the smooth classifier
+
+00:24:20,605 --> 00:24:23,085
+classifies the correct image with probability p,
+
+00:24:23,245 --> 00:24:23,885
+then
+
+00:24:24,045 --> 00:24:29,150
+the this classifier is actually robust with an l two ball defined by by
+
+00:24:29,150 --> 00:24:34,270
+p and essentially the the the Gaussian inverse CDF as well as the variance you use for your sampling for
+
+00:24:34,270 --> 00:24:35,310
+your noise sampling.
+
+00:24:36,670 --> 00:24:41,870
+And this now, for the first time, actually scaled to ImageNet. So we could actually get guarantees in
+
+00:24:41,870 --> 00:24:47,105
+saying, you know, if you add this amount of noise, if if your noise is bounded by
+
+00:24:47,105 --> 00:24:47,985
+this amount,
+
+00:24:48,625 --> 00:24:52,625
+there is no way to fool this randomized smoothing classifier,
+
+00:24:52,705 --> 00:24:54,625
+and that seemed really cool at the time
+
+00:24:55,950 --> 00:24:59,870
+even if the actual bounds we're talking about here were still very, very small.
+
+00:25:00,990 --> 00:25:03,150
+And, you know, 02/2019,
+
+00:25:03,150 --> 00:25:04,670
+everything seemed very promising.
+
+00:25:05,230 --> 00:25:08,110
+So what's happened the year since? Well, in the year since,
+
+00:25:08,590 --> 00:25:09,150
+I am
+
+00:25:09,645 --> 00:25:14,685
+happy, I don't know, sad to say, there have been a whole lot of classifiers that have been deployed
+
+00:25:14,765 --> 00:25:16,925
+in the real world in deep learning,
+
+00:25:17,085 --> 00:25:20,205
+and not a single one of them, as far as I'm aware,
+
+00:25:20,685 --> 00:25:22,365
+uses any sort of robustness.
+
+00:25:24,980 --> 00:25:26,420
+So what went wrong?
+
+00:25:27,060 --> 00:25:30,660
+Why didn't this actually I mean, deep learning, it's being adopted.
+
+00:25:30,820 --> 00:25:31,780
+What happened?
+
+00:25:32,900 --> 00:25:35,300
+And the short answer is, well, it didn't actually work.
+
+00:25:37,195 --> 00:25:40,235
+And so it's easy easy easy answer.
+
+00:25:40,875 --> 00:25:45,675
+But the the what what I really mean by this is that the price you pay
+
+00:25:45,915 --> 00:25:48,235
+to build a robust classifier
+
+00:25:48,475 --> 00:25:50,475
+is the worst trade off imaginable.
+
+00:25:51,560 --> 00:25:53,560
+You are basically building
+
+00:25:53,720 --> 00:25:57,560
+a classifier that is robust to a tiny amount of noise,
+
+00:25:57,800 --> 00:26:00,760
+a tiny not noise. Actually, a tiny amount of adversarial
+
+00:26:00,760 --> 00:26:01,880
+perturbations.
+
+00:26:02,920 --> 00:26:08,015
+And in doing so, you create a classifier that actually works much worse. So robust classifiers, they they just don't
+
+00:26:08,015 --> 00:26:11,935
+perform as well as normal classifiers. They work much worse,
+
+00:26:12,655 --> 00:26:14,095
+all for robustness
+
+00:26:14,175 --> 00:26:16,735
+to a completely unnatural
+
+00:26:17,135 --> 00:26:22,250
+type of threat model because no adversary is gonna stick within some tiny imperceptible
+
+00:26:22,250 --> 00:26:24,090
+ball that you can define beforehand.
+
+00:26:26,170 --> 00:26:26,810
+Now
+
+00:26:26,970 --> 00:26:32,010
+this was always supposed to be a toy problem, I wanna add. The people talking about robustness, we we didn't think,
+
+00:26:33,025 --> 00:26:38,865
+by the way, that, you l infinity balls and l two balls were a good way of describing perturbations.
+
+00:26:38,865 --> 00:26:40,785
+This was always a toy problem.
+
+00:26:41,265 --> 00:26:46,410
+But we had this weird situation where we tried to solve this toy problem thinking it would
+
+00:26:46,410 --> 00:26:49,930
+be the easy first step to building really robust classifiers,
+
+00:26:50,010 --> 00:26:51,770
+and we couldn't even solve it.
+
+00:26:55,130 --> 00:26:56,650
+This might come back later.
+
+00:26:57,130 --> 00:26:59,975
+I think it will come back later. But for now,
+
+00:27:00,215 --> 00:27:03,015
+people basically ignore this because
+
+00:27:03,575 --> 00:27:09,015
+we don't seem to be having a lot of random adversarial perturbations being applied to our deep networks.
+
+00:27:09,335 --> 00:27:11,175
+Maybe. Maybe we'll we'll have those soon.
+
+00:27:13,410 --> 00:27:17,250
+And so we were more than happy just to use good performing classifiers.
+
+00:27:17,250 --> 00:27:20,450
+Those are the ones that actually sort of matter in practice.
+
+00:27:22,690 --> 00:27:26,610
+So, you know, a long time now of
+
+00:27:25,965 --> 00:27:26,925
+approaches
+
+00:27:27,085 --> 00:27:32,205
+that seemed really promising, I would say, seemed like they were really trying to find those places
+
+00:27:32,285 --> 00:27:35,805
+where academic research could have the biggest impact,
+
+00:27:36,045 --> 00:27:41,090
+and I think, you know, kind of kind of failing. Not that these weren't really interesting papers, led to a lot of
+
+00:27:41,090 --> 00:27:43,490
+very, you know, good techniques.
+
+00:27:43,490 --> 00:27:44,930
+They do have applications.
+
+00:27:45,090 --> 00:27:48,210
+But if you look compare this to attention,
+
+00:27:48,850 --> 00:27:52,450
+neural machine translation, I think it's I just it's not it's not close.
+
+00:27:55,265 --> 00:27:55,905
+Okay.
+
+00:27:57,105 --> 00:27:58,705
+I wanna move now to
+
+00:27:59,025 --> 00:28:03,505
+more of the current era and talk about what we're thinking about these days because
+
+00:28:05,950 --> 00:28:07,470
+what's happened recently,
+
+00:28:08,590 --> 00:28:12,910
+and I would say this started around it start I I started thinking about this around, you know, 02/2020,
+
+00:28:13,870 --> 00:28:16,430
+is that the scaling era had arrived,
+
+00:28:18,535 --> 00:28:21,415
+and we were starting to enter a time
+
+00:28:22,055 --> 00:28:25,575
+where no longer could academic groups
+
+00:28:25,975 --> 00:28:26,935
+be able
+
+00:28:27,255 --> 00:28:28,375
+to build
+
+00:28:28,455 --> 00:28:33,770
+state of the art models anymore. We could still develop new architectures, new methods, and and
+
+00:28:33,770 --> 00:28:38,090
+make a good case for them, hope they were picked up by industry and scaled there,
+
+00:28:38,570 --> 00:28:42,490
+but we really weren't the ones building the models anymore for the most part.
+
+00:28:43,835 --> 00:28:48,955
+It's laughable now how little how small and how little compute those models actually
+
+00:28:48,955 --> 00:28:52,235
+needed at the time in 2020. We could easily do it now,
+
+00:28:52,555 --> 00:28:57,355
+but we couldn't then, or we didn't we didn't think we could then because we were used to running experiments on our laptops
+
+00:28:57,515 --> 00:29:01,570
+for the most part and seeing results very quickly and stuff like that.
+
+00:29:02,850 --> 00:29:04,130
+Not quite. I mean,
+
+00:29:04,530 --> 00:29:07,810
+we were using GPUs here, but forgive me the the exaggeration.
+
+00:29:08,690 --> 00:29:10,370
+So what this meant is
+
+00:29:10,690 --> 00:29:13,970
+deep networks were now and they were becoming, you know, good
+
+00:29:14,235 --> 00:29:17,275
+and better, and they were working well on a lot of problems.
+
+00:29:17,275 --> 00:29:21,755
+And all of a sudden, it seemed like and they're getting more and more complex.
+
+00:29:22,555 --> 00:29:27,755
+And it seemed like, for the most part, it was no longer the case that we would be able
+
+00:29:28,220 --> 00:29:33,260
+to really understand them or at least we were resigning finally to the fact
+
+00:29:33,260 --> 00:29:38,380
+that we wouldn't be able to understand them from first principles like a lot of the models we
+
+00:29:38,380 --> 00:29:43,580
+were used to in good old fashioned classical machine learning, like linear models and SVMs and
+
+00:29:43,580 --> 00:29:44,140
+stuff like this.
+
+00:29:45,555 --> 00:29:46,755
+And so, again,
+
+00:29:47,155 --> 00:29:52,195
+it seemed like we had an obvious role for academic research at this
+
+00:29:52,195 --> 00:29:53,075
+point in time,
+
+00:29:53,475 --> 00:29:54,835
+and the role was
+
+00:29:56,035 --> 00:30:00,115
+we were going to be the ones that created the new scientific
+
+00:29:59,700 --> 00:30:04,740
+study of existing models. Models were things in the world to be
+
+00:30:04,740 --> 00:30:05,700
+appreciated,
+
+00:30:06,900 --> 00:30:12,180
+and we would study them. We'd create the new biology or physics or, as I like to say, sometimes more
+
+00:30:12,180 --> 00:30:14,180
+like the pop psychology in practice,
+
+00:30:14,745 --> 00:30:15,625
+of
+
+00:30:15,625 --> 00:30:16,825
+deep networks.
+
+00:30:18,265 --> 00:30:21,785
+And this was actually a very profitable area or a very sort of lucrative
+
+00:30:22,345 --> 00:30:24,025
+don't wanna make it monetary.
+
+00:30:24,025 --> 00:30:29,400
+This is very good for research, I think. I think we've done a very good job, and I actually still think this is going strong,
+
+00:30:29,400 --> 00:30:33,000
+this current method here, so I don't wanna say this one is not working.
+
+00:30:34,120 --> 00:30:36,600
+I will talk about some critiques of it in a second,
+
+00:30:37,000 --> 00:30:39,320
+but I wanna highlight some of the things we did with this.
+
+00:30:39,640 --> 00:30:45,005
+One of the first of these was work on the edge of stability. So this is also work again by Jeremy and others,
+
+00:30:45,405 --> 00:30:50,685
+and the idea here is that traditional optimization theory basically says you should pick your learning rate,
+
+00:30:50,685 --> 00:30:52,445
+the learning rate of your optimizer,
+
+00:30:52,445 --> 00:30:54,605
+based upon the sharpness
+
+00:30:54,685 --> 00:30:56,125
+of your underlying function.
+
+00:30:56,640 --> 00:30:59,120
+And if you have a learning rate that's above
+
+00:30:59,280 --> 00:31:03,760
+two over if if if eta if if your sharpness is above two over
+
+00:31:04,320 --> 00:31:08,160
+the step size, then things go bad. Right? Then you start diverging.
+
+00:31:08,320 --> 00:31:13,925
+That's traditional optimization. And a lot of proofs, including, by the way, a lot of proofs in deep learning papers,
+
+00:31:13,925 --> 00:31:17,525
+basically just assumed the same thing, assumed a bound on sharpness,
+
+00:31:17,525 --> 00:31:20,325
+and then proved things about the convergence of the method
+
+00:31:20,965 --> 00:31:23,045
+if you if you bound sharpness in a way.
+
+00:31:24,880 --> 00:31:29,680
+And so what what Jeremy did was look at whether this really makes any sense or not,
+
+00:31:30,240 --> 00:31:31,440
+and what he did
+
+00:31:31,920 --> 00:31:33,440
+was show
+
+00:31:34,320 --> 00:31:39,625
+plots like this. So what's happening here, and I'll take a second, is we're showing iterations
+
+00:31:39,625 --> 00:31:40,985
+of an optimizer,
+
+00:31:41,385 --> 00:31:44,185
+and what we're showing here is the sharpness,
+
+00:31:44,185 --> 00:31:49,625
+which again is the top eigenvalue of the Hessian of this function, as well as the trending loss as it evolves over time.
+
+00:31:50,505 --> 00:31:52,985
+And the odd thing about deep networks
+
+00:31:53,400 --> 00:31:58,440
+is that the sharp mean, not it's not it's actually not odd. It's it's odd in in a way, but the
+
+00:31:58,440 --> 00:32:03,480
+sharpness does not stay fixed the whole time. You know, the sharpness for a quadratic function is always fixed. Sharpness
+
+00:32:03,480 --> 00:32:07,800
+of deep network can can change. You know, you're optimizer. You're going different regions of this network. Of course, it can change.
+
+00:32:09,675 --> 00:32:14,075
+But this doesn't look very good because, you know, we're keeping a fixed learning rate here,
+
+00:32:14,555 --> 00:32:16,795
+and as we train our network,
+
+00:32:17,035 --> 00:32:18,875
+our sharpness is increasing.
+
+00:32:19,835 --> 00:32:21,195
+And in theory,
+
+00:32:21,275 --> 00:32:25,000
+once the sharpness goes above this 200 number,
+
+00:32:25,400 --> 00:32:30,920
+our step size for our optimizer is gonna be too big, and it's gonna diverge.
+
+00:32:32,760 --> 00:32:34,440
+Now here's what happens instead, though.
+
+00:32:36,035 --> 00:32:38,595
+The sharpness just stops increasing
+
+00:32:39,555 --> 00:32:43,955
+and hovers around that same level for the rest of optimization,
+
+00:32:44,595 --> 00:32:46,355
+and then the loss
+
+00:32:47,155 --> 00:32:48,275
+doesn't blow up.
+
+00:32:49,410 --> 00:32:50,370
+It actually
+
+00:32:51,010 --> 00:32:53,890
+still decreases just nonmonotonically.
+
+00:32:54,130 --> 00:32:57,650
+It has little spikes in it, but overall still goes down.
+
+00:32:59,650 --> 00:33:02,130
+I think Jeremy's finally convinced that now he's
+
+00:33:03,410 --> 00:33:08,585
+he has some work at this conference also with Alex Damian. I don't I I they're I forget which day they're presenting it, but I
+
+00:33:08,585 --> 00:33:13,705
+think finally solving this problem or understanding this problem at least a little bit better. Maybe not understanding
+
+00:33:13,705 --> 00:33:15,465
+it, but at least characterizing it a bit better.
+
+00:33:16,250 --> 00:33:17,770
+But this is very strange.
+
+00:33:18,090 --> 00:33:20,010
+This is an empirical phenomenon,
+
+00:33:20,170 --> 00:33:25,450
+kind of like a physical property of deep networks that deserves study as an emergent
+
+00:33:25,450 --> 00:33:26,010
+phenomenon.
+
+00:33:28,805 --> 00:33:33,125
+This is not the only one. There's a lot of things like this, a lot of things that are really kind of counterintuitive.
+
+00:33:33,525 --> 00:33:37,525
+We also did some work looking at by by by Vaishnav,
+
+00:33:37,525 --> 00:33:39,045
+Yading, and Christina,
+
+00:33:39,285 --> 00:33:40,325
+looking at
+
+00:33:40,940 --> 00:33:43,420
+an odd relationship between
+
+00:33:43,580 --> 00:33:44,700
+disagreement
+
+00:33:45,020 --> 00:33:47,420
+of arbitrarily trained classifiers,
+
+00:33:47,980 --> 00:33:49,980
+like differently initialized classifiers,
+
+00:33:50,060 --> 00:33:51,500
+and their error.
+
+00:33:51,820 --> 00:33:56,935
+So the idea here is we can take repeat this pro following experiment. We train two different classifiers with
+
+00:33:56,935 --> 00:33:58,215
+two different initializations,
+
+00:33:59,655 --> 00:34:02,135
+and then we look at how often they disagree
+
+00:34:02,455 --> 00:34:07,575
+versus just how often they make different predictions on the same data, same schedule of
+
+00:34:08,135 --> 00:34:10,295
+SGD and all that kind of stuff, just different initializations.
+
+00:34:10,560 --> 00:34:12,480
+You could randomize other things as well.
+
+00:34:13,360 --> 00:34:17,520
+And we computed the disagreement between them as well as their average error.
+
+00:34:17,840 --> 00:34:21,200
+So what's the average error of declassifiers? What's their disagreement?
+
+00:34:21,440 --> 00:34:22,400
+And what we found,
+
+00:34:22,995 --> 00:34:26,515
+very surprisingly, is that this actually lied almost exactly
+
+00:34:26,835 --> 00:34:29,075
+on the line, the x equals y line,
+
+00:34:30,355 --> 00:34:32,595
+meaning that you could approximate
+
+00:34:32,675 --> 00:34:34,595
+the error of a classifier
+
+00:34:34,755 --> 00:34:37,075
+by just looking at how often it disagreed
+
+00:34:36,960 --> 00:34:41,200
+with another classifier trained in the same way, so with a different initialization.
+
+00:34:42,080 --> 00:34:46,640
+That's very strange. I would think you should have low amounts of disagreement
+
+00:34:47,120 --> 00:34:52,225
+but still different amounts of error. Right? Still high error depending on how good the classifier is, but they're trained in
+
+00:34:52,225 --> 00:34:55,185
+the exact same way. They should be very, very correlated,
+
+00:34:55,585 --> 00:34:59,825
+and you don't see this. You actually see the fact that they're despite this, you get
+
+00:35:00,465 --> 00:35:03,745
+a very interesting kind of way of predicting the error here.
+
+00:35:04,600 --> 00:35:09,560
+It turns out you can relate this, and I won't go to details here, but you can relate this to the calibration
+
+00:35:09,960 --> 00:35:12,200
+of these sort of deep ensembles.
+
+00:35:12,440 --> 00:35:17,640
+So if you think of pairs of classifiers as sort of random sets drawn from some big ensemble of
+
+00:35:17,640 --> 00:35:20,755
+all classifiers that could result from SGD, say.
+
+00:35:21,395 --> 00:35:22,755
+If this ensemble,
+
+00:35:22,755 --> 00:35:27,875
+the average prediction of the ensemble is well calibrated, meaning it sort of knows when it's wrong and knows when it's you
+
+00:35:27,875 --> 00:35:32,240
+know, it's right. It basically makes a prediction with a certain probability,
+
+00:35:32,480 --> 00:35:35,520
+and it will get it right that amount of the time.
+
+00:35:36,640 --> 00:35:39,600
+If you have that property, which we do see in practice,
+
+00:35:39,760 --> 00:35:43,520
+we don't really know why we have that either, but we do see calibration
+
+00:35:43,520 --> 00:35:44,480
+of random
+
+00:35:44,985 --> 00:35:46,025
+of classifiers
+
+00:35:46,185 --> 00:35:48,425
+of random deep networks trained in this manner,
+
+00:35:48,825 --> 00:35:53,225
+then you can prove that actually, in expectation, the error is gonna be equal to the disagreement.
+
+00:35:53,225 --> 00:35:55,945
+The error of a classifier is gonna be equal to the disagreement
+
+00:35:56,425 --> 00:35:57,865
+between pairs of classifiers.
+
+00:35:59,250 --> 00:36:04,130
+This is really cool, but, again, it doesn't really give us a very useful procedure because
+
+00:36:04,610 --> 00:36:05,250
+we
+
+00:36:05,490 --> 00:36:10,690
+don't know if a classifier is calibrated or if an ensemble is calibrated ahead of time. Sometimes it is. Sometimes
+
+00:36:10,690 --> 00:36:11,090
+it's not.
+
+00:36:12,245 --> 00:36:17,445
+And so in related but actually quite distinct work, we kind of leveraged a similar
+
+00:36:17,445 --> 00:36:18,085
+effect
+
+00:36:18,245 --> 00:36:20,485
+to actually make predictions
+
+00:36:20,885 --> 00:36:26,005
+about the performance of classifiers, especially here on out of distribution data without any labeled
+
+00:36:26,005 --> 00:36:26,325
+data.
+
+00:36:27,770 --> 00:36:31,690
+This is a work called agreement on the line by
+
+00:36:31,770 --> 00:36:34,730
+Yadin, Christina, and and Aditi.
+
+00:36:35,530 --> 00:36:36,170
+And
+
+00:36:38,090 --> 00:36:39,930
+the idea here builds upon
+
+00:36:40,695 --> 00:36:45,815
+a phenomenon discovered by others. This is some work out of Stanford and other places called accuracy in
+
+00:36:45,815 --> 00:36:46,455
+the line.
+
+00:36:46,935 --> 00:36:52,135
+And what they showed was if you take a whole bunch of different problems and plot in distribution versus out
+
+00:36:52,135 --> 00:36:53,255
+of distribution accuracy,
+
+00:36:54,670 --> 00:36:55,950
+what you find
+
+00:36:56,110 --> 00:36:59,150
+is that these things lie in a line. In other words,
+
+00:36:59,550 --> 00:37:02,590
+out of distribution performance often degrades
+
+00:37:02,830 --> 00:37:04,670
+over in distribution performance.
+
+00:37:04,830 --> 00:37:07,230
+I don't wanna make too much of those terms for right now.
+
+00:37:08,405 --> 00:37:13,525
+Just say things like out of distribution is, I don't know. You just try to resample CIFAR ten
+
+00:37:13,525 --> 00:37:18,565
+ten years later without the same data that Alek Krzyzewski was using at the time, or you do things
+
+00:37:18,565 --> 00:37:23,840
+like add Gaussian noise or add different shear effects to the images and stuff like that. That's
+
+00:37:23,840 --> 00:37:27,120
+out of distribution, and the original data, CFAR, is in distribution.
+
+00:37:28,400 --> 00:37:30,560
+But, you know, this phenomenon is very persistent.
+
+00:37:32,240 --> 00:37:34,560
+Of course, different classifiers, different different
+
+00:37:35,200 --> 00:37:40,375
+deep deep networks or not, by the way, any kind of classifier appears to have phenomena like this.
+
+00:37:41,975 --> 00:37:47,255
+And so what what Christina found is that something actually very similar holds not just for
+
+00:37:47,255 --> 00:37:50,535
+accuracy but also for this phenomenon of agreement
+
+00:37:50,615 --> 00:37:52,215
+that we found so useful before.
+
+00:37:54,220 --> 00:37:57,740
+It turns out if you plot in distribution agreement
+
+00:37:57,900 --> 00:38:00,540
+on a problem versus out of distribution agreement,
+
+00:38:00,860 --> 00:38:06,300
+you also have a very strong linear correlation between these two terms. In other words, classifiers
+
+00:38:06,300 --> 00:38:07,180
+that agree more
+
+00:38:08,035 --> 00:38:09,075
+with each other
+
+00:38:09,395 --> 00:38:10,595
+in distribution
+
+00:38:10,595 --> 00:38:12,915
+tend to agree more out of distribution also.
+
+00:38:14,595 --> 00:38:20,195
+But the interesting thing here is that these two lines, the accuracy and the agreement line,
+
+00:38:20,595 --> 00:38:22,675
+often end up being the same thing.
+
+00:38:23,350 --> 00:38:26,630
+They have the same slope and the same intercept.
+
+00:38:27,750 --> 00:38:28,710
+And this
+
+00:38:28,870 --> 00:38:29,670
+immediately
+
+00:38:29,670 --> 00:38:34,870
+leads us to a way to actually s if if both these two properties hold,
+
+00:38:36,165 --> 00:38:37,765
+this gives us a way
+
+00:38:38,005 --> 00:38:39,285
+to estimate
+
+00:38:39,685 --> 00:38:44,805
+out of distribution performance, performance of some model on some new distribution of
+
+00:38:44,805 --> 00:38:45,445
+data
+
+00:38:46,005 --> 00:38:49,045
+without actually getting any labels from that data.
+
+00:38:49,650 --> 00:38:51,730
+Because, again, agreement
+
+00:38:51,730 --> 00:38:52,930
+can be computed
+
+00:38:52,930 --> 00:38:58,130
+without any recourse to the true labels. Right? You just see if two separate classifiers agree or
+
+00:38:58,130 --> 00:38:58,610
+not,
+
+00:38:59,330 --> 00:39:01,250
+and you can use that agreement
+
+00:39:01,330 --> 00:39:02,450
+to basically
+
+00:39:02,610 --> 00:39:04,210
+estimate
+
+00:39:03,515 --> 00:39:05,995
+the slope and intercept of that line,
+
+00:39:06,795 --> 00:39:11,355
+and then you can predict out of distribution performance accuracy
+
+00:39:13,115 --> 00:39:18,130
+with only the need to actually compute in distribution performance. So the idea here is, you know, if you wanted
+
+00:39:18,130 --> 00:39:21,250
+to know how well your self driving car would
+
+00:39:21,730 --> 00:39:23,890
+recognize objects in snow
+
+00:39:24,050 --> 00:39:25,970
+and you've never trained on snow,
+
+00:39:26,690 --> 00:39:31,735
+you don't actually have to get real labels on snow. You can just drive around, see how often different pairs of
+
+00:39:31,735 --> 00:39:34,775
+classifiers agree on the snowy objects,
+
+00:39:34,935 --> 00:39:39,655
+and then use that to estimate how well it will perform in some new domain.
+
+00:39:45,480 --> 00:39:49,800
+Has anything gone wrong with this idea yet? And I would actually say no.
+
+00:39:50,520 --> 00:39:51,880
+This idea,
+
+00:39:51,960 --> 00:39:53,240
+this notion that
+
+00:39:53,640 --> 00:39:56,520
+we need to look at empirical effects
+
+00:39:56,600 --> 00:39:57,880
+of deep networks
+
+00:39:58,975 --> 00:40:00,575
+is alive and well,
+
+00:40:01,055 --> 00:40:02,815
+and I think it's actually arguably
+
+00:40:02,815 --> 00:40:03,775
+one of
+
+00:40:04,175 --> 00:40:07,935
+the most vibrant areas of study right now in machine learning.
+
+00:40:08,495 --> 00:40:13,295
+We are building slowly but surely a science, I would say, of,
+
+00:40:13,550 --> 00:40:17,150
+you know, going from pop psychology to physics admittedly,
+
+00:40:17,550 --> 00:40:20,430
+but we're building something like a science of deep learning.
+
+00:40:22,910 --> 00:40:26,750
+In fact, as I mentioned, Jeremy and Alex Damian this year
+
+00:40:27,125 --> 00:40:32,485
+at at iClear have a paper that analyzes and tries to have a much better understanding
+
+00:40:32,485 --> 00:40:36,725
+of what's really happening when you hit that edge of stability and optimizers.
+
+00:40:38,405 --> 00:40:41,125
+Christina and Sachin actually have a paper on
+
+00:40:41,770 --> 00:40:43,770
+looking at other phenomena
+
+00:40:44,090 --> 00:40:49,210
+that occur in deep networks, in this case about sort of reliance on con context contextual data
+
+00:40:49,210 --> 00:40:52,170
+or not, data in the in the in the prompt or not.
+
+00:40:52,970 --> 00:40:56,890
+And so I think this area is actually very vibrant, but I I do think that there is
+
+00:40:57,315 --> 00:40:59,475
+something a bit unsatisfying about this
+
+00:41:00,035 --> 00:41:03,315
+because it feels like we went from developing
+
+00:41:03,315 --> 00:41:04,355
+the models
+
+00:41:04,755 --> 00:41:08,675
+and building the techniques that were used, and maybe this is just reality,
+
+00:41:09,235 --> 00:41:11,190
+to sort of analyzing
+
+00:41:11,190 --> 00:41:14,630
+things that are trained by others, by the big labs,
+
+00:41:15,430 --> 00:41:16,070
+and
+
+00:41:17,830 --> 00:41:19,350
+seeing what they were like.
+
+00:41:21,190 --> 00:41:24,230
+And so
+
+00:41:23,525 --> 00:41:28,645
+I don't think I think this is a very valuable line of study, to be clear, but I don't think it's the be all,
+
+00:41:28,645 --> 00:41:30,085
+end all of
+
+00:41:30,325 --> 00:41:33,125
+academic research in machine learning either.
+
+00:41:33,525 --> 00:41:39,605
+And this brings me finally to the topic I have now twenty minutes left, but the topic that I actually
+
+00:41:38,730 --> 00:41:40,410
+originally was going to talk about,
+
+00:41:41,450 --> 00:41:42,570
+which is safety.
+
+00:41:46,570 --> 00:41:48,730
+If I look at where the field is right now,
+
+00:41:51,535 --> 00:41:55,695
+I think safety is likely the biggest problem we have facing us,
+
+00:41:56,415 --> 00:41:59,135
+and it's one where I also think
+
+00:41:59,615 --> 00:42:04,575
+academic research is sorely needed and currently rather underserved.
+
+00:42:05,375 --> 00:42:06,415
+So
+
+00:42:08,790 --> 00:42:10,710
+I will not try to convince you
+
+00:42:11,110 --> 00:42:16,150
+if you are a skeptic of the value of AI safety research in the broad sense. If you
+
+00:42:16,150 --> 00:42:21,425
+don't think models right now are going to be extremely capable very soon, if you're more skeptical
+
+00:42:21,425 --> 00:42:25,585
+about their progress, or if you just think they're gonna be they're gonna progress, but, you know,
+
+00:42:25,985 --> 00:42:27,265
+everything's gonna be fine.
+
+00:42:28,305 --> 00:42:32,785
+Things are gonna be great. So if you think that, then I won't try to convince you necessarily.
+
+00:42:33,990 --> 00:42:39,110
+I don't I don't believe that. I think we have much bigger problems to think about than that.
+
+00:42:39,750 --> 00:42:40,390
+But
+
+00:42:41,670 --> 00:42:45,750
+what I hope to maybe convince you is that this is actually the area still
+
+00:42:46,235 --> 00:42:51,195
+that is sort of strategically very important. So maybe even if not for the sake of,
+
+00:42:51,275 --> 00:42:51,915
+you know,
+
+00:42:52,395 --> 00:42:53,355
+the world,
+
+00:42:53,515 --> 00:42:58,555
+maybe for the sake of getting research that's gonna have a big impact on the future of AI
+
+00:42:58,555 --> 00:43:02,810
+systems might be your reason for thinking about AI safety.
+
+00:43:04,330 --> 00:43:05,290
+But for me,
+
+00:43:05,610 --> 00:43:08,890
+I'll just say, like many people, I think, in this room,
+
+00:43:09,290 --> 00:43:14,170
+this this came about I really started to think of this a lot in 02/2022
+
+00:43:14,635 --> 00:43:18,315
+when it was becoming very clear that models were getting much better,
+
+00:43:18,475 --> 00:43:19,515
+much faster
+
+00:43:19,675 --> 00:43:21,355
+than I ever anticipated.
+
+00:43:21,915 --> 00:43:23,835
+Of course, with the release of ChatGPT,
+
+00:43:23,835 --> 00:43:24,475
+I think
+
+00:43:24,955 --> 00:43:30,220
+if I mean, I guess I wasn't shocked at the time because I had already been using GPT three so much in the playground
+
+00:43:30,220 --> 00:43:30,780
+mode,
+
+00:43:31,980 --> 00:43:37,420
+but it it it still didn't quite sink in until sort of the entire world kind of woke up to just how
+
+00:43:37,900 --> 00:43:41,260
+amazing this technology was seemingly all of a sudden.
+
+00:43:43,195 --> 00:43:46,395
+And now sort of, you know, my my previous
+
+00:43:46,715 --> 00:43:47,435
+mind
+
+00:43:47,835 --> 00:43:48,635
+thinking,
+
+00:43:48,635 --> 00:43:53,675
+well, we've shown that none of these models are actually robust. That seemed very relevant all
+
+00:43:53,675 --> 00:43:54,075
+of a sudden.
+
+00:43:56,170 --> 00:43:57,690
+Seems like a pretty big deal.
+
+00:43:58,730 --> 00:44:02,730
+And so it seemed, and I think I would say in this case, it very much still seems
+
+00:44:03,850 --> 00:44:05,210
+like the best way,
+
+00:44:05,530 --> 00:44:06,250
+again,
+
+00:44:06,570 --> 00:44:11,275
+I know I'm repeating myself here, that's the point, for academic research to influence the field
+
+00:44:11,675 --> 00:44:14,155
+to be that iClear 2015
+
+00:44:14,235 --> 00:44:15,035
+now
+
+00:44:15,835 --> 00:44:17,195
+would be to think about
+
+00:44:17,515 --> 00:44:21,435
+ways of identifying and mitigating the vulnerabilities of AI systems.
+
+00:44:22,830 --> 00:44:24,670
+And this is what we started working on.
+
+00:44:25,710 --> 00:44:31,550
+So one of our first sort of most well known bits bits of work in this area was about automated jailbreaks,
+
+00:44:31,950 --> 00:44:32,510
+and
+
+00:44:33,070 --> 00:44:38,245
+I'm gonna show you this. It's always fun to show these things. I'm gonna make a disclaimer. This is a this is a
+
+00:44:38,245 --> 00:44:43,285
+chatbot that, you know, I am at least in some sense affiliated with, though this work was all done before I had any affiliation
+
+00:44:43,285 --> 00:44:44,245
+with OpenAI.
+
+00:44:44,245 --> 00:44:49,090
+But I will also say that this all work was all done before, you know, a year
+
+00:44:49,250 --> 00:44:54,370
+more than a year ago now, almost two years ago now, and it does not work on current models. Right? So I'm showing something
+
+00:44:54,370 --> 00:44:58,130
+that works on some of the older underlying models,
+
+00:44:58,290 --> 00:45:03,330
+and current models, especially reasoning models, actually are are are much more robust to this
+
+00:45:03,330 --> 00:45:04,050
+kind of manipulation.
+
+00:45:04,825 --> 00:45:07,145
+Alright. So here I'm gonna ask ChatGPT
+
+00:45:07,145 --> 00:45:09,385
+to write a tutorial on how to hotwire a car.
+
+00:45:10,025 --> 00:45:10,905
+It will say,
+
+00:45:11,305 --> 00:45:16,425
+as you might expect, it will say, you know, I'm sorry. I can't do that or something like that. I can't help with that.
+
+00:45:16,665 --> 00:45:20,760
+But if I ask it to hotwire a car followed by a bunch of garbage
+
+00:45:21,000 --> 00:45:22,520
+garbled text after that,
+
+00:45:22,840 --> 00:45:24,840
+then the model, at least sometimes,
+
+00:45:25,000 --> 00:45:30,200
+was more than happy to tell me how to hotwire a car and write a nice tutorial
+
+00:45:30,200 --> 00:45:31,800
+on on how to hotwire a car.
+
+00:45:34,625 --> 00:45:39,745
+So I think we've seen things like this before. It's, of course, one of the many things you can do. You can also tell stories about how
+
+00:45:39,745 --> 00:45:44,945
+your your grandma used to hotwire cars, and it was really soothing to you to hear stories about hotwiring
+
+00:45:44,945 --> 00:45:46,865
+cars. Those things kind of work also.
+
+00:45:47,820 --> 00:45:52,860
+But the way this worked and the sort of the interesting thing about this particular approach is it's fully automated, so it used just
+
+00:45:52,860 --> 00:45:53,740
+optimization.
+
+00:45:54,060 --> 00:45:56,620
+Again, I can't help thinking about optimization
+
+00:45:57,020 --> 00:46:02,075
+to to actually attain this this goal. So the idea here is you sort of start off with some query, like, tell
+
+00:46:02,075 --> 00:46:06,555
+me how to hotwire a car, a bunch of extra tokens after that fact.
+
+00:46:06,795 --> 00:46:08,555
+Then you have an open source model
+
+00:46:08,795 --> 00:46:11,915
+where you can actually compute the probabilities of different responses,
+
+00:46:11,915 --> 00:46:14,395
+like the model refusing or telling you how to hotwire a car.
+
+00:46:15,110 --> 00:46:20,470
+And then all we start doing is we start flipping around. We start, you know, basically swapping
+
+00:46:20,470 --> 00:46:25,750
+around tokens in our extra token string to increase the probability of the model responding
+
+00:46:25,750 --> 00:46:26,390
+affirmatively,
+
+00:46:26,825 --> 00:46:32,025
+And those tokens are selected basically by a gradient based technique using the approximate gradients of
+
+00:46:32,025 --> 00:46:33,145
+a con of a relaxation
+
+00:46:34,105 --> 00:46:35,145
+of the problem,
+
+00:46:35,625 --> 00:46:39,305
+but you still have to try a lot because, fundamentally, it's still a discrete optimization problem.
+
+00:46:41,050 --> 00:46:43,530
+Eventually, though, if you add enough of these tokens,
+
+00:46:43,690 --> 00:46:48,810
+then you've changed the probability of the model responding affirmatively to be higher than
+
+00:46:49,290 --> 00:46:50,170
+refusing,
+
+00:46:50,170 --> 00:46:55,355
+and so the model then goes and tells you how to hotwire a car. Oddly enough, you don't actually have to tell it in your desired target
+
+00:46:55,355 --> 00:46:56,075
+response
+
+00:46:56,555 --> 00:47:01,675
+what the rest of the answer is. You just have the answer start with, sure, here's how to hotwire a car,
+
+00:47:01,675 --> 00:47:05,835
+and then it goes and tells you from its own internal knowledge, it's very happy to tell you how to hotwire a car.
+
+00:47:06,960 --> 00:47:12,560
+The amazing thing about this, though, is this works not just on the open source model we're targeting,
+
+00:47:12,560 --> 00:47:14,800
+but it also transfers to other
+
+00:47:14,960 --> 00:47:18,000
+zero shot at transfers to other closed models.
+
+00:47:18,240 --> 00:47:23,605
+And this kind of much of what started our work and starts really informs a lot of my thinking still
+
+00:47:23,685 --> 00:47:25,285
+about AI safety.
+
+00:47:26,805 --> 00:47:29,925
+Now we've actually made a lot of progress on this particular example,
+
+00:47:30,325 --> 00:47:32,565
+and I'm gonna talk a little bit later about some of that progress.
+
+00:47:33,160 --> 00:47:38,440
+But I actually just wanna first emphasize that AI safety is not just robustness.
+
+00:47:39,720 --> 00:47:45,240
+I think most people working in AI safety know that, but I think a lot of people in machine learning often equate robustness
+
+00:47:45,240 --> 00:47:49,125
+with AI safety, and this is only one thing. Right? There's much, much more.
+
+00:47:49,525 --> 00:47:50,565
+And I think,
+
+00:47:50,885 --> 00:47:56,005
+in general, there are just so many different angles you can think about when it comes to
+
+00:47:56,005 --> 00:47:57,845
+topics of AI safety,
+
+00:47:57,925 --> 00:48:01,365
+and I wanna highlight a few of these other things we've worked on in related areas.
+
+00:48:02,210 --> 00:48:07,570
+One of these relates to unlearning. So I think unlearning actually is gonna be ultimately a core
+
+00:48:07,570 --> 00:48:09,970
+topic in AI safety because
+
+00:48:10,290 --> 00:48:15,410
+as models get more and more capable, one of the things we're gonna need to do in some sense
+
+00:48:15,410 --> 00:48:20,635
+is actually, for some models, either remove or never build in certain knowledge
+
+00:48:20,635 --> 00:48:21,595
+to begin with.
+
+00:48:22,315 --> 00:48:27,355
+Right? So maybe you could actually just delete if you really didn't want the model telling you how how to hotwire a car, you
+
+00:48:27,355 --> 00:48:32,360
+can't just tune it after the fact to say, hey. Don't tell people the knowledge you have really inside of you. You have to
+
+00:48:32,360 --> 00:48:37,880
+actually remove that knowledge in some fundamental way. And so there's been a lot of work proposing different unlearning
+
+00:48:37,880 --> 00:48:38,760
+approaches
+
+00:48:38,760 --> 00:48:41,400
+that basically would extract or remove
+
+00:48:41,720 --> 00:48:43,320
+the base knowledge
+
+00:48:43,320 --> 00:48:44,920
+from a classifier at all.
+
+00:48:46,355 --> 00:48:47,235
+And so
+
+00:48:49,475 --> 00:48:54,515
+in but but at the same time, there wasn't a lot of work kind of very scientifically evaluating this.
+
+00:48:54,515 --> 00:48:59,590
+They would evaluate it in very ad hoc manners, like, just ask it after the fact. Could you hotwire
+
+00:48:59,590 --> 00:49:02,710
+a car? Can you do some bio task, etcetera?
+
+00:49:03,110 --> 00:49:05,350
+And so what what my
+
+00:49:05,350 --> 00:49:10,470
+students, Pratyush, Jeely, Avi, and and Zach worked on was an actual dataset
+
+00:49:10,470 --> 00:49:11,110
+for
+
+00:49:11,555 --> 00:49:14,115
+Avi is a postdoc, and Zach's another faculty, to be clear.
+
+00:49:14,915 --> 00:49:19,155
+But what they worked on was a dataset for better evaluating
+
+00:49:19,155 --> 00:49:20,355
+unlearning methods.
+
+00:49:20,435 --> 00:49:22,995
+And the idea was very simple. We built a dataset called Tofu,
+
+00:49:23,075 --> 00:49:26,515
+which essentially was all about some fictitious authors.
+
+00:49:26,515 --> 00:49:31,740
+So these are pretend people. They can't possibly exist in the actual
+
+00:49:31,740 --> 00:49:36,780
+model, so a real model will not have any knowledge of these things. But we can fine tune
+
+00:49:36,780 --> 00:49:37,660
+a model
+
+00:49:37,900 --> 00:49:38,540
+to
+
+00:49:38,700 --> 00:49:41,340
+gain knowledge of these 200 authors.
+
+00:49:42,045 --> 00:49:45,405
+Then we try to unlearn some small portion of
+
+00:49:45,725 --> 00:49:46,605
+these authors,
+
+00:49:47,005 --> 00:49:52,445
+and what we wanna do is we wanna compare models. And I'm not gonna go into too much details. The details are, of course, in the paper.
+
+00:49:52,445 --> 00:49:57,670
+But when you do this, of course, you will have a change in model utility. Right? Because
+
+00:49:57,910 --> 00:50:03,030
+you could make the model forget everything just by completely destroying the model. That's not a very
+
+00:50:03,030 --> 00:50:04,230
+good unlearning method.
+
+00:50:04,870 --> 00:50:10,870
+But you also can kind of just fail to unlearn, and you actually still have a lot of knowledge in there about the
+
+00:50:10,905 --> 00:50:11,625
+about the
+
+00:50:12,425 --> 00:50:13,305
+authors.
+
+00:50:13,385 --> 00:50:18,905
+And so what we did was we come up with a bunch of metrics that quantified essentially how well you're forgetting
+
+00:50:19,305 --> 00:50:23,865
+versus how well you're sort of or how much you're influencing the quality of the model.
+
+00:50:24,780 --> 00:50:27,740
+And this point down here is if you just fine
+
+00:50:28,220 --> 00:50:33,260
+tune the model on all the authors and don't forget anything, so that's not very good for get quality but very
+
+00:50:33,260 --> 00:50:37,420
+good utility, and up here is that model where you just retrain entirely
+
+00:50:37,595 --> 00:50:42,795
+only on the authors that you want to retain, so and all of them except the ones you're
+
+00:50:42,795 --> 00:50:43,355
+forgetting.
+
+00:50:43,915 --> 00:50:49,355
+And what we found was the vast majority of methods basically had a really bad trade off
+
+00:50:49,355 --> 00:50:49,835
+between
+
+00:50:50,430 --> 00:50:51,790
+forget quality
+
+00:50:51,790 --> 00:50:54,110
+and quality of the model.
+
+00:50:54,430 --> 00:50:58,110
+And still, some methods have improved on this now, I should clarify,
+
+00:50:58,350 --> 00:50:59,390
+but still,
+
+00:50:59,630 --> 00:51:03,790
+I think we don't have a full understanding of how we actually forget,
+
+00:51:03,870 --> 00:51:05,150
+especially capabilities
+
+00:51:05,150 --> 00:51:05,870
+in models,
+
+00:51:06,405 --> 00:51:11,685
+and it strikes me as one of the big unsolved and outstanding challenges in AI
+
+00:51:11,685 --> 00:51:12,405
+safety.
+
+00:51:13,765 --> 00:51:14,245
+Okay.
+
+00:51:14,885 --> 00:51:17,365
+I have a few more here that I'm gonna get through quickly.
+
+00:51:18,820 --> 00:51:24,020
+One bit of work I'm just worked on recently, which I'm really excited about right now, I'll talk about it very briefly, though, is work
+
+00:51:24,020 --> 00:51:27,060
+on anti distillation sampling. So this is work,
+
+00:51:27,780 --> 00:51:30,740
+again, by Yash, Asher, Geely, and others,
+
+00:51:31,220 --> 00:51:32,020
+and this work
+
+00:51:32,835 --> 00:51:36,275
+aims to solve the problem of trying to build
+
+00:51:36,675 --> 00:51:41,475
+a teacher model where it is not valuable to train on its samples.
+
+00:51:42,195 --> 00:51:47,555
+There's all sorts of reasons why you might wanna do this. Of course, yes, there's competitive reasons why you might want this. Maybe you wanna release a really good model,
+
+00:51:47,555 --> 00:51:52,730
+but you don't want people sampling from it and then training their own model based upon that. But I think this is also fundamentally a
+
+00:51:52,730 --> 00:51:54,730
+safety question too because
+
+00:51:55,370 --> 00:52:00,845
+I believe there is actual value to having a delay between the best frontier
+
+00:52:00,845 --> 00:52:03,805
+closed source models that we can start using, analyzing,
+
+00:52:04,045 --> 00:52:09,165
+and building an open source variant of that that sort of is essentially released forever that we've never
+
+00:52:09,165 --> 00:52:10,605
+had any more control over.
+
+00:52:11,165 --> 00:52:16,170
+If you disagree, okay. We can disagree on that, but I do think it is a good thing. I love open
+
+00:52:16,170 --> 00:52:18,410
+source models. All this work is on open source models.
+
+00:52:18,650 --> 00:52:22,010
+I am glad that open source models are a little bit behind the frontier.
+
+00:52:22,730 --> 00:52:24,490
+And if you wanna maintain that,
+
+00:52:25,610 --> 00:52:30,875
+it is reasonable to ask whether you can generate samples from a good teacher model that
+
+00:52:30,875 --> 00:52:32,795
+do not help you train
+
+00:52:33,035 --> 00:52:34,395
+as good a student.
+
+00:52:35,035 --> 00:52:36,875
+And so we did this by basically
+
+00:52:37,915 --> 00:52:39,915
+altering our sampling objective
+
+00:52:39,915 --> 00:52:43,195
+to trade off between the normal likelihood of the teacher
+
+00:52:43,435 --> 00:52:44,235
+and
+
+00:52:44,630 --> 00:52:48,310
+essentially how much training would hurt the student.
+
+00:52:50,150 --> 00:52:55,190
+And this is actually a really hard objective to optimize or to to I shouldn't say optimize, to compute
+
+00:52:55,190 --> 00:53:00,265
+as it is because it involves computing some downstream loss for every single possible next token you
+
+00:53:00,265 --> 00:53:05,465
+might sample and then train on. But it turns out you can with some sort of differentiation tricks and, again,
+
+00:53:05,465 --> 00:53:10,585
+I just can't get away from cool math tricks that's motivated so much of
+
+00:53:10,585 --> 00:53:12,345
+my actual work throughout my career,
+
+00:53:12,910 --> 00:53:15,470
+and I can't get away from it. So one more here.
+
+00:53:15,870 --> 00:53:19,230
+Using this sort of some cool tricks, you can actually can do this very efficiently.
+
+00:53:19,950 --> 00:53:24,990
+And it works kind of okay. I I don't think this is all practical right now, but it's interesting that this even works at all.
+
+00:53:25,545 --> 00:53:30,825
+And the idea here is the blue line shows the trade off between student accuracy and teacher
+
+00:53:30,825 --> 00:53:34,025
+accuracy if you just use temperature sampling.
+
+00:53:34,025 --> 00:53:37,385
+Right? So if you just start corrupting the samples with more and more noise,
+
+00:53:37,545 --> 00:53:38,505
+you get this curve,
+
+00:53:39,000 --> 00:53:43,480
+meaning that even for very low teacher accuracy, you actually are still improving the student,
+
+00:53:43,800 --> 00:53:45,560
+whereas anti distillation sampling,
+
+00:53:45,640 --> 00:53:47,720
+you know, pushes that Pareto frontier.
+
+00:53:47,800 --> 00:53:53,080
+You want it to really be down to the left down here. Right? And anti distillation sampling pushes that Pareto frontier,
+
+00:53:53,345 --> 00:53:58,625
+you know, a reasonable amount. I think it's interesting at all that you can generate samples that still
+
+00:53:58,625 --> 00:54:03,105
+solve the underlying problem. This is on GSM eight k. So these are sort of basic math problems.
+
+00:54:03,345 --> 00:54:08,740
+They still solve the underlying problem, say, 70% of the time while being entirely useless
+
+00:54:08,740 --> 00:54:10,020
+for training on.
+
+00:54:13,140 --> 00:54:13,860
+Okay.
+
+00:54:14,740 --> 00:54:19,780
+Let me finalize one last thing now. I have six minutes left, and I'll have some final remarks, and we'll
+
+00:54:19,780 --> 00:54:20,180
+we'll end.
+
+00:54:21,535 --> 00:54:27,135
+The last thing I wanna highlight, though, is kind of the fundamental problem, I would argue, with a lot of models.
+
+00:54:28,575 --> 00:54:29,615
+This is work
+
+00:54:29,775 --> 00:54:31,215
+Pratyush, Sachin,
+
+00:54:31,535 --> 00:54:36,640
+Dylan, and others did very recently. I think this is just going on archive
+
+00:54:36,640 --> 00:54:42,000
+hopefully an hour ago. It was on hold for a while, so it might be too spicy for archive.
+
+00:54:42,160 --> 00:54:46,240
+So it has to be now v verified or something like that, but it's if if not, it should be on this website here.
+
+00:54:49,165 --> 00:54:51,085
+And the idea is very simple.
+
+00:54:51,885 --> 00:54:53,405
+It's very weird
+
+00:54:53,725 --> 00:54:55,725
+that we train models
+
+00:54:55,805 --> 00:54:59,725
+with all sorts of really nasty information
+
+00:54:59,725 --> 00:55:00,605
+on the web
+
+00:55:01,640 --> 00:55:04,200
+and then and train it. Just memorize
+
+00:55:04,200 --> 00:55:05,240
+all of this.
+
+00:55:06,200 --> 00:55:08,920
+Yes. Regurgitate all of this, basically.
+
+00:55:09,640 --> 00:55:11,640
+And then at the very end, we say,
+
+00:55:13,255 --> 00:55:18,375
+no. Don't don't quite say that kind of stuff in a very small sort of instruction
+
+00:55:18,375 --> 00:55:19,175
+tuning
+
+00:55:19,895 --> 00:55:21,655
+and RLHF
+
+00:55:21,815 --> 00:55:23,815
+pass at the very end of training.
+
+00:55:26,215 --> 00:55:27,575
+It's not a new idea.
+
+00:55:28,820 --> 00:55:31,060
+I think how you do it kind of matters.
+
+00:55:31,620 --> 00:55:33,140
+But what if instead
+
+00:55:33,460 --> 00:55:36,980
+we built in safety from the very start of training?
+
+00:55:37,620 --> 00:55:39,140
+What if we did things
+
+00:55:39,460 --> 00:55:40,180
+like
+
+00:55:40,260 --> 00:55:42,340
+filter data extensively
+
+00:55:42,340 --> 00:55:43,220
+for safety
+
+00:55:43,815 --> 00:55:45,095
+when we train.
+
+00:55:47,095 --> 00:55:52,135
+Now you don't wanna just do that, though. If the model has no idea about what swear words are, it's not gonna be
+
+00:55:52,135 --> 00:55:55,975
+a very good model, right, if if you think that's unsafe. It's probably not that unsafe.
+
+00:55:57,200 --> 00:55:59,760
+So you also actually want to expose it to some
+
+00:56:00,720 --> 00:56:02,160
+bits of bad information,
+
+00:56:02,480 --> 00:56:05,120
+but you wanna rephrase it and contextualize
+
+00:56:05,120 --> 00:56:08,000
+it. Right? We do teach kids about bad things.
+
+00:56:08,935 --> 00:56:12,215
+We just do it in a way that properly contextualizes
+
+00:56:12,215 --> 00:56:17,175
+it. We don't just tell them to go on the Internet and start reading random forums.
+
+00:56:17,895 --> 00:56:18,535
+We
+
+00:56:19,095 --> 00:56:22,135
+build in refusal training at earlier stages,
+
+00:56:23,090 --> 00:56:25,570
+and we also put guardrails,
+
+00:56:25,650 --> 00:56:30,530
+tags around harmful content that can then be used at generation time
+
+00:56:30,770 --> 00:56:35,890
+to essentially say, hey. If you're going to generate this harmful tag, then backtrack and
+
+00:56:35,890 --> 00:56:37,010
+don't generate that instead.
+
+00:56:38,575 --> 00:56:43,295
+And what we find is if we do and and the the the models for this, they should be up now,
+
+00:56:43,535 --> 00:56:47,055
+as well as the the data and everything we use is gonna be available at this website,
+
+00:56:47,855 --> 00:56:53,455
+and what we find is the models themselves are indeed more robust. So if you if you
+
+00:56:54,440 --> 00:56:55,400
+train it here,
+
+00:56:56,280 --> 00:57:01,560
+you can't even see the the this blue thing here. This means that, basically, harmfulness under under HarmBench
+
+00:57:01,560 --> 00:57:05,560
+is essentially zero after you do an instruction tuning and alignment stage.
+
+00:57:06,105 --> 00:57:11,145
+But then as we all know, it's really easy to kind of destroy the alignment of underlying models.
+
+00:57:11,145 --> 00:57:16,745
+Even just fine tuning them on a benign task like GSM eight k often undoes
+
+00:57:16,745 --> 00:57:22,040
+whatever alignment they have. Right? And they start being purely helpful, especially if your fine tuning set is only helpful.
+
+00:57:22,040 --> 00:57:23,720
+You're only trying to answer questions.
+
+00:57:24,120 --> 00:57:27,800
+Oftentimes, you sort of fine tune out the knowledge of refusals.
+
+00:57:30,600 --> 00:57:34,280
+And what we find, though, is that even in that setting where you are fine tuning,
+
+00:57:34,705 --> 00:57:37,345
+the methods like Safe LMR are quite a bit
+
+00:57:37,745 --> 00:57:38,625
+fundamentally
+
+00:57:38,625 --> 00:57:41,745
+much less harmful, and there's room to improve more, though.
+
+00:57:42,225 --> 00:57:47,265
+We can also talk about what sort of the things that matter here. So oddly enough, actually, training so if you train on all
+
+00:57:47,265 --> 00:57:51,060
+the data, you get this sort of level. That's that's this that's this one here.
+
+00:57:52,020 --> 00:57:56,180
+Oddly enough, if you train only on the safest data, actually do worse at harmfulness.
+
+00:57:56,420 --> 00:58:01,060
+So not knowing about anything bad is actually worse for generating
+
+00:58:01,805 --> 00:58:05,005
+bad content because you don't even understand how to contextualize it.
+
+00:58:05,405 --> 00:58:09,005
+And then everything we add here, you know, rephrasing, native refusal,
+
+00:58:09,165 --> 00:58:14,205
+basically building in a more moral education, so having kind of a curriculum to it, and then using
+
+00:58:14,205 --> 00:58:15,245
+this sort of
+
+00:58:16,660 --> 00:58:19,220
+this beam search that looks for the generation of
+
+00:58:19,540 --> 00:58:20,420
+these harmful
+
+00:58:21,300 --> 00:58:25,460
+tags and then backtracks. They find them. All of this together can reduce our
+
+00:58:26,580 --> 00:58:28,100
+harmfulness score by quite a bit.
+
+00:58:30,255 --> 00:58:32,655
+Okay. So what could possibly go wrong?
+
+00:58:33,295 --> 00:58:38,655
+Well, I mean, that is the question of AI safety. Right? So it's good that I've been asking myself this the whole time.
+
+00:58:40,335 --> 00:58:43,775
+But forgetting about what can go wrong with AI right now. What could go wrong with AI safety?
+
+00:58:45,340 --> 00:58:45,980
+Well,
+
+00:58:46,700 --> 00:58:51,820
+maybe they'll be solved in other ways. Maybe somehow just better, better models I don't think this will happen, by the way. Maybe better, better
+
+00:58:51,820 --> 00:58:53,340
+models will actually solve
+
+00:58:54,300 --> 00:58:55,020
+AI
+
+00:58:55,820 --> 00:58:56,780
+safety.
+
+00:58:57,420 --> 00:58:58,140
+Maybe
+
+00:58:58,540 --> 00:58:59,500
+we just
+
+00:58:59,845 --> 00:59:01,045
+can't fix it.
+
+00:59:02,565 --> 00:59:08,005
+You know, I think some people have that have that impression. These things are gonna be really, really hard, and we're just not gonna be able to fix it.
+
+00:59:08,485 --> 00:59:10,165
+All sorts of stuff could go wrong,
+
+00:59:10,485 --> 00:59:15,530
+and maybe in five years from now when I'm looking back and talking about this, I will have a better
+
+00:59:15,530 --> 00:59:18,490
+sense of if it did went wrong, what what did go wrong.
+
+00:59:20,810 --> 00:59:25,050
+But I still believe that AI safety is probably the current best way,
+
+00:59:25,450 --> 00:59:30,495
+and, you know, overlooking back over these past years kinda seeing what works, what hasn't worked,
+
+00:59:30,815 --> 00:59:32,655
+I I am right now convinced
+
+00:59:33,215 --> 00:59:34,175
+this is
+
+00:59:34,415 --> 00:59:38,335
+the current best way for academic research to influence the field.
+
+00:59:38,815 --> 00:59:40,575
+If you look at this topic,
+
+00:59:40,990 --> 00:59:46,110
+number one, it is a case where some of the most impactful work is not I mean, lots of great work
+
+00:59:46,110 --> 00:59:51,310
+is coming from industry also, to be clear, but some of it's also coming from academic work, from people without
+
+00:59:51,310 --> 00:59:52,750
+very many resources
+
+00:59:52,910 --> 00:59:54,350
+just conceptualizing
+
+00:59:54,350 --> 00:59:55,710
+thinking of new problems.
+
+00:59:59,125 --> 01:00:01,685
+It's also vastly underrepresented
+
+01:00:01,685 --> 01:00:02,485
+right now
+
+01:00:02,885 --> 01:00:03,605
+in
+
+01:00:04,485 --> 01:00:05,765
+academic work,
+
+01:00:06,565 --> 01:00:10,485
+which seems a lot like, actually, deep learning did way back in the day.
+
+01:00:14,300 --> 01:00:16,860
+So I don't really actually care if people work on
+
+01:00:17,980 --> 01:00:21,180
+practical safety, you know, prompt injections, existential risk,
+
+01:00:21,500 --> 01:00:22,060
+policy.
+
+01:00:23,425 --> 01:00:27,345
+You could even call it security if you want to for some bizarre reason.
+
+01:00:28,385 --> 01:00:31,505
+But I think this topic of AI safety
+
+01:00:31,905 --> 01:00:36,940
+is going to be the thing that we see ten years from now as the
+
+01:00:36,940 --> 01:00:40,860
+spark that is affecting the field that much, or at least I hope it is.
+
+01:00:42,860 --> 01:00:46,140
+Alright. So some last thoughts here. I think I'm out of time,
+
+01:00:46,860 --> 01:00:48,460
+but give me one more minute.
+
+01:00:49,580 --> 01:00:51,020
+To the junior people here,
+
+01:00:52,375 --> 01:00:55,335
+don't worry too much if your patterns don't really fit this.
+
+01:00:56,215 --> 01:01:01,335
+Much of how this evolves in practice is not as intentional as I lay out here. It happens because things are
+
+01:01:01,335 --> 01:01:04,455
+fun. You find new ideas. You come across new ideas. That's all great.
+
+01:01:05,120 --> 01:01:10,400
+But do look for areas where you can be the participant in the next iCLAIR twenty
+
+01:01:10,400 --> 01:01:11,120
+fifteen.
+
+01:01:13,440 --> 01:01:15,520
+And to the more senior faculty
+
+01:01:15,600 --> 01:01:17,280
+and researchers in the field,
+
+01:01:18,000 --> 01:01:19,840
+be generous with new potential
+
+01:01:20,345 --> 01:01:21,305
+faculty
+
+01:01:21,305 --> 01:01:23,385
+that are working off the beaten path.
+
+01:01:24,025 --> 01:01:28,025
+I remember an early faculty meeting, I think, in 2013
+
+01:01:28,025 --> 01:01:30,665
+where we were talking about potential faculty candidates,
+
+01:01:30,825 --> 01:01:35,945
+and someone was talking about a deep learning candidate and said, don't worry. It's okay. We should still hire him because
+
+01:01:36,020 --> 01:01:38,100
+they do more than just deep learning.
+
+01:01:40,100 --> 01:01:42,660
+I think there is a tendency to sort of
+
+01:01:42,980 --> 01:01:44,980
+think the field is the way it is
+
+01:01:45,700 --> 01:01:50,745
+and and not be open to sort of ways that is being reshaped before our eyes, not think that's as
+
+01:01:50,745 --> 01:01:53,465
+important as the core that we have already developed.
+
+01:01:54,105 --> 01:01:59,385
+And so please be generous about that and hire new faculty in these areas that
+
+01:01:59,385 --> 01:02:00,825
+seem less traditional,
+
+01:02:00,905 --> 01:02:02,025
+that seem a bit more
+
+01:02:03,540 --> 01:02:06,020
+out there, far out there, I guess.
+
+01:02:07,220 --> 01:02:09,940
+I like to end these talks with a quote saying,
+
+01:02:10,180 --> 01:02:14,820
+machines will be capable within twenty years of doing work any person can do.
+
+01:02:15,220 --> 01:02:17,620
+This is a quote from Herb Seibut in 1965,
+
+01:02:18,245 --> 01:02:19,445
+and he was wrong.
+
+01:02:20,725 --> 01:02:24,805
+But I really hope I would much rather be Herb Simon
+
+01:02:24,885 --> 01:02:30,085
+in 1965 and be looked back on in the same way of the same kind of optimism right now and
+
+01:02:30,085 --> 01:02:31,605
+the same hope that what we're doing,
+
+01:02:32,290 --> 01:02:37,650
+as weird as it is and as unknown as we, you know, can think about it, as much as we don't know how to do it,
+
+01:02:37,970 --> 01:02:40,610
+can still have this level of impact on the field.
+
+01:02:42,130 --> 01:02:47,235
+So thank you both to everyone that collaborated with that I collaborated with as well as the
+
+01:02:47,235 --> 01:02:52,035
+rest of my students, you know, who I didn't happen to pick their papers but easily could have. Thank you very much.
+
+01:02:52,435 --> 01:02:54,755
+Thank you for that amazing talk.
+
+01:02:55,715 --> 01:02:58,035
+If you have questions, we have Mike's stance.
+
+01:02:58,690 --> 01:02:59,570
+Hey.
+
+01:02:59,570 --> 01:03:03,570
+Thank you for the talk. It was very interesting also, the work.
+
+01:03:04,050 --> 01:03:04,610
+And
+
+01:03:05,010 --> 01:03:08,290
+my question is regarding the deep declarative models.
+
+01:03:08,370 --> 01:03:09,970
+Yep. You said that
+
+01:03:10,450 --> 01:03:13,090
+nowadays we're interested in having like
+
+01:03:13,795 --> 01:03:17,715
+a lot of memory in a model and less compute.
+
+01:03:17,715 --> 01:03:18,915
+Yeah. And
+
+01:03:19,155 --> 01:03:24,515
+I feel like this is changing now. We have like test time compute and people are thinking about how can we
+
+01:03:25,075 --> 01:03:30,200
+make models reason more. Do you think deep equilibrium models have a space or, like,
+
+01:03:30,200 --> 01:03:35,560
+fit into this new narrative somehow? Yep. Sure. So what I will say is I think that
+
+01:03:35,800 --> 01:03:40,840
+people are looking at deep equilibrium models actually as a way of doing test time compute and things like that, and people have looked
+
+01:03:40,840 --> 01:03:43,975
+at this. What I will say is that it seems like,
+
+01:03:45,415 --> 01:03:47,335
+from an architectural standpoint,
+
+01:03:47,335 --> 01:03:49,335
+this still just doesn't really cut it
+
+01:03:49,735 --> 01:03:50,855
+for some reason.
+
+01:03:51,335 --> 01:03:51,895
+And
+
+01:03:52,135 --> 01:03:56,375
+doing test time compute as it's being done right now, which is taking a very big architecture
+
+01:03:56,810 --> 01:04:01,290
+that is, in fact, a mixture of experts, that is, in fact, more parameters than compute,
+
+01:04:01,450 --> 01:04:03,930
+and iterating that seems to be a more
+
+01:04:04,810 --> 01:04:06,090
+seems to work better
+
+01:04:06,330 --> 01:04:07,210
+right now.
+
+01:04:07,530 --> 01:04:12,625
+I don't know if that will retain that way forever or if something new will come up. Again, if you
+
+01:04:12,625 --> 01:04:17,745
+disagree with me, please do what you want to do. Right? Hopefully, that's actually
+
+01:04:17,745 --> 01:04:22,865
+very apparent in everything I'm saying here. But from what we see right now, it just does not things like
+
+01:04:22,865 --> 01:04:25,745
+equilibrium models do not make up the the the gap here.
+
+01:04:26,950 --> 01:04:31,990
+Over there in the middle. Thank you for the great talk. I have a question about the
+
+01:04:31,990 --> 01:04:37,110
+anti distillation work that you did. Yep. So I my understanding is that
+
+01:04:37,110 --> 01:04:42,445
+you built a systematic way to identify data points that can hurt
+
+01:04:42,445 --> 01:04:45,725
+the student model as much as possible in terms of So
+
+01:04:46,525 --> 01:04:51,165
+I wonder if the same or similar methods can be applied to
+
+01:04:51,485 --> 01:04:53,965
+filter out low quality data
+
+01:04:54,580 --> 01:04:57,540
+in pretraining or instruction tuning phase?
+
+01:04:57,940 --> 01:04:58,820
+If so,
+
+01:04:59,300 --> 01:05:04,340
+do you have any follow-up work on that? Thank you. Yeah. So we don't. It could. I mean,
+
+01:05:04,340 --> 01:05:09,485
+I think we really thought of it in terms of the sampling objective because this is built really for this particular
+
+01:05:09,485 --> 01:05:13,725
+type of kind of update you're doing where you want to sort of look across all tokens.
+
+01:05:14,045 --> 01:05:19,085
+There is also work in kind of corrupting existing data to make it worse to train on and stuff like this for anti
+
+01:05:19,245 --> 01:05:24,290
+you know, basically trying to prevent data from being trained on and stuff like that, which is probably more relevant to what
+
+01:05:24,290 --> 01:05:29,330
+to what you're saying. But and there's lots of data filtering work, but but, no, we haven't looked at
+
+01:05:29,330 --> 01:05:32,930
+it yet. Oh, okay. Thank you. Is there someone on the left side?
+
+01:05:34,645 --> 01:05:39,765
+No. No. Okay. So we'll go back over here. Yeah. Hi, professor. Thank you for the
+
+01:05:39,765 --> 01:05:42,965
+great talk. So I'm wondering, do you think
+
+01:05:43,365 --> 01:05:48,520
+the general safety or robustness problem can be solved by just
+
+01:05:48,520 --> 01:05:51,880
+making the model bigger and bigger and better and better.
+
+01:05:52,120 --> 01:05:54,600
+Like, one of the reasons people say
+
+01:05:55,160 --> 01:05:57,560
+LLMs hallucinate is because
+
+01:05:57,640 --> 01:06:00,520
+they're just forced to say things they don't really know.
+
+01:06:01,335 --> 01:06:04,615
+So do you think, like, if we just make a almighty
+
+01:06:04,615 --> 01:06:08,055
+capable model, these problems automatically goes away?
+
+01:06:08,535 --> 01:06:11,175
+So there there's no real evidence that actually
+
+01:06:11,735 --> 01:06:12,935
+just scale
+
+01:06:13,280 --> 01:06:14,400
+decreases
+
+01:06:14,400 --> 01:06:15,600
+adversarial
+
+01:06:15,760 --> 01:06:17,440
+or increases robustness
+
+01:06:17,440 --> 01:06:22,800
+in in the normal sense. That's true actually for vision models. It's true for LLMs
+
+01:06:22,800 --> 01:06:24,640
+to as to as far as we can tell, etcetera.
+
+01:06:25,785 --> 01:06:30,825
+It does not mean that bigger models or more compute, etcetera, can't help. One of the most
+
+01:06:30,825 --> 01:06:35,945
+viable techniques right now, and I think most exciting techniques for robustness, involves reasoning models that
+
+01:06:35,945 --> 01:06:38,265
+can deliberate about their own their own,
+
+01:06:38,750 --> 01:06:43,470
+you know, their own generations and say, hey. Am I actually violating my content here or not?
+
+01:06:46,430 --> 01:06:51,470
+I don't see any real reason to think that this will magically go away with just a lot
+
+01:06:51,470 --> 01:06:55,475
+more data. That does not it's not backed up by current evidence.
+
+01:06:55,955 --> 01:06:56,675
+However,
+
+01:06:57,475 --> 01:06:59,075
+I am still confused
+
+01:06:59,475 --> 01:07:01,795
+as to why adversarial examples exist,
+
+01:07:02,115 --> 01:07:05,555
+even in images. Doesn't make any sense. Why haven't we been able to fix it?
+
+01:07:05,955 --> 01:07:11,100
+I get it from a standpoint of optimization and, you know, the architecture and all that kind of stuff, but, fundamentally, why can't
+
+01:07:11,100 --> 01:07:12,380
+we build an architecture
+
+01:07:12,540 --> 01:07:15,180
+that doesn't know that that's still a panda?
+
+01:07:15,740 --> 01:07:17,180
+It makes no sense.
+
+01:07:17,500 --> 01:07:22,595
+And I do wonder if it's a matter if if it could be there are aspects of it being a matter of data,
+
+01:07:22,595 --> 01:07:23,555
+a matter of something
+
+01:07:24,115 --> 01:07:29,155
+about the variety of data we see in our normal lives that make us much more robust to this, etcetera.
+
+01:07:29,155 --> 01:07:34,435
+So I don't know. I don't think so, but I'm also very open to possibilities because it still makes
+
+01:07:34,435 --> 01:07:38,290
+no sense that models actually trust this nonsense
+
+01:07:38,530 --> 01:07:40,290
+as being a useful signal.
+
+01:07:40,850 --> 01:07:42,370
+I see. Thanks very much.
+
+01:07:44,530 --> 01:07:45,330
+Thank
+
+01:07:45,330 --> 01:07:49,330
+you, professor. And I am engaging in online online optimization,
+
+01:07:49,330 --> 01:07:52,985
+online learning. So I have just divided into the
+
+01:07:53,225 --> 01:07:54,265
+LLM
+
+01:07:55,065 --> 01:08:00,105
+field. So I wonder that I'm also interested in the AI safety and robustness. I think
+
+01:08:00,105 --> 01:08:01,945
+that's a very promising direction.
+
+01:08:02,265 --> 01:08:03,945
+So I do think that the
+
+01:08:04,505 --> 01:08:09,780
+which way is the best way to, you know, explain the AI robustness and
+
+01:08:09,780 --> 01:08:12,980
+safety? So from the optimization or statistically
+
+01:08:12,980 --> 01:08:16,340
+or from the data way? So what do you think is the most
+
+01:08:16,340 --> 01:08:17,620
+reasonable way?
+
+01:08:17,860 --> 01:08:23,085
+I mean, we've had a lot of so to be I didn't really talk about it. We have had a lot of actually luck in terms
+
+01:08:23,085 --> 01:08:27,405
+of improving robustness via techniques like more adversarial training,
+
+01:08:27,565 --> 01:08:28,685
+like filtering,
+
+01:08:28,685 --> 01:08:30,845
+like also manipulating the internals of a model
+
+01:08:31,270 --> 01:08:35,030
+to sort of make it more robust. Now all of that can be
+
+01:08:36,470 --> 01:08:41,590
+with strong enough attacks can be circumvented, especially if if you have white box access to the model, especially if you
+
+01:08:41,590 --> 01:08:47,055
+fine tune things like this. You know? There we don't know of solutions to the general case. But
+
+01:08:47,695 --> 01:08:52,255
+I I I would say I I don't draw that distinction. I I think that optimization
+
+01:08:52,255 --> 01:08:56,735
+is one approach, but data's all I mean, they're they're the same thing. You know? An optimization
+
+01:08:57,135 --> 01:08:58,575
+is taking a step
+
+01:08:59,450 --> 01:09:04,890
+by minimizing the loss on a given data. You can't on on a given point of you can't separate them out from a conceptual standpoint.
+
+01:09:04,890 --> 01:09:09,930
+So if if you develop a different optimization technique, that's essentially making different use of the data.
+
+01:09:09,930 --> 01:09:14,975
+And I and I think that, you know, this is going to be the kind of thing that will have interplay. It's it's a
+
+01:09:14,975 --> 01:09:20,095
+non answer, I know, but I I just I I I definitely don't think I would not put one of them over the other.
+
+01:09:20,095 --> 01:09:25,455
+These are entirely interrelated, and there's no way we can get around that. Okay. Thank you very much. Okay. Unfortunately,
+
+01:09:25,455 --> 01:09:30,530
+I think we're only gonna be able to take two more questions. So one there and one there. And other people, I'm sure Ziko will be
+
+01:09:30,530 --> 01:09:33,169
+available to chat informally afterwards.
+
+01:09:34,370 --> 01:09:35,090
+Hello.
+
+01:09:35,410 --> 01:09:39,090
+So thank you very much for your talk. Very, very nice.
+
+01:09:40,095 --> 01:09:42,095
+When you were thinking
+
+01:09:42,095 --> 01:09:43,215
+about why
+
+01:09:43,775 --> 01:09:44,495
+the
+
+01:09:45,055 --> 01:09:49,295
+deep equilibrium models did not work, you had this very deep,
+
+01:09:49,615 --> 01:09:51,535
+quite philosophical insight,
+
+01:09:51,535 --> 01:09:52,255
+which was that
+
+01:09:52,810 --> 01:09:56,330
+it turned out the way that deep learning panned out
+
+01:09:56,650 --> 01:09:58,090
+that we want
+
+01:09:58,250 --> 01:10:01,850
+as much computation as possible per parameter
+
+01:10:02,090 --> 01:10:06,905
+and not the other way around. No. So we want more parameters and less Oh, yes, Yes. More
+
+01:10:07,145 --> 01:10:10,025
+as little computation as possible per parameter.
+
+01:10:10,345 --> 01:10:11,625
+So I was wondering
+
+01:10:11,785 --> 01:10:14,665
+why do you think that is in this universe,
+
+01:10:14,825 --> 01:10:19,785
+and do you think do you see that trend reversing at some point in the future?
+
+01:10:21,830 --> 01:10:27,030
+I I it has not reversed yet, and I've been bitten too many times by hoping
+
+01:10:27,030 --> 01:10:32,390
+it will reverse for a while now and hoping we could make these more efficient and, you know, get them to be actually competitive
+
+01:10:32,390 --> 01:10:33,270
+with with with
+
+01:10:33,750 --> 01:10:38,755
+normal models. I don't know. I mean, I think the question before was a great one. We are reaching a point where
+
+01:10:38,755 --> 01:10:43,795
+we are trying to impart more compute into models. That's being done right now
+
+01:10:43,795 --> 01:10:44,995
+by iterating
+
+01:10:44,995 --> 01:10:47,555
+these very, very parameter heavy
+
+01:10:47,830 --> 01:10:49,590
+compute light models.
+
+01:10:50,070 --> 01:10:55,350
+Maybe there are other mechanisms for doing it. I think it's very possible. I don't know that things like equilibrium
+
+01:10:55,350 --> 01:11:00,325
+models are the right thing because they don't they really can't use more parameters. Right? A
+
+01:11:00,485 --> 01:11:05,285
+an iterated MOE can still use all its parameters in the inference time
+
+01:11:05,525 --> 01:11:08,965
+in the test time compute, and these other ones really can't.
+
+01:11:09,685 --> 01:11:14,885
+So so I'm not quite sure how it'll pan out. I don't know why we live in the universe we live in, but, you know, that's
+
+01:11:15,030 --> 01:11:18,230
+it is the universe we live in, and so we have to make do.
+
+01:11:18,710 --> 01:11:22,230
+Sorry. We're gonna this is the last question, then the rest will have to take offline.
+
+01:11:22,710 --> 01:11:27,430
+Oh, hello, Ezekiel. I'm Alan, and also working in AI safety area.
+
+01:11:27,865 --> 01:11:31,545
+So regarding the safety pre training idea you talked about,
+
+01:11:31,945 --> 01:11:35,785
+I wonder what you think about the reasoning capabilities
+
+01:11:35,865 --> 01:11:41,065
+and its implication to, like, say, if you remove the unsafe knowledge from
+
+01:11:41,065 --> 01:11:46,580
+the LLM, but if it's allowed to reason, then technically, it can still derive the harmful behavior
+
+01:11:46,580 --> 01:11:51,700
+from from scratch. Right? I wonder what you think, like, the ideal state of a
+
+01:11:51,700 --> 01:11:56,740
+safe intelligence will look like. Yeah. Absolutely. And to be very clear, our method and this is
+
+01:11:56,740 --> 01:12:01,915
+sort of the the plot I had a few a few bars ago. The the solution is not to remove all
+
+01:12:01,915 --> 01:12:04,075
+unsafe knowledge from the LLM.
+
+01:12:04,235 --> 01:12:06,155
+That's actually net harmful
+
+01:12:06,315 --> 01:12:11,435
+for creating harmful information. If you just we have different levels of of safety. Zero is the most benign,
+
+01:12:11,435 --> 01:12:16,450
+and five is the worst. We do filter out the worst worst data, but if you just train on the safest
+
+01:12:16,450 --> 01:12:19,730
+possible data, your model just works worse and is actually more harmful.
+
+01:12:20,690 --> 01:12:22,050
+Not understanding
+
+01:12:22,050 --> 01:12:26,530
+what's unsafe is not itself a safe thing. That's not gonna give us safety.
+
+01:12:28,305 --> 01:12:29,905
+And so I think that
+
+01:12:30,625 --> 01:12:32,705
+the answer has to be
+
+01:12:33,185 --> 01:12:38,625
+and and as you say, you know, if if if you're really sort of constrained in that regard, then, yes, you can just rediscover
+
+01:12:39,040 --> 01:12:44,240
+what we think of as harmful knowledge by in by sort of inferring it from, you know, a chemistry textbook
+
+01:12:44,240 --> 01:12:46,080
+or whatever else you you you might read.
+
+01:12:47,360 --> 01:12:48,240
+And so
+
+01:12:48,480 --> 01:12:53,835
+I I think that, in general, the solution is not one of just ignoring data.
+
+01:12:53,915 --> 01:12:58,955
+It's one that has to respect the fact that both there are inferences you can make and conclusions you can
+
+01:12:58,955 --> 01:13:01,755
+draw from the data that would be considered harmful.
+
+01:13:01,995 --> 01:13:07,070
+But to give the model the full context of what is harmful, what is not, how we should
+
+01:13:07,070 --> 01:13:08,510
+think about harmful data,
+
+01:13:08,990 --> 01:13:13,470
+what even harmful means. Because I I throw that term around a lot, but it's obviously extremely
+
+01:13:13,470 --> 01:13:14,670
+context dependent,
+
+01:13:14,830 --> 01:13:19,895
+and it's very subtle how we think about things that are safe or unsafe and what we think
+
+01:13:19,895 --> 01:13:24,615
+about being good in different contexts or not. So overall, I just think that
+
+01:13:24,935 --> 01:13:30,055
+there has to be the the solution is not to filter out data. The solution is to be much
+
+01:13:30,055 --> 01:13:35,060
+more intentional throughout the entirety of training in a way that respects
+
+01:13:35,060 --> 01:13:37,460
+the goal of safety in a more foundational way.
+
+01:13:38,420 --> 01:13:39,860
+Okay. Let's thank
+
+01:13:39,860 --> 01:13:40,980
+Zico again.
+
+01:13:41,620 --> 01:13:43,220
+Thanks, everyone. Thank you all.
+

@@ -1,0 +1,26 @@
+[00:00 - 00:30]
+Chào mừng các bạn đến với video giải thích bài nói chuyện "Xây dựng hệ thống AI an toàn và mạnh mẽ" của giáo sư Zico Kolter, trình bày tại hội nghị ICLR 2025. Trong video này, chúng ta sẽ cùng nhau tìm hiểu những kiến thức cốt lõi mà ông đã chia sẻ — từ các kỹ thuật tối ưu hóa sáng tạo, đến vấn đề bảo mật AI, và câu hỏi lớn: làm thế nào để nghiên cứu học thuật có thể tạo ra ảnh hưởng thực sự trong thời đại AI hiện nay.
+
+[00:30 - 01:15]
+Để hiểu tại sao câu hỏi này quan trọng, chúng ta cần quay lại năm 2015. Năm đó, hội nghị ICLR — viết tắt của International Conference on Learning Representations — chỉ có tổng cộng 31 bài báo được chấp nhận. Con số 31 nghe có vẻ nhỏ, nhưng hãy nhìn vào chất lượng: trong số 31 bài báo đó, có những công trình đã thay đổi hoàn toàn bộ mặt của trí tuệ nhân tạo.
+
+[01:15 - 02:15]
+Bài báo đầu tiên cần nhắc đến là Adam — thuật toán tối ưu mà ngày nay gần như mọi người làm deep learning đều sử dụng. Adam giải quyết vấn đề chọn learning rate bằng cách tự động điều chỉnh tốc độ học cho từng tham số dựa trên moment bậc nhất và bậc hai của gradient.
+
+Bài báo thứ hai là về Neural Machine Translation — dịch máy bằng mạng neural. Đây chính là công trình đã phát minh ra cơ chế softmax attention — nền tảng cho kiến trúc Transformer mà chúng ta biết ngày nay. Có thể nói, không có bài báo này thì sẽ không có GPT, không có BERT, không có cuộc cách mạng AI mà chúng ta đang chứng kiến.
+
+Bài thứ ba là "Explaining and Harnessing Adversarial Examples" của Ian Goodfellow, Jonathan Shlens và Christian Szegedy. Đây là bài báo nổi tiếng với hình ảnh con gấu trúc: chỉ cần thêm một lượng nhiễu rất nhỏ, không thể nhìn thấy bằng mắt thường, mạng neural sẽ phân loại nhầm gấu trúc thành vượn. Điều đáng ngạc nhiên là bài báo có ảnh hưởng lớn như vậy mà thậm chí không giành được giải thưởng Test of Time.
+
+[02:15 - 02:50]
+Ngoài ra còn có bài báo VGGNet — kiến trúc mạng tích chập sâu đã trở thành chuẩn mực cho xử lý ảnh trong nhiều năm. Và một bài báo nhỏ về chơi cờ vây bằng mạng neural tích chập — chính là nền tảng cho AlphaGo sau này, hệ thống đã đánh bại nhà vô địch cờ vây thế giới Lee Sedol vào năm 2016. Thêm vào đó là Memory Networks và Multiple Visual Attention — tất cả đều xuất hiện tại cùng một hội nghị chỉ với 31 bài báo.
+
+[02:50 - 03:30]
+Bây giờ hãy so sánh: ICLR 2025 có khoảng 3700 bài báo được chấp nhận. Tăng hơn 100 lần so với 2015. Nhưng câu hỏi đặt ra: nếu chúng ta chọn ngẫu nhiên 31 bài báo từ ICLR 2025, liệu có đến một nửa trong số đó sẽ trở thành những công trình khai phá, thay đổi cả lĩnh vực như những bài báo năm 2015? Giáo sư Kolter cho rằng câu trả lời có lẽ là không. Mười năm qua là thời kỳ tuyệt vời cho AI — nhưng có điều gì đó đặc biệt đã mất đi. Đó là cảm giác rằng mọi thứ chúng ta đang làm sẽ thay đổi cả lĩnh vực.
+
+[03:30 - 04:15]
+Vậy điều gì đã thay đổi? Một phần là vì kỷ nguyên scaling đã đến. Các phòng thí nghiệm công nghiệp lớn — OpenAI, Google DeepMind, Anthropic — đã đầu tư hàng tỷ đô la vào compute và dữ liệu. Nghiên cứu học thuật, với nguồn lực hạn chế hơn nhiều, dường như khó có thể cạnh tranh trực tiếp trong việc xây dựng mô hình tốt nhất. Nhưng giáo sư Kolter không muốn hoài niệm về quá khứ. Ông muốn đặt câu hỏi: làm thế nào nghiên cứu học thuật có thể tìm lại "tia sáng" đó — khả năng tạo ra ảnh hưởng to lớn như đã từng xảy ra tại ICLR 2015?
+
+[04:15 - 05:00]
+Và đó chính là chủ đề xuyên suốt bài nói này. Giáo sư Kolter sẽ nhìn lại hành trình nghiên cứu 10 năm của mình — từ optimization layers, đến adversarial robustness, đến khoa học thực nghiệm của deep learning, và cuối cùng là AI safety. Ở mỗi giai đoạn, ông thẳng thắn đánh giá: đâu là thành công, đâu là thất bại, và bài học rút ra là gì. Câu trả lời cuối cùng của ông: AI safety — xây dựng hệ thống AI an toàn — chính là lĩnh vực có tiềm năng lớn nhất để nghiên cứu học thuật tạo ảnh hưởng trong thời đại hiện nay.
+
+Hãy cùng bắt đầu hành trình này.
