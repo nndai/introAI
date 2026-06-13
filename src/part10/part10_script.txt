@@ -1,0 +1,105 @@
+[48:02 - 48:38]
+Một hướng quan trọng trong AI safety là unlearning.
+Khi model ngày càng mạnh, đôi khi ta không chỉ muốn nó trả lời tốt hơn,
+mà cần nó thật sự không biết một loại kiến thức nhất định,
+hoặc ngay từ đầu không đưa kiến thức đó vào model.
+Nếu model đã học một hướng dẫn nguy hiểm,
+thì fine-tune ở cuối để nó nói "tôi không thể giúp" có thể chưa đủ.
+Kiến thức vẫn nằm trong tham số;
+một jailbreak đủ tốt vẫn có thể kéo nó ra.
+Vì vậy, unlearning không chỉ là dạy model im lặng,
+mà là cố gắng remove knowledge ở tầng nền tảng hơn.
+
+[48:38 - 49:28]
+Nhưng đánh giá unlearning rất khó.
+Trước đây, nhiều cách kiểm tra khá ad hoc:
+sau khi unlearn, ta hỏi lại model vài câu nhạy cảm,
+ví dụ nó còn biết hướng dẫn một hành vi nguy hiểm không,
+hoặc còn làm được một bio task nào đó không.
+Cách đó có trực giác, nhưng không đủ chặt để so sánh khoa học.
+Vì vậy nhóm của Kolter xây dựng TOFU,
+một benchmark dựa trên fictional authors.
+Các tác giả này không tồn tại thật,
+nên base model ban đầu không thể biết sẵn về họ.
+Ta fine-tune model để nó học thông tin về 200 tác giả hư cấu,
+rồi yêu cầu nó unlearn một nhóm nhỏ.
+Nhờ vậy, ta biết chính xác model học gì,
+nhóm nào cần forget,
+và nhóm nào cần retain.
+
+[49:28 - 50:35]
+Unlearning không có nghĩa là quên càng nhiều càng tốt.
+Nếu ta phá hỏng toàn bộ model,
+nó cũng sẽ quên,
+nhưng đó không phải là phương pháp tốt.
+Ngược lại, nếu model vẫn có utility cao
+nhưng vẫn nhớ forget set,
+thì cũng thất bại.
+TOFU đo hai phía cùng lúc:
+forget quality, tức model có thật sự quên phần cần quên không;
+và utility, tức model có còn hoạt động tốt trên phần cần giữ không.
+Một baseline là model được fine-tune trên tất cả tác giả và không quên gì:
+utility cao nhưng forget quality thấp.
+Baseline lý tưởng hơn là retrain từ đầu chỉ trên retain set.
+Kết quả là phần lớn phương pháp có trade-off tệ:
+hoặc quên không đủ,
+hoặc quên được nhưng làm hỏng chất lượng model.
+Kolter nhấn mạnh rằng ta vẫn chưa hiểu đầy đủ cách làm model forget,
+đặc biệt khi thứ cần quên là capability nằm sâu bên trong model.
+
+[50:35 - 51:35]
+Hướng tiếp theo là anti-distillation sampling.
+Nếu unlearning hỏi cách làm model quên kiến thức đã có,
+thì anti-distillation hỏi một câu khác:
+có thể xây một teacher model sao cho sample của nó vẫn đúng,
+nhưng không có nhiều giá trị để train student không?
+Có lý do cạnh tranh cho việc này:
+ta có thể muốn phát hành model tốt,
+nhưng không muốn người khác chỉ lấy sample rồi train lại một model riêng.
+Nhưng Kolter xem đây cũng là câu hỏi safety.
+Theo ông, có giá trị trong việc giữ một khoảng trễ
+giữa frontier closed-source models,
+những model ta có thể dùng và phân tích trước,
+với open-source variants khi đã phát hành thì khó thu hồi hay kiểm soát.
+Ông nói rõ đây không phải là phản đối open source;
+công trình này cũng làm trên open-source models.
+Ý chính là teacher vẫn hữu ích,
+nhưng student không dễ copy capability chỉ bằng output của teacher.
+
+[51:35 - 52:45]
+Cách làm là đổi sampling objective.
+Thông thường, khi sample từ teacher,
+ta muốn token có likelihood cao:
+mẫu tự nhiên, hợp lý, và đúng với phân phối của teacher.
+Ở đây objective có thêm một thành phần:
+mẫu đó nên làm cho việc train student kém hữu ích hơn.
+Ta không chỉ hỏi "token nào có xác suất cao?",
+mà còn hỏi "token nào khiến student học được ít hơn?".
+Về tính toán, việc này khó,
+vì với mỗi possible next token,
+ta phải ước lượng downstream loss nếu dùng token đó làm training data.
+Nhóm nghiên cứu dùng một số differentiation tricks
+để tính xấp xỉ hiệu quả hơn.
+Kolter cũng nói phương pháp này chưa hẳn practical hoàn toàn,
+nhưng việc nó hoạt động được đã rất thú vị.
+
+[52:45 - 54:10]
+Trên đồ thị, ta so sánh teacher accuracy với student accuracy.
+Đường màu xanh là temperature sampling.
+Nếu chỉ tăng temperature để làm sample nhiễu hơn,
+teacher accuracy có thể giảm.
+Nhưng ngay cả khi teacher accuracy đã thấp,
+dữ liệu đó vẫn thường giúp student cải thiện.
+Nói cách khác, chỉ làm output xấu đi bằng noise ngẫu nhiên
+không đủ để chặn student học lại.
+Anti-distillation sampling cố đẩy Pareto frontier theo hướng mong muốn hơn:
+đi xuống phía dưới bên trái.
+Tức là teacher vẫn giải đúng ở mức chấp nhận được,
+nhưng student học được ít hơn nhiều từ cùng loại sample đó.
+Kolter nói điều thú vị là các sample này vẫn giải được bài toán gốc.
+Ví dụ trên GSM8K, một tập basic math problems,
+sample anti-distillation vẫn đúng khoảng 70% thời gian,
+nhưng gần như vô dụng để train student.
+Đó là trực giác chính:
+sample vẫn đủ đúng để sử dụng,
+nhưng kém giá trị để sao chép capability.

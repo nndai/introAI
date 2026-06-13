@@ -1,0 +1,123 @@
+[41:33 - 42:04]
+Phần này đưa chúng ta đến chủ đề mà Kolter ban đầu thật sự muốn nhấn mạnh: AI safety.
+Nếu nhìn vào tình hình hiện tại của lĩnh vực AI,
+ông cho rằng safety có lẽ là một trong những vấn đề lớn nhất mà chúng ta đang đối mặt.
+Và quan trọng hơn, đây là nơi nghiên cứu học thuật vẫn còn rất cần thiết,
+nhưng chưa được đầu tư đúng mức.
+
+[42:05 - 42:32]
+Kolter không cố thuyết phục mọi người bằng một lập luận tận thế.
+Nếu ai đó hoài nghi rằng model hiện nay sẽ sớm trở nên cực kỳ có năng lực,
+hoặc nghĩ rằng model có tiến bộ thì mọi chuyện rồi cũng ổn,
+ông không dành thời gian để ép họ đổi quan điểm.
+Điểm ông muốn nhấn mạnh thực tế hơn:
+ngay cả nếu ta chỉ quan tâm đến việc làm nghiên cứu có ảnh hưởng lớn
+đến tương lai của AI systems,
+thì AI safety vẫn là một lĩnh vực có tầm quan trọng chiến lược rất cao.
+
+[42:33 - 43:21]
+Với cá nhân Kolter, bước ngoặt xảy ra khoảng tháng 2/2022.
+Khi đó, các model bắt đầu tốt lên nhanh hơn nhiều so với dự đoán của ông.
+Đến khi ChatGPT được phát hành,
+cả thế giới gần như cùng lúc nhận ra công nghệ này mạnh và hữu ích đến mức nào.
+Kolter nói ông không hoàn toàn bị sốc,
+vì trước đó đã dùng GPT-3 khá nhiều trong playground.
+Nhưng cảm giác chỉ thật sự "ngấm" khi công nghệ này bỗng trở thành trải nghiệm chung của toàn xã hội.
+
+[43:21 - 44:24]
+Và lúc đó, một kết quả trước đây trong robustness bỗng trở nên rất liên quan:
+chúng ta đã biết các model này không thật sự robust.
+Khi model còn yếu, điều đó có thể chỉ là một vấn đề kỹ thuật thú vị.
+Nhưng khi model đủ mạnh để được hàng triệu người dùng,
+việc nó dễ bị thao túng trở thành một vấn đề lớn.
+Vì vậy, nếu nghiên cứu học thuật muốn tạo ảnh hưởng kiểu như ICLR 2015 từng tạo ra,
+thì một hướng rất tự nhiên là:
+xác định các vulnerability của AI systems,
+và tìm cách giảm thiểu chúng.
+
+[44:25 - 45:04]
+Một trong những công trình nổi tiếng đầu tiên của nhóm Kolter trong hướng này là automated jailbreaks.
+Trước khi đi vào ví dụ, cần có một disclaimer.
+Ví dụ được trình bày liên quan đến một chatbot mà sau này Kolter có liên hệ về mặt tổ chức,
+nhưng công trình này được làm trước khi ông có bất kỳ liên hệ nào với OpenAI.
+Và quan trọng hơn, ví dụ này thuộc về các model cũ hơn.
+Nó không còn hoạt động theo cách đó trên các model hiện tại.
+Đặc biệt, các reasoning models ngày nay robust hơn nhiều trước kiểu manipulation này.
+
+[45:04 - 45:31]
+Ví dụ cơ bản là thế này.
+Nếu ta hỏi ChatGPT một yêu cầu nguy hiểm,
+model sẽ làm điều ta mong đợi:
+nó từ chối và nói rằng nó không thể hỗ trợ việc đó.
+Nhưng trong các model cũ hơn,
+nếu giữ nguyên ý định nguy hiểm đó,
+rồi thêm phía sau một đoạn văn bản lộn xộn, gần như vô nghĩa,
+thì đôi khi model lại chuyển sang comply.
+Nó không chỉ đồng ý,
+mà còn có thể viết một câu trả lời khá đầy đủ theo hướng người dùng yêu cầu.
+
+[45:34 - 45:46]
+Những kiểu jailbreak dựa trên câu chuyện hoặc role-play thì nhiều người đã thấy:
+ví dụ bọc yêu cầu trong một câu chuyện cảm xúc,
+hoặc giả vờ rằng nội dung nguy hiểm chỉ là hồi ức của một người thân.
+Những cách đó cũng có thể có tác dụng.
+Nhưng điểm thú vị ở công trình này là cách tìm suffix hoàn toàn automated.
+Nó không dựa vào việc con người nghĩ ra prompt khéo,
+mà biến bài toán thành một bài toán optimization.
+
+[45:47 - 46:14]
+Ta bắt đầu với một query cố định,
+ví dụ một yêu cầu mà model bình thường sẽ refuse.
+Sau đó ta thêm vào cuối query một chuỗi token phụ,
+gọi là adversarial suffix.
+Tiếp theo, ta dùng một open-source model,
+vì với model mở ta có thể tính được xác suất của các response khác nhau:
+xác suất model refuse,
+và xác suất model bắt đầu comply.
+
+[46:15 - 46:39]
+Thuật toán sẽ liên tục thay đổi các token trong suffix.
+Mục tiêu là làm tăng xác suất model phản hồi theo hướng affirmative,
+tức là bắt đầu câu trả lời như thể nó đồng ý.
+Các token được chọn bằng một kỹ thuật dựa trên gradient,
+thông qua một relaxation xấp xỉ của bài toán.
+Nhưng bản chất bài toán vẫn là discrete optimization,
+vì token là các lựa chọn rời rạc,
+nên hệ thống vẫn phải thử rất nhiều candidate khác nhau.
+
+[46:41 - 47:05]
+Sau đủ nhiều bước cập nhật,
+suffix có thể làm xác suất comply cao hơn xác suất refuse.
+Khi vượt qua ngưỡng đó, model bắt đầu trả lời theo hướng đồng ý.
+Điều đáng chú ý là ta không cần viết sẵn toàn bộ câu trả lời mục tiêu.
+Ta chỉ cần tối ưu để response bắt đầu bằng một câu kiểu:
+"Sure, here is how to..."
+Phần còn lại, model tự sinh tiếp từ kiến thức nội tại của nó.
+Nói cách khác, jailbreak không nhất thiết phải chứa kiến thức nguy hiểm;
+nó chỉ cần đẩy model vào chế độ sẵn sàng sử dụng kiến thức đã có.
+
+[47:06 - 47:25]
+Điều đáng ngạc nhiên hơn là suffix này không chỉ hoạt động trên open-source model được dùng để tối ưu.
+Trong nhiều trường hợp, nó còn transfer zero-shot sang các closed-source models khác.
+Tức là ta tối ưu suffix trên một model mở,
+nhưng suffix đó vẫn có thể làm lệch hành vi của một model đóng,
+dù ta không trực tiếp tối ưu trên model đóng đó.
+Kết quả này ảnh hưởng rất nhiều đến cách Kolter suy nghĩ về AI safety.
+
+[47:26 - 47:49]
+Kolter cũng nhấn mạnh rằng chúng ta đã có nhiều tiến bộ với ví dụ cụ thể này.
+Như đã nói ở đầu, các model hiện tại robust hơn nhiều trước kiểu tấn công này.
+Nhưng bài học tổng quát vẫn còn quan trọng:
+khi model đủ mạnh, một vulnerability nhỏ trong cách nó phản hồi
+có thể trở thành một vấn đề safety thực sự.
+Tuy vậy, AI safety không chỉ đồng nghĩa với robustness.
+
+[47:49 - 48:01]
+Robustness chỉ là một lát cắt của safety.
+Trong machine learning, nhiều người có xu hướng đánh đồng hai khái niệm này,
+nhưng safety rộng hơn nhiều.
+Nó bao gồm nhiều góc nhìn khác nhau:
+jailbreaks, unlearning, misuse, alignment,
+anti-distillation, và cả cách đưa safety vào quá trình training.
+Vì vậy, automated jailbreaks chỉ là điểm khởi đầu
+để bước sang một hệ sinh thái vấn đề rộng hơn trong AI safety.
