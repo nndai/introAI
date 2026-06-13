@@ -1,0 +1,80 @@
+Part 8 — Khoa học thực nghiệm của Deep Learning
+Thời lượng mục tiêu: 9 phút (40:00 – 49:00)
+Số từ ước tính: ~1350 từ (tốc độ 150 từ/phút)
+6 phân cảnh
+
+================================================================================
+
+[40:00 - 41:30] SCENE 1 — Bối cảnh: Kỷ nguyên Scaling và vai trò mới của nghiên cứu
+
+Đến khoảng năm 2020, kỷ nguyên scaling đã thực sự bắt đầu. Các mô hình deep learning ngày càng lớn hơn, mạnh hơn — nhưng cũng phức tạp đến mức các nhóm nghiên cứu học thuật không còn đủ tài nguyên để xây dựng mô hình tốt nhất nữa. Đó là công việc của các phòng thí nghiệm công nghiệp.
+
+Nhưng điều này mở ra một cơ hội khác. Các mạng neural sâu giờ đây giống như những hiện tượng tự nhiên — chúng phức tạp đến mức chúng ta không thể hiểu chúng từ lý thuyết thuần túy, giống như cách chúng ta hiểu mô hình tuyến tính hay SVM. Chúng cần được nghiên cứu bằng thực nghiệm, giống như vật lý nghiên cứu các hiện tượng tự nhiên.
+
+Và đó chính là vai trò mà nghiên cứu học thuật có thể đóng: xây dựng một ngành "khoa học thực nghiệm" của deep learning — quan sát, đo đạc, phát hiện những quy luật bất ngờ mà lý thuyết chưa giải thích được.
+
+Visual: Timeline 2020 → hiện tại, icon kính hiển vi + mạng neural → "Khoa học thực nghiệm DL". Biểu tượng phòng thí nghiệm học thuật vs phòng thí nghiệm công nghiệp.
+
+================================================================================
+
+[41:30 - 43:30] SCENE 2 — Edge of Stability: Khi lý thuyết tối ưu sụp đổ
+
+Một trong những phát hiện đáng chú ý nhất là hiện tượng "Edge of Stability" — Bờ vực của sự ổn định.
+
+Lý thuyết tối ưu truyền thống nói rằng: khi chúng ta chạy gradient descent, learning rate η phải thỏa mãn điều kiện η nhỏ hơn 2 chia cho sharpness — tức là trị riêng lớn nhất của ma trận Hessian. Nếu sharpness vượt ngưỡng 2/η, quá trình tối ưu sẽ phân kỳ — loss sẽ bùng nổ.
+
+Nhưng khi quan sát thực tế, điều xảy ra lại hoàn toàn khác. Hãy cùng nhìn vào đồ thị. Ban đầu, sharpness tăng dần — đúng như dự đoán. Loss cũng giảm dần — bình thường. Nhưng khi sharpness tiến đến ngưỡng 2/η, thay vì phân kỳ, điều kỳ lạ xảy ra: sharpness dừng lại ở đó. Nó không vượt qua ngưỡng, mà cứ dao động quanh giá trị 2/η.
+
+Và loss? Loss không bùng nổ. Nó vẫn giảm — chỉ là giảm không đơn điệu nữa. Nó có những nhịp nhảy nhỏ, những gai nhọn, nhưng xu hướng tổng thể vẫn đi xuống. Mạng neural hoạt động ngay tại bờ vực của sự ổn định — nơi lý thuyết truyền thống nói rằng mọi thứ phải sụp đổ, nhưng thực tế thì không.
+
+Đây là một hiện tượng thực nghiệm thuần túy — giống như một "thuộc tính vật lý" của mạng neural sâu mà đến nay vẫn chưa được giải thích đầy đủ bằng lý thuyết.
+
+Visual: Hai đồ thị xếp dọc — trên: train loss vs iteration (đường cam giảm rồi dao động nhẹ), dưới: sharpness vs iteration (đường cam tăng rồi bám sát đường nét đứt 2/η = 200). Animation build-up dần dần: vẽ đường nét đứt ngưỡng trước, rồi đường sharpness tăng lên bám sát.
+
+================================================================================
+
+[43:30 - 45:30] SCENE 3 — Disagreement ≈ Error: Hai mạng bất đồng = Hai mạng sai
+
+Phát hiện thứ hai cũng bất ngờ không kém. Hãy tưởng tượng chúng ta huấn luyện hai mạng classifier giống hệt nhau — cùng kiến trúc, cùng dữ liệu, cùng lịch trình SGD — chỉ khác nhau ở bộ trọng số khởi tạo ngẫu nhiên.
+
+Bây giờ, với mỗi mẫu dữ liệu, chúng ta hỏi: hai mạng này có đồng ý với nhau về kết quả phân loại không? Tỷ lệ mà chúng bất đồng — gọi là disagreement — bằng bao nhiêu?
+
+Kết quả thực nghiệm cho thấy: tỷ lệ bất đồng gần như bằng tỷ lệ lỗi trung bình của hai mạng. Khi vẽ biểu đồ tán xạ với trục X là error và trục Y là disagreement, tất cả các điểm nằm gần như chính xác trên đường y bằng x.
+
+Điều này rất lạ. Theo trực giác, hai mạng được huấn luyện giống nhau đến vậy nên rất tương quan — chúng nên đồng ý với nhau nhiều hơn mức chúng đúng. Nhưng thực tế cho thấy: mức độ bất đồng phản ánh chính xác mức độ lỗi.
+
+Về mặt lý thuyết, hiện tượng này liên quan đến tính chất calibration của deep ensembles. Nếu dự đoán trung bình của ensemble các classifier được calibrate tốt — nghĩa là khi mô hình nói "tôi tự tin 80%" thì nó đúng khoảng 80% — thì có thể chứng minh rằng, kỳ vọng của error sẽ bằng kỳ vọng của disagreement.
+
+Visual: Hai mạng neural song song (khác màu khởi tạo) → cùng input → so sánh output. Biểu đồ scatter: trục X "Error", trục Y "Disagreement", các điểm nằm sát đường y=x. Highlight công thức: E[Err(h)] = E[Disagree(h, h')].
+
+================================================================================
+
+[45:30 - 47:30] SCENE 4 — Agreement on the Line: Dự đoán hiệu suất ngoài phân phối
+
+Phát hiện thứ ba là sự mở rộng thực tiễn đầy hứa hẹn của ý tưởng trên — gọi là "Agreement on the Line".
+
+Trước tiên, hãy nói về hiện tượng "Accuracy on the Line" được phát hiện bởi nhóm Stanford. Khi vẽ biểu đồ in-distribution accuracy trên trục X và out-of-distribution accuracy trên trục Y cho nhiều mô hình khác nhau, các điểm nằm trên một đường thẳng. Nghĩa là: hiệu suất trên dữ liệu ngoài phân phối suy giảm theo tỷ lệ tuyến tính với hiệu suất trên dữ liệu trong phân phối.
+
+Nhóm của Kolter phát hiện rằng: agreement — tỷ lệ đồng thuận giữa các cặp classifier — cũng tuân theo cùng một hiện tượng tuyến tính. In-distribution agreement và out-of-distribution agreement nằm trên một đường thẳng. Và thú vị nhất: đường thẳng agreement này gần như trùng khít với đường thẳng accuracy — cùng hệ số góc, cùng tung độ gốc.
+
+Điều này có ý nghĩa thực tiễn lớn: chúng ta có thể ước lượng hiệu suất của mô hình trên dữ liệu hoàn toàn mới — mà không cần nhãn đúng. Ví dụ: nếu bạn có một hệ thống xe tự lái được huấn luyện trên đường bình thường, và muốn biết nó sẽ hoạt động tốt đến mức nào trên đường tuyết — bạn không cần gán nhãn dữ liệu tuyết. Bạn chỉ cần cho xe chạy, đo tỷ lệ đồng thuận giữa các cặp classifier trên dữ liệu tuyết, rồi dùng đường thẳng đã biết để suy ra accuracy.
+
+Visual: Hai biểu đồ scatter cạnh nhau — trái: "Accuracy on the Line" (ID accuracy vs OOD accuracy, nhiều điểm nhiều màu trên đường thẳng nét đứt), phải: "Agreement on the Line" (ID vs OOD, đường accuracy xanh và đường agreement hồng trùng nhau). Ví dụ xe tự lái: icon xe → đường bình thường vs đường tuyết.
+
+================================================================================
+
+[47:30 - 48:30] SCENE 5 — Tổng kết: Một lĩnh vực đang phát triển mạnh
+
+Khác với optimization layers và certified robustness, khoa học thực nghiệm deep learning vẫn đang phát triển rất mạnh mẽ. Đây là một trong những lĩnh vực sôi động nhất hiện nay trong machine learning.
+
+Chúng ta đang dần xây dựng một "khoa học" thực sự về deep learning — đi từ những quan sát thực nghiệm, đến phát hiện quy luật, rồi tìm cách giải thích bằng lý thuyết. Edge of Stability, Disagreement equals Error, Agreement on the Line — tất cả đều là ví dụ cho thấy deep learning chứa đầy những hiện tượng phản trực giác mà chúng ta chỉ mới bắt đầu hiểu.
+
+Visual: Ba icon đại diện cho ba phát hiện xếp hàng ngang, mỗi cái có checkmark xanh. Dưới cùng: text "Khoa học thực nghiệm DL: vẫn đang phát triển mạnh mẽ".
+
+================================================================================
+
+[48:30 - 49:00] SCENE 6 — Chuyển tiếp sang AI Safety
+
+Tuy nhiên, giáo sư Kolter cũng thẳng thắn nhận xét: chỉ quan sát và phân tích thôi thì chưa đủ. Nghiên cứu học thuật không nên chỉ dừng lại ở việc mô tả những gì các mô hình của các công ty lớn đang làm. Chúng ta cần tìm lĩnh vực mà nghiên cứu học thuật thực sự có thể dẫn dắt — và lĩnh vực đó chính là AI Safety. Hãy cùng tìm hiểu tại sao.
+
+Visual: Fade out ba icon → chữ "AI Safety" xuất hiện lớn dần với hiệu ứng glow, kèm dấu hỏi "Tại sao đây là cơ hội lớn nhất?"
