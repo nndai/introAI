@@ -58,7 +58,7 @@ class Part2Scene(Scene):
     def scene1_intro_convexity(self):
         # 1. Title slide
         title = Text("Chương 1: Optimization & Implicit Layers", font_size=32, color=PAPER_YELLOW)
-        subtitle = Text("", font_size=24, color=PAPER_BLUE)
+        subtitle = Text("Input Convex Neural Networks (ICNN)", font_size=24, color=PAPER_BLUE)
         title_group = VGroup(title, subtitle).arrange(DOWN, buff=0.45).move_to(ORIGIN)
         
         self.play(Write(title), run_time=1.5)
@@ -305,74 +305,69 @@ class Part2Scene(Scene):
         arch_title = Text("Kiến trúc Mạng ICNN", font_size=32, color=PAPER_YELLOW)
         arch_title.to_edge(UP, buff=0.35)
 
-        y_nodes = 0.5
-        positions = [
-            np.array([-4.0, y_nodes, 0]),
-            np.array([-1.3, y_nodes, 0]),
-            np.array([1.3, y_nodes, 0]),
-            np.array([4.0, y_nodes, 0]),
-        ]
-        node_colors = [PAPER_GREEN, PAPER_YELLOW, PAPER_YELLOW, PAPER_BLUE]
-        node_labels_tex = ["x", "z_1", "z_2", "f(x)"]
+        def create_layer(color, name, pos, num_circles=3):
+            rect_height = max(1.2, num_circles * 0.3 + 0.1)
+            rect = RoundedRectangle(height=rect_height, width=0.5, corner_radius=0.1, color=color, fill_opacity=0.3)
+            label = MathTex(name, font_size=18).next_to(rect, DOWN, buff=0.1)
+            circles = VGroup(*[Circle(radius=0.1, color=color, fill_opacity=0.1) for _ in range(num_circles)]).arrange(DOWN, buff=0.1).move_to(rect.get_center())
+            return VGroup(rect, circles, label).move_to(pos)
 
-        nn_nodes = []
-        nn_labels = []
-        for pos, col, lbl in zip(positions, node_colors, node_labels_tex):
-            c = Circle(radius=0.28, color=col, fill_color=col, fill_opacity=0.7, stroke_width=2)
-            c.move_to(pos)
-            l = MathTex(lbl, font_size=22, color=TEXT_COLOR)
-            l.next_to(c, DOWN, buff=0.15)
-            nn_nodes.append(c)
-            nn_labels.append(l)
+        n_x = create_layer(PAPER_GREEN, "x", LEFT * 5.0 + UP * 0.5, 3)
+        n_z1 = create_layer(PAPER_YELLOW, "z_1", LEFT * 2.8 + UP * 0.5, 4)
+        n_z2 = create_layer(PAPER_YELLOW, "z_2", LEFT * 0.6 + UP * 0.5, 4)
+        n_dots = MathTex(r"\dots", font_size=24, color=TEXT_COLOR).move_to(RIGHT * 1.0 + UP * 0.5)
+        n_zk = create_layer(PAPER_YELLOW, "z_k", RIGHT * 2.6 + UP * 0.5, 4)
+        n_y = create_layer(PAPER_YELLOW, "f(x)", RIGHT * 4.8 + UP * 0.5, 1)
 
-        # Sequential arrows (W)
-        seq_arrows = VGroup()
-        for i in range(len(nn_nodes) - 1):
-            arr = Arrow(nn_nodes[i].get_right(), nn_nodes[i+1].get_left(),
-                        buff=0.06, color=PAPER_GREEN, stroke_width=2.5)
-            seq_arrows.add(arr)
+        # Arrows
+        a1 = Arrow(n_x[0].get_right(), n_z1[0].get_left(), buff=0.1, stroke_width=2, max_tip_length_to_length_ratio=0.15)
+        w0 = MathTex("W_0", font_size=16).next_to(a1, UP, buff=0.05)
 
-        # Skip connections from x (node 0) to z1 and z2 (nodes 1, 2)
-        skip_arrows = VGroup()
-        for target_idx in [1, 2]:
-            start = nn_nodes[0].get_bottom() + DOWN * 0.05
-            end = nn_nodes[target_idx].get_bottom() + DOWN * 0.05
-            path = ArcBetweenPoints(start, end, angle=TAU / 4)
-            path.set_color(PAPER_ORANGE)
-            path.set_stroke(width=2)
-            skip_arrows.add(path)
+        a2 = Arrow(n_z1[0].get_right(), n_z2[0].get_left(), buff=0.1, stroke_width=2, max_tip_length_to_length_ratio=0.15)
+        w1 = MathTex("W_1", font_size=16).next_to(a2, UP, buff=0.05)
 
-        w_lbl = MathTex(r"W_i \geq 0", font_size=18, color=PAPER_GREEN)
-        w_lbl.next_to(seq_arrows[1], UP, buff=0.1)
+        a3 = Arrow(n_z2[0].get_right(), n_dots.get_left(), buff=0.1, stroke_width=2, max_tip_length_to_length_ratio=0.15)
+        w2 = MathTex("W_2", font_size=16).next_to(a3, UP, buff=0.05)
 
-        u_lbl = MathTex(r"U_i \in \mathbb{R}", font_size=18, color=PAPER_ORANGE)
-        u_lbl.next_to(skip_arrows[1], DOWN, buff=0.1)
+        a4 = Arrow(n_dots.get_right(), n_zk[0].get_left(), buff=0.1, stroke_width=2, max_tip_length_to_length_ratio=0.15)
+        wk_minus_1 = MathTex("W_{k-1}", font_size=16).next_to(a4, UP, buff=0.05)
 
-        all_nodes_grp = VGroup(*nn_nodes, *nn_labels)
-        arch_diagram = VGroup(all_nodes_grp, seq_arrows, skip_arrows, w_lbl, u_lbl)
+        a5 = Arrow(n_zk[0].get_right(), n_y[0].get_left(), buff=0.1, stroke_width=2, max_tip_length_to_length_ratio=0.15)
+        wk = MathTex("W_k", font_size=16).next_to(a5, UP, buff=0.05)
+
+        arch_diagram = VGroup(n_x, n_z1, n_z2, n_dots, n_zk, n_y, a1, w0, a2, w1, a3, w2, a4, wk_minus_1, a5, wk)
 
         formula = MathTex(
-            r"z_{i+1} = \text{ReLU}(W_i z_i + U_i x + b_i)",
+            r"z_{i+1} = \text{ReLU}(W_i z_i + b_i)",
             font_size=26,
             color=TEXT_COLOR
-        )
-        formula.next_to(arch_diagram, DOWN, buff=0.5)
-        formula.set_x(0)
+        ).next_to(arch_diagram, DOWN, buff=0.6).set_x(0)
 
         self.play(Write(arch_title), run_time=1.0)
         self.play(
-            LaggedStart(*[Create(n) for n in nn_nodes], lag_ratio=0.15),
-            LaggedStart(*[Write(l) for l in nn_labels], lag_ratio=0.15),
+            LaggedStart(
+                FadeIn(n_x, shift=UP*0.2),
+                FadeIn(n_z1, shift=UP*0.2),
+                FadeIn(n_z2, shift=UP*0.2),
+                FadeIn(n_dots, shift=UP*0.2),
+                FadeIn(n_zk, shift=UP*0.2),
+                FadeIn(n_y, shift=UP*0.2),
+                lag_ratio=0.15
+            ),
             run_time=2.0
         )
         self.play(
-            LaggedStart(*[GrowArrow(arr) for arr in seq_arrows], lag_ratio=0.3),
-            run_time=1.5
+            LaggedStart(
+                GrowArrow(a1), FadeIn(w0, shift=UP*0.1),
+                GrowArrow(a2), FadeIn(w1, shift=UP*0.1),
+                GrowArrow(a3), FadeIn(w2, shift=UP*0.1),
+                GrowArrow(a4), FadeIn(wk_minus_1, shift=UP*0.1),
+                GrowArrow(a5), FadeIn(wk, shift=UP*0.1),
+                lag_ratio=0.2
+            ),
+            run_time=2.0
         )
-        self.wait(3.0)
-        self.play(Create(skip_arrows), run_time=2.0)
-        self.play(FadeIn(w_lbl), FadeIn(u_lbl), run_time=1.0)
-        self.wait(4.0)
+        self.wait(2.0)
         self.play(Write(formula), run_time=1.5)
         self.wait(8.0)
 
@@ -386,24 +381,14 @@ class Part2Scene(Scene):
         w_desc = Text("Trọng số ẩn-ẩn: Bắt buộc không âm", font_size=20, color=TEXT_COLOR)
         w_block = VGroup(w_text, w_desc)
         w_block.arrange(DOWN, buff=0.25)
-
-        u_text = MathTex(r"U_i \in \mathbb{R}", font_size=42, color=PAPER_ORANGE)
-        u_desc = Text("Trọng số kết nối tắt: Nhận giá trị bất kỳ", font_size=20, color=TEXT_COLOR)
-        u_block = VGroup(u_text, u_desc)
-        u_block.arrange(DOWN, buff=0.25)
-
-        both_blocks = VGroup(w_block, u_block)
-        both_blocks.arrange(DOWN, buff=0.55)
-        both_blocks.next_to(wc_title, DOWN, buff=0.5)
-        both_blocks.set_x(0)
+        w_block.next_to(wc_title, DOWN, buff=0.8)
+        w_block.set_x(0)
 
         self.play(Transform(arch_title, wc_title))
         self.play(FadeIn(w_block, shift=UP * 0.2), run_time=1.2)
-        self.wait(5.0)
-        self.play(FadeIn(u_block, shift=UP * 0.2), run_time=1.2)
-        self.wait(10.0)
+        self.wait(8.0)
         
-        self.play(FadeOut(VGroup(arch_title, both_blocks)))
+        self.play(FadeOut(VGroup(arch_title, w_block)))
 
     # ═══════════════════════════════════════════════════════════════════
     # SCENE 4 — Energy-Based Models (≈60s)
@@ -538,82 +523,34 @@ class Part2Scene(Scene):
                 "stroke_color": DIM_TEXT
             }
         }
-
         # ==========================================================
-        # ĐỒ THỊ 1: Nominal f_hat (Trường vector không ổn định)
+        # ĐỒ THỊ BẰNG ẢNH
         # ==========================================================
-        ax1 = NumberPlane(**plane_config).shift(LEFT * 4.5 + UP * 0.9)
-        ax1.add_coordinates() 
+        img_graphs = ImageMobject("src/part2/imgLyapunov.png")
+        # Resize the image to fit nicely within the scene, shifted up a bit
+        img_graphs.scale_to_fit_width(9.0)
+        img_graphs.move_to(UP * 0.9)
 
-        def nominal_field(pos):
-            x, y = ax1.p2c(pos)[0], ax1.p2c(pos)[1]
-            # Công thức tạo dòng chảy hình yên ngựa/không ổn định
-            return np.array([y + 0.3 * x, 0.6 * x, 0])
-
-        vf1 = ArrowVectorField(
-            nominal_field,
-            x_range=[ax1.get_left()[0], ax1.get_right()[0], 0.45], 
-            y_range=[ax1.get_bottom()[1], ax1.get_top()[1], 0.45],
-            length_func=lambda norm: 0.22 if norm > 0 else 0,
-            colors=[PAPER_BLUE, PAPER_RED]
-        )
-
+        # Labels for the 3 graphs in the image
         title1 = VGroup(
-            Text("Động lực danh định", font_size=15, color=PAPER_RED),
+            Text("Nominal", font_size=15, color=PAPER_RED),
             MathTex(r"\hat{f}", font_size=18, color=PAPER_RED)
-        ).arrange(RIGHT, buff=0.1).next_to(ax1, UP, buff=0.3)
-        
-        graph1 = VGroup(ax1, vf1, title1)
+        ).arrange(RIGHT, buff=0.1)
 
-        # ==========================================================
-        # ĐỒ THỊ 2: Lyapunov Function V (Các đường tròn đồng mức đồng tâm)
-        # ==========================================================
-        ax2 = NumberPlane(**plane_config).shift(UP * 0.9)
-        ax2.add_coordinates()
-
-        contours = VGroup()
-        for r in np.linspace(0.4, 1.8, 8):
-            radius_in_units = np.linalg.norm(ax2.c2p(r, 0) - ax2.c2p(0, 0))
-            color = interpolate_color(ManimColor(PAPER_BLUE), ManimColor(PAPER_YELLOW), (r - 0.4) / 1.4)
-            circle = Circle(radius=radius_in_units, color=color, stroke_width=2).move_to(ax2.c2p(0, 0))
-            contours.add(circle)
-
-        colorbar = Rectangle(height=3.5, width=0.18).next_to(ax2, RIGHT, buff=0.2)
-        colorbar.set_fill(color=[PAPER_BLUE, PAPER_GREEN, PAPER_YELLOW], opacity=0.8)
-        colorbar.set_stroke(color=CARD_STROKE, width=1)
-        
         title2 = VGroup(
-            Text("Hàm Lyapunov", font_size=15, color=PAPER_PURPLE),
+            Text("Lyapunov Function", font_size=15, color=PAPER_PURPLE),
             MathTex(r"V", font_size=18, color=PAPER_PURPLE)
-        ).arrange(RIGHT, buff=0.1).next_to(ax2, UP, buff=0.3)
-        
-        graph2 = VGroup(ax2, contours, colorbar, title2)
-
-        # ==========================================================
-        # ĐỒ THỊ 3: Stable f (Trường vector xoáy tụ ổn định)
-        # ==========================================================
-        ax3 = NumberPlane(**plane_config).shift(RIGHT * 4.5 + UP * 0.9)
-        ax3.add_coordinates()
-
-        def stable_field(pos):
-            x, y = ax3.p2c(pos)[0], ax3.p2c(pos)[1]
-            # Công thức xoáy tụ về tâm (0,0)
-            return np.array([-0.5 * x + y, -x - 0.5 * y, 0])
-
-        vf3 = ArrowVectorField(
-            stable_field,
-            x_range=[ax3.get_left()[0], ax3.get_right()[0], 0.45],
-            y_range=[ax3.get_bottom()[1], ax3.get_top()[1], 0.45],
-            length_func=lambda norm: 0.22 if norm > 0 else 0,
-            colors=[PAPER_BLUE, PAPER_GREEN]
-        )
+        ).arrange(RIGHT, buff=0.1)
 
         title3 = VGroup(
-            Text("Động lực ổn định", font_size=15, color=PAPER_GREEN),
+            Text("Stable", font_size=15, color=PAPER_GREEN),
             MathTex(r"f", font_size=18, color=PAPER_GREEN)
-        ).arrange(RIGHT, buff=0.1).next_to(ax3, UP, buff=0.3)
-        
-        graph3 = VGroup(ax3, vf3, title3)
+        ).arrange(RIGHT, buff=0.1)
+
+        title1.next_to(img_graphs.get_top(), UP, buff=0.1).shift(LEFT * 2.9)
+        title2.next_to(img_graphs.get_top(), UP, buff=0.1)
+        title3.next_to(img_graphs.get_top(), UP, buff=0.1).shift(RIGHT * 3.2)
+        img_titles = VGroup(title1, title2, title3)
 
         # ==========================================================
         # PHẦN VĂN BẢN VÀ CÔNG THỨC TOÁN LATEX BÊN DƯỚI
@@ -638,62 +575,18 @@ class Part2Scene(Scene):
 
         bottom_part = VGroup(description, main_formula, pointer_arrow, icnn_label)
 
-        # Draw trajectories on top of ax1 (nominal) and ax3 (stable)
-        t_vals = np.linspace(0, 3 * np.pi, 80)
-        nominal_pts = []
-        for t in t_vals:
-            r = 0.12 * t
-            x_val = r * np.cos(t)
-            y_val = r * np.sin(t)
-            nominal_pts.append(ax1.c2p(x_val, y_val))
-        traj_nominal = VMobject(color=PAPER_RED, stroke_width=3)
-        traj_nominal.set_points_as_corners(nominal_pts)
-        traj_dot_nominal = Dot(color=PAPER_RED, radius=0.08)
-
-        stable_pts = []
-        for t in t_vals:
-            rev_t = 3 * np.pi - t
-            r = 0.15 * rev_t
-            x_val = r * np.cos(t)
-            y_val = r * np.sin(t)
-            stable_pts.append(ax3.c2p(x_val, y_val))
-        traj_stable = VMobject(color=PAPER_GREEN, stroke_width=3)
-        traj_stable.set_points_as_corners(stable_pts)
-        traj_dot_stable = Dot(color=PAPER_GREEN, radius=0.08)
-
         # ==========================================================
         # TIẾN HÀNH RENDER
         # ==========================================================
         self.play(Write(lyap_title), run_time=1.0)
-        self.play(
-            FadeIn(graph1),
-            FadeIn(graph2),
-            FadeIn(graph3),
-            run_time=1.5
-        )
+        self.play(FadeIn(img_graphs), FadeIn(img_titles), run_time=1.5)
         self.play(Write(bottom_part), run_time=1.8)
         self.wait(2.0)
 
-        # Animate trajectory flow on fields
-        self.play(
-            Create(traj_nominal),
-            MoveAlongPath(traj_dot_nominal, traj_nominal),
-            run_time=4.0,
-            rate_func=linear
-        )
-        self.wait(1.5)
-
-        self.play(
-            Create(traj_stable),
-            MoveAlongPath(traj_dot_stable, traj_stable),
-            run_time=4.0,
-            rate_func=linear
-        )
         self.wait(10.0)
 
         self.play(
-            FadeOut(VGroup(lyap_title, graph1, graph2, graph3, bottom_part,
-                           traj_nominal, traj_dot_nominal, traj_stable, traj_dot_stable))
+            FadeOut(Group(lyap_title, img_graphs, img_titles, bottom_part))
         )
 
     # ═══════════════════════════════════════════════════════════════════
@@ -711,7 +604,7 @@ class Part2Scene(Scene):
         lim2 = Text("• Khó tích hợp linh hoạt vào các kiến trúc hiện đại", font_size=22, color=PAPER_RED)
         lim3 = Text("• Bắt buộc toàn bộ mạng nơ-ron phải lồi", font_size=22, color=PAPER_ORANGE)
         
-        next_idea = Text("Nhúng bài toán tối ưu trực tiếp dưới dạng một lớp ẩn (layer)?", font_size=22, color=TEXT_COLOR)
+        next_idea = Text("Nhúng bài toán tối ưu trực tiếp dưới dạng một lớp ẩn?", font_size=22, color=TEXT_COLOR)
         optnet_label = Text("⇒ OptNet", font_size=26, color=PAPER_YELLOW)
 
         all_items = VGroup(lim1, lim2, lim3, next_idea, optnet_label)
