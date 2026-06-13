@@ -1,0 +1,92 @@
+[54:21 - 54:49]
+Điểm cuối Kolter muốn nhấn mạnh là một vấn đề nền tảng
+trong cách chúng ta train rất nhiều model hiện nay.
+Đây là công trình mới của Pratyush, Sachin, Dylan và các cộng sự.
+Tại thời điểm bài nói, bài này vừa chuẩn bị được đưa lên arXiv
+và còn phải qua một bước xác minh.
+Nhưng ý tưởng chính thì rất đơn giản.
+
+[54:49 - 55:26]
+Cách train phổ biến hiện nay khá kỳ lạ.
+Ta pretrain model trên dữ liệu web,
+nơi có đủ loại thông tin: hữu ích, sai lệch, độc hại,
+cực đoan, và rất nhiều thứ lộn xộn.
+Về cơ bản, ta bảo model học pattern và có khả năng tái tạo lại nhiều thứ trong dữ liệu đó.
+Rồi đến tận cuối pipeline,
+ta mới thêm một lượt instruction tuning và RLHF tương đối nhỏ
+để nói với model rằng:
+"đừng nói những nội dung nguy hiểm như vậy".
+
+[55:26 - 55:47]
+Ý tưởng safety pretraining không hoàn toàn mới,
+nhưng cách làm cụ thể rất quan trọng.
+Câu hỏi là:
+thay vì học mọi thứ trước rồi vá ở cuối,
+liệu ta có thể đưa safety vào ngay từ đầu quá trình training không?
+Nói cách khác, safety không chỉ là một lớp alignment cuối cùng,
+mà là một phần của pretraining pipeline.
+
+[55:47 - 56:17]
+Một phản xạ tự nhiên là lọc dữ liệu thật mạnh vì safety.
+Nhưng chỉ lọc sạch thôi thì chưa đủ.
+Nếu model hoàn toàn không biết nội dung xấu là gì,
+nó cũng không hiểu cách đặt những nội dung đó vào đúng context.
+Kolter dùng ví dụ rất trực quan:
+chúng ta vẫn dạy trẻ em về điều nguy hiểm,
+nhưng không ném chúng lên Internet để đọc forum ngẫu nhiên.
+Ta dạy bằng cách contextualize:
+giải thích, đóng khung, và chỉ rõ boundary.
+
+[56:17 - 56:38]
+Vì vậy, safety pretraining gồm nhiều thành phần.
+Một là filtering, loại bỏ phần rõ ràng nguy hiểm.
+Hai là rephrase và contextualize một số nội dung xấu,
+để model hiểu chúng trong khung an toàn.
+Ba là đưa refusal training vào sớm hơn,
+thay vì chỉ dạy từ chối ở cuối.
+Bốn là thêm guardrail tags quanh harmful content.
+Khi generation sắp tạo harmful tag,
+hệ thống có thể backtrack và không tiếp tục sinh theo hướng đó.
+
+[56:38 - 57:30]
+Kết quả là các model được train theo hướng này robust hơn.
+Theo HarmBench,
+sau instruction tuning và alignment,
+mức harmfulness có thể gần như bằng không.
+Nhưng điểm quan trọng hơn là sau đó chuyện gì xảy ra.
+Trong thực tế, alignment ở cuối rất dễ bị phá.
+Chỉ cần fine-tune model trên một tác vụ benign như GSM8K,
+alignment ban đầu cũng có thể bị suy yếu.
+Lý do là tập fine-tune thường chỉ dạy model trở nên helpful:
+hãy trả lời câu hỏi, hãy giải bài, hãy hoàn thành nhiệm vụ.
+Nếu dữ liệu fine-tune chỉ chứa các ví dụ helpful,
+model có thể fine-tune out khả năng refusal.
+Nó dần quên rằng có những trường hợp nên từ chối.
+
+[57:30 - 57:42]
+Điểm thú vị là các phương pháp như Safe LMR
+vẫn ít harmful hơn khá rõ sau khi bị fine-tune trên tác vụ benign.
+Nói cách khác, safety không chỉ nằm ở một lớp mỏng cuối cùng,
+mà đã được đưa sâu hơn vào quá trình học của model.
+
+[57:42 - 58:05]
+Nhóm nghiên cứu cũng phân tích thành phần nào thật sự quan trọng.
+Một kết quả hơi ngược trực giác là:
+nếu chỉ train trên dữ liệu "an toàn nhất",
+harmfulness có thể còn tệ hơn so với train trên toàn bộ dữ liệu.
+Lý do là model không hiểu đủ về nội dung xấu,
+nên cũng không hiểu cách contextualize hoặc từ chối đúng cách.
+Không biết gì về cái xấu không đồng nghĩa với an toàn hơn.
+
+[58:05 - 58:29]
+Những thành phần giúp giảm harmfulness gồm:
+rephrasing nội dung nhạy cảm,
+native refusal được học từ sớm,
+một curriculum giống như "moral education" cho model,
+và beam search/backtracking dựa trên harmful tags.
+Khi model sắp generate một tag có hại,
+hệ thống phát hiện và quay lui.
+Bài học là:
+safety không nên chỉ là một miếng vá ở cuối training.
+Safety pretraining cố gắng đưa context, refusal,
+và guardrails vào ngay từ đầu pipeline.
